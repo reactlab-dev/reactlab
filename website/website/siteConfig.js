@@ -39,24 +39,22 @@ const siteConfig = {
 
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
-    {doc: 'doc1', label: 'Docs'},
-    {doc: 'doc4', label: 'API'},
-    {page: 'help', label: 'Help'},
-    {blog: true, label: 'Blog'},
+    {doc: 'instructions', label: 'Lab'},
+    { href: "https://github.com/reactlab-dev/reactlab", label: "GitHub" },
   ],
 
   // If you have users set above, you add it here:
   users,
 
   /* path to images for header/footer */
-  headerIcon: 'img/docusaurus.svg',
-  footerIcon: 'img/docusaurus.svg',
-  favicon: 'img/favicon.png',
+  headerIcon: 'img/logo.svg',
+  footerIcon: 'img/logo.svg',
+  favicon: 'img/favicon.ico',
 
   /* Colors for website */
   colors: {
-    primaryColor: '#2E8555',
-    secondaryColor: '#205C3B',
+    primaryColor: '#20232a',
+    secondaryColor: '#61dafb',
   },
 
   /* Custom fonts for website */
@@ -74,7 +72,7 @@ const siteConfig = {
   */
 
   // This copyright info is used in /core/Footer.js and blog RSS/Atom feeds.
-  copyright: `Copyright © ${new Date().getFullYear()} Your Name or Your Company Name`,
+  copyright: `Thierry ABALEA & Eliott Balette (${new Date().getFullYear()})`,
 
   highlight: {
     // Highlight.js theme to use for syntax highlighting in code blocks.
@@ -101,7 +99,7 @@ const siteConfig = {
 
   // You may provide arbitrary config keys to be used as needed by your
   // template. For example, if you need your repo's URL...
-  //   repoUrl: 'https://github.com/facebook/test-site',
+  repoUrl: 'https://github.com/reactlab-dev/reactlab',
 };
 
 module.exports = siteConfig;

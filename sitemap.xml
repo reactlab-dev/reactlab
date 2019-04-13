@@ -8,9 +8,5 @@
 <url> <loc>https://reactlab.dev/blog/2017/09/25/testing-rss</loc> <changefreq>weekly</changefreq> <priority>0.3</priority> </url>
 <url> <loc>https://reactlab.dev/blog/2017/04/10/blog-post-two</loc> <changefreq>weekly</changefreq> <priority>0.3</priority> </url>
 <url> <loc>https://reactlab.dev/blog/2016/03/11/blog-post</loc> <changefreq>weekly</changefreq> <priority>0.3</priority> </url>
-<url> <loc>https://reactlab.dev/docs/doc1</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://reactlab.dev/docs/doc1" /> </url>
-<url> <loc>https://reactlab.dev/docs/doc2</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://reactlab.dev/docs/doc2" /> </url>
-<url> <loc>https://reactlab.dev/docs/doc3</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://reactlab.dev/docs/doc3" /> </url>
-<url> <loc>https://reactlab.dev/docs/doc4</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://reactlab.dev/docs/doc4" /> </url>
-<url> <loc>https://reactlab.dev/docs/doc5</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://reactlab.dev/docs/doc5" /> </url>
+<url> <loc>https://reactlab.dev/docs/instructions</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://reactlab.dev/docs/instructions" /> </url>
 </urlset>

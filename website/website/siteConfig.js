@@ -22,7 +22,7 @@ const users = [
 
 const siteConfig = {
   title: 'React Lab', // Title for your website.
-  tagline: 'Learn React by implementing a webapp accompanied by slides',
+  tagline: 'Apprenez React en implémentant une application web avec un support de cours',
   url: 'https://reactlab.dev', // Your website URL
   cname: 'reactlab.dev',
   baseUrl: '/', // Base URL for your project */

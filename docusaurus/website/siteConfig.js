@@ -24,6 +24,7 @@ const siteConfig = {
   title: 'React Lab', // Title for your website.
   tagline: 'Learn React by implementing a webapp accompanied by slides',
   url: 'https://reactlab.dev', // Your website URL
+  cname: 'reactlab.dev',
   baseUrl: '/', // Base URL for your project */
   // For github.io type URLs, you would set the url and baseUrl like:
   //   url: 'https://facebook.github.io',

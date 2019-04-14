@@ -18,12 +18,14 @@ interface State {
 
 const ExperienceList = () => (
   <div className={styles['list-main-container']}>
-    <ListDataProvider listDisplayer={DefaultListContainer} />
+    <ListDataProvider render={
+        (experiences: Experience[]) => <DefaultListContainer experiences={experiences} />
+      } />
   </div>
 );
 
 interface ListDataProviderProps {
-  listDisplayer: React.ComponentType<any>;
+  render: (experiences: Experience[]) => React.ReactElement<any>;
 }
 class ListDataProvider extends React.Component<ListDataProviderProps, State> {
   constructor(props: ListDataProviderProps) {
@@ -55,7 +57,7 @@ class ListDataProvider extends React.Component<ListDataProviderProps, State> {
             }}
           />
         </div>
-        <this.props.listDisplayer experiences={this.state.experiences} />
+        {this.props.render(this.state.experiences)}
       </>
     );
   }

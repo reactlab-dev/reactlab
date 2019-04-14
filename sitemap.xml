@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url> <loc>https://reactlab.dev/help</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> <xhtml:link rel="alternate" hreflang="en" href="https://reactlab.dev/en/help" /> </url>
+<url> <loc>https://reactlab.dev/about</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> <xhtml:link rel="alternate" hreflang="en" href="https://reactlab.dev/en/about" /> </url>
 <url> <loc>https://reactlab.dev/index</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> <xhtml:link rel="alternate" hreflang="en" href="https://reactlab.dev/en/index" /> </url>
-<url> <loc>https://reactlab.dev/users</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> <xhtml:link rel="alternate" hreflang="en" href="https://reactlab.dev/en/users" /> </url>
-<url> <loc>https://reactlab.dev/blog/2017/10/24/new-version-1.0.0</loc> <changefreq>weekly</changefreq> <priority>0.3</priority> </url>
-<url> <loc>https://reactlab.dev/blog/2017/09/26/adding-rss</loc> <changefreq>weekly</changefreq> <priority>0.3</priority> </url>
-<url> <loc>https://reactlab.dev/blog/2017/09/25/testing-rss</loc> <changefreq>weekly</changefreq> <priority>0.3</priority> </url>
-<url> <loc>https://reactlab.dev/blog/2017/04/10/blog-post-two</loc> <changefreq>weekly</changefreq> <priority>0.3</priority> </url>
-<url> <loc>https://reactlab.dev/blog/2016/03/11/blog-post</loc> <changefreq>weekly</changefreq> <priority>0.3</priority> </url>
-<url> <loc>https://reactlab.dev/docs/instructions</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://reactlab.dev/docs/instructions" /> </url>
+<url> <loc>https://reactlab.dev/docs/instructions/instructions-step-1-detailed</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://reactlab.dev/docs/instructions/instructions-step-1-detailed" /> </url>
+<url> <loc>https://reactlab.dev/docs/instructions/instructions-step-1-summary</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://reactlab.dev/docs/instructions/instructions-step-1-summary" /> </url>
+<url> <loc>https://reactlab.dev/docs/instructions/instructions-step-2-detailed</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://reactlab.dev/docs/instructions/instructions-step-2-detailed" /> </url>
+<url> <loc>https://reactlab.dev/docs/instructions/instructions-step-2-summary</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://reactlab.dev/docs/instructions/instructions-step-2-summary" /> </url>
+<url> <loc>https://reactlab.dev/docs/instructions/instructions-step-3-detailed</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://reactlab.dev/docs/instructions/instructions-step-3-detailed" /> </url>
+<url> <loc>https://reactlab.dev/docs/instructions/instructions-step-3-summary</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://reactlab.dev/docs/instructions/instructions-step-3-summary" /> </url>
+<url> <loc>https://reactlab.dev/docs/instructions/instructions-step-4-detailed</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://reactlab.dev/docs/instructions/instructions-step-4-detailed" /> </url>
+<url> <loc>https://reactlab.dev/docs/instructions/instructions-step-4-summary</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://reactlab.dev/docs/instructions/instructions-step-4-summary" /> </url>
+<url> <loc>https://reactlab.dev/docs/instructions/instructions-step-5-detailed</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://reactlab.dev/docs/instructions/instructions-step-5-detailed" /> </url>
+<url> <loc>https://reactlab.dev/docs/instructions/instructions-step-5-summary</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://reactlab.dev/docs/instructions/instructions-step-5-summary" /> </url>
+<url> <loc>https://reactlab.dev/docs/lab-intro</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://reactlab.dev/docs/lab-intro" /> </url>
 </urlset>

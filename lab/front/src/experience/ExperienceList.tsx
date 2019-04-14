@@ -11,60 +11,60 @@ async function fetchExperiences(filter?: string): Promise<Experience[]> {
   return response;
 }
 
-const ExperienceList = () => (
-  <div className={styles['list-main-container']}>
-    <ListDataProvider
-      render={(experiences: Experience[]) => (
-        <DefaultListContainer experiences={experiences} />
-      )}
-    />
-  </div>
-);
+interface ExperienceListState {
+  filter?: string;
+}
+class ExperienceList extends React.Component<{}, ExperienceListState> {
 
-interface ListDataProviderState {
-  experiences: Experience[];
-  detailsShowedExperienceId?: string;
-}
-interface ListDataProviderProps {
-  render: (experiences: Experience[]) => React.ReactElement<any>;
-}
-class ListDataProvider extends React.Component<
-  ListDataProviderProps,
-  ListDataProviderState
-> {
-  constructor(props: ListDataProviderProps) {
+  constructor(props: {}) {
     super(props);
-    this.state = {
-      experiences: [],
-    };
-  }
-  async componentDidMount() {
-    const experiences = await fetchExperiences();
-    this.setState({
-      experiences,
-    });
+    this.state = {};
   }
 
-  async filterList(filter?: string) {
-    const experiences = await fetchExperiences(filter);
-    this.setState({ experiences });
+  filterList(filter?: string) {
+    this.setState({ filter });
   }
+
   render() {
+    const ConnectedList = connectDataProvider(DefaultListContainer, this.state.filter);
     return (
-      <>
+      <div className={styles['list-main-container']}>
         <div>
           Filter :
           <input
             className={styles['input']}
-            onChange={async ({ target: { value } }) => {
+            onChange={({ target: { value } }) => {
               this.filterList(value);
             }}
-          />
+        />
         </div>
-        {this.props.render(this.state.experiences)}
-      </>
-    );
+        <ConnectedList />
+      </div>)
   }
+};
+
+function connectDataProvider(
+  Composed: React.ComponentType<{ experiences: Experience[] }>,
+  filter?: string,
+): React.ComponentClass<{}> {
+  return class extends React.Component<{}, { experiences: Experience[] }> {
+    constructor(props: {}) {
+      super(props);
+      this.state = {
+        experiences: [],
+      };
+    }
+    async componentDidMount() {
+      const experiences = await fetchExperiences(filter);
+      this.setState({
+        experiences,
+      });
+    }
+
+    render() {
+      return <Composed experiences={this.state.experiences} />;
+    }
+  };
 }
 
 const DefaultListContainer = ({
@@ -92,6 +92,7 @@ const DefaultListContainer = ({
     </div>
   );
 };
+
 const ExperienceCard = ({
   experience,
   showDetails,
@@ -108,14 +109,22 @@ const ExperienceCard = ({
     {showDetails ? (
       <Details experience={experience} />
     ) : (
-      <div>
-        <h5 className={styles['name']}>{experience.name}</h5>
-        <p className={styles['text']}>{experience.description}</p>
-        <p className={styles['text']}>{experience.organisation}</p>
-        <p className={styles['location']}>{experience.location}</p>
-      </div>
+      <ExperienceSummary experience={experience} />
     )}
   </div>
+);
+
+const ExperienceSummary = ({
+  experience: { name, description, location, organisation },
+}: {
+  experience: Experience;
+}) => (
+  <>
+    <h5 className={styles['name']}>{name}</h5>
+    <p className={styles['text']}>{description}</p>
+    <p className={styles['text']}>{organisation}</p>
+    <p className={styles['location']}>{location}</p>
+  </>
 );
 
 export default ExperienceList;

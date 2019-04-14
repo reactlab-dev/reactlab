@@ -11,21 +11,48 @@ async function fetchExperiences(filter?: string): Promise<Experience[]> {
   return response;
 }
 
-const ExperienceList = () => (
-  <div className={styles['list-main-container']}>
-    <ListDataProvider
-      render={(experiences: Experience[]) => (
-        <DefaultListContainer experiences={experiences} />
-      )}
-    />
-  </div>
-);
+interface ExperienceListState {
+  filter?: string;
+}
+class ExperienceList extends React.Component<{}, ExperienceListState> {
+
+  constructor(props: {}) {
+    super(props);
+    this.state = {};
+  }
+
+  filterList(filter?: string) {
+    this.setState({ filter });
+  }
+
+  render() {
+    return (
+      <div className={styles['list-main-container']}>
+        <div>
+          Filter :
+          <input
+            className={styles['input']}
+            onChange={({ target: { value } }) => {
+              this.filterList(value);
+            }}
+        />
+        </div>
+        <ListDataProvider
+          filter={this.state.filter}
+          render={(experiences: Experience[]) => (
+            <DefaultListContainer experiences={experiences} />
+          )}
+        />
+      </div>)
+  }
+};
 
 interface ListDataProviderState {
   experiences: Experience[];
   detailsShowedExperienceId?: string;
 }
 interface ListDataProviderProps {
+  filter?: string;
   render: (experiences: Experience[]) => React.ReactElement<any>;
 }
 class ListDataProvider extends React.Component<
@@ -38,32 +65,26 @@ class ListDataProvider extends React.Component<
       experiences: [],
     };
   }
-  async componentDidMount() {
-    const experiences = await fetchExperiences();
+
+  async fetchExperience() {
+    const experiences = await fetchExperiences(this.props.filter);
     this.setState({
       experiences,
     });
   }
 
-  async filterList(filter?: string) {
-    const experiences = await fetchExperiences(filter);
-    this.setState({ experiences });
+  async componentDidMount() {
+    await this.fetchExperience();
   }
+
+  async componentDidUpdate(prevProps: ListDataProviderProps) {
+    if (this.props.filter !== prevProps.filter) {
+      await this.fetchExperience();
+    }
+  }
+
   render() {
-    return (
-      <>
-        <div>
-          Filter :
-          <input
-            className={styles['input']}
-            onChange={async ({ target: { value } }) => {
-              this.filterList(value);
-            }}
-          />
-        </div>
-        {this.props.render(this.state.experiences)}
-      </>
-    );
+    return this.props.render(this.state.experiences);
   }
 }
 

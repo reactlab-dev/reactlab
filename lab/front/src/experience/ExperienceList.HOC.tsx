@@ -11,15 +11,42 @@ async function fetchExperiences(filter?: string): Promise<Experience[]> {
   return response;
 }
 
-const ExperienceList = () => (
-  <div className={styles['list-main-container']}>
-    <ConnectedList />
-  </div>
-);
+interface ExperienceListState {
+  filter?: string;
+}
+class ExperienceList extends React.Component<{}, ExperienceListState> {
+
+  constructor(props: {}) {
+    super(props);
+    this.state = {};
+  }
+
+  filterList(filter?: string) {
+    this.setState({ filter });
+  }
+
+  render() {
+    const ConnectedList = connectDataProvider(DefaultListContainer, this.state.filter);
+    return (
+      <div className={styles['list-main-container']}>
+        <div>
+          Filter :
+          <input
+            className={styles['input']}
+            onChange={({ target: { value } }) => {
+              this.filterList(value);
+            }}
+        />
+        </div>
+        <ConnectedList />
+      </div>)
+  }
+};
 
 function connectDataProvider(
-  Composed: React.ComponentType<any>,
-): React.ComponentClass<any> {
+  Composed: React.ComponentType<{ experiences: Experience[] }>,
+  filter?: string,
+): React.ComponentClass<{}> {
   return class extends React.Component<{}, { experiences: Experience[] }> {
     constructor(props: {}) {
       super(props);
@@ -28,31 +55,14 @@ function connectDataProvider(
       };
     }
     async componentDidMount() {
-      const experiences = await fetchExperiences();
+      const experiences = await fetchExperiences(filter);
       this.setState({
         experiences,
       });
     }
 
-    async filterList(filter?: string) {
-      const experiences = await fetchExperiences(filter);
-      this.setState({ experiences });
-    }
     render() {
-      return (
-        <>
-          <div>
-            Filter :
-            <input
-              className={styles['input']}
-              onChange={async ({ target: { value } }) => {
-                this.filterList(value);
-              }}
-            />
-          </div>
-          <Composed experiences={this.state.experiences} />
-        </>
-      );
+      return <Composed experiences={this.state.experiences} />;
     }
   };
 }
@@ -82,8 +92,6 @@ const DefaultListContainer = ({
     </div>
   );
 };
-
-const ConnectedList = connectDataProvider(DefaultListContainer);
 
 const ExperienceCard = ({
   experience,

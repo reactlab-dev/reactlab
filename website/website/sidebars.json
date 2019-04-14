@@ -1,5 +1,19 @@
 {
   "docs": {
-    "Lab": ["instructions"]
+    "Lab": ["lab-intro"],
+    "Instructions sommaires": [
+      "instructions/instructions-step-1-summary",
+      "instructions/instructions-step-2-summary",
+      "instructions/instructions-step-3-summary",
+      "instructions/instructions-step-4-summary",
+      "instructions/instructions-step-5-summary"
+    ],
+    "Instructions détaillées": [
+      "instructions/instructions-step-1-detailed",
+      "instructions/instructions-step-2-detailed",
+      "instructions/instructions-step-3-detailed",
+      "instructions/instructions-step-4-detailed",
+      "instructions/instructions-step-5-detailed"
+    ]
   }
 }

@@ -30,6 +30,7 @@ const siteConfig = {
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
     {doc: 'lab-intro', label: 'Lab'},
+    {page: 'about', label: 'A propos'},
     { href: "https://github.com/reactlab-dev/reactlab", label: "GitHub" },
   ],
 
@@ -59,7 +60,7 @@ const siteConfig = {
   */
 
   // This copyright info is used in /core/Footer.js and blog RSS/Atom feeds.
-  copyright: `Thierry ABALEA & Eliott Balette (${new Date().getFullYear()})`,
+  copyright: `Thierry Abaléa & Eliott Balette (${new Date().getFullYear()})`,
 
   highlight: {
     // Highlight.js theme to use for syntax highlighting in code blocks.

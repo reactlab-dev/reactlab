@@ -63,6 +63,7 @@ export const AddPeople = (props: { onChange: (people: People) => void }) => {
 
 ```tsx
 // Team.tsx
+// in AddPeople
 <input
   className={styles['input-inline']}
   type="text"
@@ -78,6 +79,7 @@ export const AddPeople = (props: { onChange: (people: People) => void }) => {
 
 ```tsx
 // Team.tsx
+// in AddPeople
 <button
   className={styles['button-inline']}
   onClick={() => {
@@ -97,6 +99,7 @@ export const AddPeople = (props: { onChange: (people: People) => void }) => {
 
 ```tsx
 // Team.tsx
+// in AddPeople
 <input
   className={styles['input-inline']}
   type="text"
@@ -123,4 +126,123 @@ export const AddPeople = (props: { onChange: (people: People) => void }) => {
 </button>
 ```
 
-- Vous avez maintenant
+- Vous avez maintenant un composant `AddPeople` fonctionnel. Passons à sont utilisation. Utilisez le juste après le `label` 'Team :'.
+
+```tsx
+// Team.tsx
+// in Team
+/*
+* ...
+*/
+render() {
+    return (
+      <div className={styles['team-container']}>
+        <label className={styles['label']}>Team :</label>
+        <AddPeople
+          onAdd={(people) => {}}
+        />
+        {/*
+          * ...
+          */}
+    )
+}
+
+```
+
+- Afin de stocker la liste de `People` vous allez devoir vous servire du state de `Team` en y ajoutant `teamList: People[]`
+
+```tsx
+// Team.tsx
+
+interface State {
+  team: People[];
+}
+
+class Team extends React.Component<{}, State> {
+  constructor(props: {}) {
+    super(props);
+    this.state = {
+      team: [],
+    };
+  }
+  /*
+   * ...
+   */
+}
+```
+
+- Vous pouvez maintenant allimenter cette liste à chaque clique sur le `Add`
+
+```tsx
+// Team.tsx
+// in Team
+/*
+* ...
+*/
+render() {
+    return (
+      <div className={styles['team-container']}>
+        <label className={styles['label']}>Team :</label>
+        <AddPeople
+          onAdd={(people) => {
+            this.setState({team: [...this.state.team, people]})
+          }}
+        />
+        {/*
+          * ...
+          */}
+    )
+}
+
+```
+
+- Pour afficher cette liste ajouter le jsx suivant juste apres le `AddPeople`
+
+```tsx
+ /*
+  * ...
+  */
+  <AddPeople {/* ... */} />
+  <div className={styles['people-container']}>
+    {this.state.team.map(({ name, role }, indexToFound) => (
+      <div
+        className={styles['people']}
+        key={`${name}+${indexToFound}+${role}`}
+      >
+        <span className={styles['people-name']}>{name} </span>
+        <span className={styles['people-role']}>{role} </span>
+        <span
+          className={styles['people-delete']}
+          onClick={}
+        >
+          X
+        </span>
+      </div>
+    ))}
+  </div>
+ /*
+  * ...
+  */
+```
+
+- Il ne manque qu'a retirer un element de la liste au clique sur `X`, pour cela l'utilisation de `filter` sur la liste est conseillé.
+
+```tsx
+{ thiis.state.team.map((people, indexTofind) => {
+
+/* ... */
+ <span
+    className={styles['people-delete']}
+    onClick={() => {
+      const newTeam = this.state.team.filter((elem, peopleIndex) => {
+       return peopleIndex !== indexToFind ; // true is returned elem is push in newTeam
+      })
+      this.setState({team: newTeam});
+    }}
+  >
+    X
+  </span>
+/* ... */
+
+})
+```

@@ -16,31 +16,6 @@ const ExperienceList = () => (
     <ConnectedList />
   </div>
 );
-const DefaultListContainer = ({
-  experiences,
-}: {
-  experiences: Experience[];
-}) => {
-  const [detailsShowedExperienceId, setDetailsShowedExperienceId] = useState();
-  return (
-    <div className={styles['list-container']}>
-      {experiences.map((experience) => (
-        <ExperienceCard
-          experience={experience}
-          key={experience.id}
-          showDetails={detailsShowedExperienceId === experience.id}
-          onClick={() => {
-            setDetailsShowedExperienceId(
-              detailsShowedExperienceId !== experience.id
-                ? experience.id
-                : undefined,
-            );
-          }}
-        />
-      ))}
-    </div>
-  );
-};
 
 function connectDataProvider(
   Composed: React.ComponentType<any>,
@@ -81,6 +56,32 @@ function connectDataProvider(
     }
   };
 }
+
+const DefaultListContainer = ({
+  experiences,
+}: {
+  experiences: Experience[];
+}) => {
+  const [detailsShowedExperienceId, setDetailsShowedExperienceId] = useState();
+  return (
+    <div className={styles['list-container']}>
+      {experiences.map((experience) => (
+        <ExperienceCard
+          experience={experience}
+          key={experience.id}
+          showDetails={detailsShowedExperienceId === experience.id}
+          onClick={() => {
+            setDetailsShowedExperienceId(
+              detailsShowedExperienceId !== experience.id
+                ? experience.id
+                : undefined,
+            );
+          }}
+        />
+      ))}
+    </div>
+  );
+};
 
 const ConnectedList = connectDataProvider(DefaultListContainer);
 

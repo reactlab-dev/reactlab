@@ -1,3 +1,9 @@
+---
+id: instructions
+title: Instructions
+sidebar_label: Instructions
+---
+
 ## Presentation
 
 Arborescence

@@ -18,9 +18,11 @@ interface State {
 
 const ExperienceList = () => (
   <div className={styles['list-main-container']}>
-    <ListDataProvider render={
-        (experiences: Experience[]) => <DefaultListContainer experiences={experiences} />
-      } />
+    <ListDataProvider
+      render={(experiences: Experience[]) => (
+        <DefaultListContainer experiences={experiences} />
+      )}
+    />
   </div>
 );
 

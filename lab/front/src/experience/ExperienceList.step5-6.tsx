@@ -87,14 +87,22 @@ const ExperienceCard = ({
     {showDetails ? (
       <Details experience={experience} />
     ) : (
-      <div>
-        <h5 className={styles['name']}>{experience.name}</h5>
-        <p className={styles['text']}>{experience.description}</p>
-        <p className={styles['text']}>{experience.organisation}</p>
-        <p className={styles['location']}>{experience.location}</p>
-      </div>
+      <ExperienceSummary experience={experience} />
     )}
   </div>
+);
+
+const ExperienceSummary = ({
+  experience: { name, description, location, organisation },
+}: {
+  experience: Experience;
+}) => (
+  <>
+    <h5 className={styles['name']}>{name}</h5>
+    <p className={styles['text']}>{description}</p>
+    <p className={styles['text']}>{organisation}</p>
+    <p className={styles['location']}>{location}</p>
+  </>
 );
 
 export default ExperienceList;

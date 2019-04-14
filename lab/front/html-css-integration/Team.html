@@ -1,0 +1,55 @@
+<html lang="en">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../src/App.module.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../src/experience/ExperienceList.module.css"
+    />
+  </head>
+  <body>
+    <div id="root" style="width: 100%; height: 100%; display: flex;">
+      <div class="App_main-container">
+        <div class="App_header">
+          Experiences<a href="/experience/create/informations"
+            ><button class="App_button">Créer une experience</button></a
+          >
+        </div>
+        <div class="sc-bdVaJa emmRvs">
+          <h4 class="sc-dnqmqq bmxrYD">Create your experience</h4>
+          <div class="team-container">
+            <label class="label">Team :</label>
+            <!-- AddPeople component - start -->
+            <div class="inline">
+              <label class="label-inline">Name :</label
+              ><input
+                class="input-inline"
+                type="text"
+                placeholder="Name"
+                value=""
+              /><label class="label-inline">Role :</label
+              ><input
+                class="input-inline"
+                type="text"
+                placeholder="Role"
+                value=""
+              /><button class="button-inline">Add</button>
+            </div>
+            <!-- AddPeople component - end -->
+
+            <!-- PeopleList component - start -->
+            <div class="people-container">
+              <div class="people">
+                <span class="people-name">Jhon Doe </span
+                ><span class="people-role"> DA </span
+                ><span class="people-delete">X</span>
+              </div>
+            </div>
+            <!-- PeopleList component - end -->
+            <a><button class="button">Create</button></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

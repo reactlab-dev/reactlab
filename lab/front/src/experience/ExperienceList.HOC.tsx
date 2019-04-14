@@ -20,7 +20,7 @@ const ExperienceList = () => (
 function connectDataProvider(
   Composed: React.ComponentType<any>,
 ): React.ComponentClass<any> {
-  return class test extends React.Component<{}, { experiences: Experience[] }> {
+  return class extends React.Component<{}, { experiences: Experience[] }> {
     constructor(props: {}) {
       super(props);
       this.state = {

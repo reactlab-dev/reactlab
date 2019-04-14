@@ -108,7 +108,7 @@ const Codesandbox = props => (
     {[
       {
         title: 'Démarrer immédiatement avec Codesandbox',
-        content: `[La première étape commence ici](https://codesandbox.io/s/l9lo1jkn8l)`,
+        content: `La première étape commence [ici](https://codesandbox.io/s/l9lo1jkn8l)`,
       },
     ]}
   </Block>

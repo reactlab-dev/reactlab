@@ -15,6 +15,11 @@
     color: inherit;
   }
   
+  .blockContent a {
+    color: #1A649C;
+    text-decoration: none;
+  }
+
   .post a {
     text-decoration: underline;
   }

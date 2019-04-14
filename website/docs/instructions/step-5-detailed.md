@@ -1,10 +1,4 @@
----
-id: instructions-step-5-detailed
-title: Etape 5 (détaillée)
-sidebar_label: Etape 5 (détaillée)
----
-
-## Permettre l'ajout de personnes dans le formulaire de création d'experience ([instructions sommaires](./step-5-summary.md))
+## Etape 5 : Permettre l'ajout de personnes dans le formulaire de création d'experience ([instructions sommaires](./step-5-summary.md))
 
 - React concepts utiles:
 

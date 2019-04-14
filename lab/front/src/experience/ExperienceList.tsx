@@ -11,56 +11,50 @@ async function fetchExperiences(filter?: string): Promise<Experience[]> {
   return response;
 }
 
-interface State {
-  experiences: Experience[];
-  detailsShowedExperienceId?: string;
-}
-
 const ExperienceList = () => (
   <div className={styles['list-main-container']}>
-    <ListDataProvider render={
-        (experiences: Experience[]) => <DefaultListContainer experiences={experiences} />
-      } />
+    <ConnectedList />
   </div>
 );
 
-interface ListDataProviderProps {
-  render: (experiences: Experience[]) => React.ReactElement<any>;
-}
-class ListDataProvider extends React.Component<ListDataProviderProps, State> {
-  constructor(props: ListDataProviderProps) {
-    super(props);
-    this.state = {
-      experiences: [],
-    };
-  }
-  async componentDidMount() {
-    const experiences = await fetchExperiences();
-    this.setState({
-      experiences,
-    });
-  }
+function connectDataProvider(
+  Composed: React.ComponentType<any>,
+): React.ComponentClass<any> {
+  return class extends React.Component<{}, { experiences: Experience[] }> {
+    constructor(props: {}) {
+      super(props);
+      this.state = {
+        experiences: [],
+      };
+    }
+    async componentDidMount() {
+      const experiences = await fetchExperiences();
+      this.setState({
+        experiences,
+      });
+    }
 
-  async filterList(filter?: string) {
-    const experiences = await fetchExperiences(filter);
-    this.setState({ experiences });
-  }
-  render() {
-    return (
-      <>
-        <div>
-          Filter :
-          <input
-            className={styles['input']}
-            onChange={async ({ target: { value } }) => {
-              this.filterList(value);
-            }}
-          />
-        </div>
-        {this.props.render(this.state.experiences)}
-      </>
-    );
-  }
+    async filterList(filter?: string) {
+      const experiences = await fetchExperiences(filter);
+      this.setState({ experiences });
+    }
+    render() {
+      return (
+        <>
+          <div>
+            Filter :
+            <input
+              className={styles['input']}
+              onChange={async ({ target: { value } }) => {
+                this.filterList(value);
+              }}
+            />
+          </div>
+          <Composed experiences={this.state.experiences} />
+        </>
+      );
+    }
+  };
 }
 
 const DefaultListContainer = ({
@@ -88,6 +82,9 @@ const DefaultListContainer = ({
     </div>
   );
 };
+
+const ConnectedList = connectDataProvider(DefaultListContainer);
+
 const ExperienceCard = ({
   experience,
   showDetails,
@@ -104,14 +101,22 @@ const ExperienceCard = ({
     {showDetails ? (
       <Details experience={experience} />
     ) : (
-      <div>
-        <h5 className={styles['name']}>{experience.name}</h5>
-        <p className={styles['text']}>{experience.description}</p>
-        <p className={styles['text']}>{experience.organisation}</p>
-        <p className={styles['location']}>{experience.location}</p>
-      </div>
+      <ExperienceSummary experience={experience} />
     )}
   </div>
+);
+
+const ExperienceSummary = ({
+  experience: { name, description, location, organisation },
+}: {
+  experience: Experience;
+}) => (
+  <>
+    <h5 className={styles['name']}>{name}</h5>
+    <p className={styles['text']}>{description}</p>
+    <p className={styles['text']}>{organisation}</p>
+    <p className={styles['location']}>{location}</p>
+  </>
 );
 
 export default ExperienceList;

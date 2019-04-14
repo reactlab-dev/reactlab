@@ -11,24 +11,11 @@ async function fetchExperiences(filter?: string): Promise<Experience[]> {
   return response;
 }
 
-interface State {
-  experiences: Experience[];
-  detailsShowedExperienceId?: string;
-}
-
-class ExperienceList extends React.Component<{}, State> {
-  constructor(props: {}) {
-    super(props);
-  }
-  render() {
-    return (
-      <div className={styles['list-main-container']}>
-        <ConnectedList />
-      </div>
-    );
-  }
-}
-
+const ExperienceList = () => (
+  <div className={styles['list-main-container']}>
+    <ConnectedList />
+  </div>
+);
 const DefaultListContainer = ({
   experiences,
 }: {

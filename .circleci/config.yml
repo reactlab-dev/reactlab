@@ -33,6 +33,7 @@ jobs:
             elif [[ $CIRCLE_PROJECT_USERNAME == "reactlab-dev" && -z $CI_PULL_REQUEST && -z $CIRCLE_PR_USERNAME ]]; then
               echo "Deploying website..."
               cd website
+              yarn install --non-interactive
               # publish
               GIT_USER=reactlab-bot USE_SSH=false yarn run publish-gh-pages
             else

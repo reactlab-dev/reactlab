@@ -1,7 +1,7 @@
 ---
 id: instructions-step-7-detailed
 title: Etape 7 (détaillée)
-sidebar_label: Etape 5 (détaillée)
+sidebar_label: Etape 7 (détaillée)
 ---
 
 ## Etape 7 : Encapsulez la liste des experiences dans un HOC ([instructions sommaires](./step-7-summary.md))

@@ -11,49 +11,11 @@ async function fetchExperiences(filter?: string): Promise<Experience[]> {
   return response;
 }
 
-interface State {
-  experiences: Experience[];
-  detailsShowedExperienceId?: string;
-}
-
-class ExperienceList extends React.Component<{}, State> {
-  constructor(props: {}) {
-    super(props);
-  }
-  render() {
-    return (
-      <div className={styles['list-main-container']}>
-        <ConnectedList />
-      </div>
-    );
-  }
-}
-
-const DefaultListContainer = ({
-  experiences,
-}: {
-  experiences: Experience[];
-}) => {
-  const [detailsShowedExperienceId, setDetailsShowedExperienceId] = useState();
-  return (
-    <div className={styles['list-container']}>
-      {experiences.map((experience) => (
-        <ExperienceCard
-          experience={experience}
-          key={experience.id}
-          showDetails={detailsShowedExperienceId === experience.id}
-          onClick={() => {
-            setDetailsShowedExperienceId(
-              detailsShowedExperienceId !== experience.id
-                ? experience.id
-                : undefined,
-            );
-          }}
-        />
-      ))}
-    </div>
-  );
-};
+const ExperienceList = () => (
+  <div className={styles['list-main-container']}>
+    <ConnectedList />
+  </div>
+);
 
 function connectDataProvider(
   Composed: React.ComponentType<any>,
@@ -94,6 +56,32 @@ function connectDataProvider(
     }
   };
 }
+
+const DefaultListContainer = ({
+  experiences,
+}: {
+  experiences: Experience[];
+}) => {
+  const [detailsShowedExperienceId, setDetailsShowedExperienceId] = useState();
+  return (
+    <div className={styles['list-container']}>
+      {experiences.map((experience) => (
+        <ExperienceCard
+          experience={experience}
+          key={experience.id}
+          showDetails={detailsShowedExperienceId === experience.id}
+          onClick={() => {
+            setDetailsShowedExperienceId(
+              detailsShowedExperienceId !== experience.id
+                ? experience.id
+                : undefined,
+            );
+          }}
+        />
+      ))}
+    </div>
+  );
+};
 
 const ConnectedList = connectDataProvider(DefaultListContainer);
 

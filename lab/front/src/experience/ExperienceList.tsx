@@ -11,11 +11,6 @@ async function fetchExperiences(filter?: string): Promise<Experience[]> {
   return response;
 }
 
-interface State {
-  experiences: Experience[];
-  detailsShowedExperienceId?: string;
-}
-
 const ExperienceList = () => (
   <div className={styles['list-main-container']}>
     <ListDataProvider
@@ -26,10 +21,17 @@ const ExperienceList = () => (
   </div>
 );
 
+interface ListDataProviderState {
+  experiences: Experience[];
+  detailsShowedExperienceId?: string;
+}
 interface ListDataProviderProps {
   render: (experiences: Experience[]) => React.ReactElement<any>;
 }
-class ListDataProvider extends React.Component<ListDataProviderProps, State> {
+class ListDataProvider extends React.Component<
+  ListDataProviderProps,
+  ListDataProviderState
+> {
   constructor(props: ListDataProviderProps) {
     super(props);
     this.state = {

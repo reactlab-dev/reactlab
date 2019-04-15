@@ -54,7 +54,105 @@
 <ul>
 <li><p>React concepts utiles:</p>
 <ul>
-<li>Render Props</li>
+<li>ComponentDidUpdate</li>
 </ul></li>
+<li><p>Dans cette étape vous allez devoir extraire le fetch de la liste et sont affichage de <code>ExperienceList</code> dans une nouvelle class <code>FilteredExperienceList</code>.</p></li>
+<li><p><code>FilteredExperienceList</code> recevra donc en <code>props</code> le filtre saisie dans <code>ExperienceList</code> recupèrera la liste et l'affichera.</p>
+<ul>
+<li>Commencez par créer la class <code>FilteredExperienceList</code> en utilisant le même <code>State</code> que la class <code>ExperienceList</code>.</li>
 </ul>
+<pre><code class="hljs css language-tsx"><span class="hljs-comment">// ExperienceList.tsx</span>
+
+interface <span class="hljs-type">State</span> {
+  experiences: <span class="hljs-type">Experience</span>[];
+  detailsShowedExperienceId?: string;
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FilteredExperienceList</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component&lt;</span></span>
+  { filter?: string },
+  <span class="hljs-type">State</span>
+&gt;
+</code></pre>
+<ul>
+<li>Ensuite vous devrez extraire les différentes méthodes nécessaire à la récupération de la liste</li>
+</ul>
+<pre><code class="hljs css language-tsx"><span class="hljs-comment">// ExperienceList.tsx</span>
+<span class="hljs-comment">/*
+* ...
+*/</span>
+async component<span class="hljs-constructor">DidMount()</span>
+<span class="hljs-comment">/*
+* ...
+*/</span>
+async filter<span class="hljs-constructor">List(<span class="hljs-params">filter</span>?: <span class="hljs-params">string</span>)</span>
+<span class="hljs-comment">/*
+* ...
+*/</span>
+</code></pre>
+<ul>
+<li>Maintenant dans <code>componentDidMount</code> vous pouvez déclencher l'appel de la liste filtré</li>
+</ul>
+<pre><code class="hljs css language-tsx"><span class="hljs-comment">// ExperienceList.tsx</span>
+<span class="hljs-comment">// FilteredExperienceList class</span>
+
+<span class="hljs-function"><span class="hljs-keyword">async</span> <span class="hljs-title">componentDidMount</span>(<span class="hljs-params"></span>)</span> {
+  <span class="hljs-keyword">const</span> experiences = <span class="hljs-keyword">await</span> fetchExperiences();
+  <span class="hljs-keyword">this</span>.setState({
+    experiences,
+  });
+}
+</code></pre>
+<ul>
+<li>Il reste à afficher la liste des experiences du state.</li>
+</ul>
+<pre><code class="hljs css language-tsx"><span class="hljs-comment">// ExperienceList.tsx</span>
+<span class="hljs-comment">// FilteredExperienceList class</span>
+
+<span class="hljs-function"><span class="hljs-title">render</span><span class="hljs-params">()</span></span> {
+  return (
+    &lt;<span class="hljs-selector-tag">div</span> className={styles[<span class="hljs-string">'list-container'</span>]}&gt;
+    <span class="hljs-comment">/*
+    *...
+    */</span>
+</code></pre></li>
+<li><p><code>ExperienceList</code> quand a lui devra stocker le <code>filter</code> afin de le transmètre à <code>FilteredExperienceList</code>.</p>
+<ul>
+<li>Changez la déclaration de <code>ExperienceList</code> afin de rescpecter le contrat</li>
+</ul>
+<pre><code class="hljs css language-tsx"><span class="hljs-comment">// ExperienceList.tsx</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ExperienceList</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component&lt;</span></span>{}, { filter?: string }&gt;
+</code></pre>
+<ul>
+<li>La class <code>ExperienceList</code> ne contient normalement plus qu'un <code>constructor</code> et une fonction <code>render</code>. Modifez le <code>onChange</code> de l'input affin qu'il mette à jour le <code>state</code></li>
+</ul>
+<pre><code class="hljs css language-tsx"><span class="hljs-comment">// ExperienceList.tsx</span>
+<span class="hljs-comment">// ExperienceList class</span>
+
+&lt;input
+  className={styles[<span class="hljs-string">'input'</span>]}
+  onChange={<span class="hljs-keyword">async</span> ({ target: { <span class="hljs-keyword">value</span> } }) =&gt; {
+    <span class="hljs-keyword">this</span>.setState({ filter: <span class="hljs-keyword">value</span> });
+  }}
+/&gt;
+</code></pre>
+<ul>
+<li>Vous pouvez maintenant, dans le render de <code>ExperienceList</code>, remplacer la liste par le component <code>FilteredExperienceList</code></li>
+</ul>
+<pre><code class="hljs css language-tsx"><span class="hljs-comment">// ExperienceList.tsx</span>
+<span class="hljs-comment">// ExperienceList class</span>
+
+&lt;FilteredExperienceList <span class="hljs-built_in">filter</span>={<span class="hljs-keyword">this</span>.state.<span class="hljs-built_in">filter</span>} /&gt;
+</code></pre></li>
+</ul>
+<ul>
+<li><p>Attention il faut que <code>FilteredExperienceList</code> gère le fait qu'à chaque changement de la props <code>filter</code> qu'il recoit, celle-ci déclenche la récupération de la liste filtrée.</p></li>
+<li><p>Attention un utiliser <code>setState</code> dans un <code>componentDidUpdate</code> entraine l'<code>update du component</code></p></li>
+</ul>
+<pre><code class="hljs css language-tsx">  component<span class="hljs-constructor">DidUpdate(<span class="hljs-params">prevProps</span>: { <span class="hljs-params">filter</span>?: <span class="hljs-params">string</span> })</span>{
+     <span class="hljs-keyword">if</span> (prevProps !== this.props) {
+      this.filter<span class="hljs-constructor">List(<span class="hljs-params">this</span>.<span class="hljs-params">props</span>.<span class="hljs-params">filter</span>)</span>;
+    }
+  }
+</code></pre>
 </span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/instructions/instructions-step-5-detailed"><span class="arrow-prev">← </span><span>Etape 5 (détaillée)</span></a><a class="docs-next button" href="/docs/instructions/instructions-step-7-detailed"><span>Etape 7 (détaillée)</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#instructions-sommaires-docs-instructions-instructions-step-6-summary">(<a href="/docs/instructions/instructions-step-6-summary">instructions sommaires</a>)</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/logo.svg" alt="React Lab" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/en/lab-intro.html">Introduction</a><a href="/docs/en/instructions/instructions-step-1-summary">Instructions sommaires</a><a href="/docs/en/instructions/instructions-step-1-detailed.html">Instructions détaillées</a></div><div><h5>More</h5><a href="https://github.com/reactlab-dev/reactlab">GitHub</a><a class="github-button" href="https://github.com/reactlab-dev/reactlab" data-icon="octicon-star" data-count-href="/reactlab-dev/reactlab/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Thierry Abaléa &amp; Eliott Balette (2019)</section></footer></div></body></html>

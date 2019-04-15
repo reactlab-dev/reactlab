@@ -50,21 +50,16 @@ jobs:
               git clone --branch gh-pages --depth=50 \
                 https://reactlab-bot@github.com/reactlab-dev/reactlab.git \
                 reactlab-slides-gh-pages
-              ls -lsa reactlab-slides-gh-pages
               cd ~/reactlab/slides
               yarn ; yarn build
               rm -rf ~/reactlab-slides-gh-pages/slides
               mkdir -p ~/reactlab-slides-gh-pages/slides
               cp -Rf dist/* ~/reactlab-slides-gh-pages/slides
-              ls -lsa ~/reactlab-slides-gh-pages/slides
               cd ~/reactlab-slides-gh-pages
-              git checkout gh-pages
               git status
-              if ! git diff-index --quiet HEAD --; then
-                git add slides
-                git commit -m "Deploy slides"
-                git push origin gh-pages
-              fi
+              git add -A .
+              git commit -m "Deploy slides"
+              git push origin gh-pages
               cd ~/reactlab
             else
               echo "Skipping slides deploy."

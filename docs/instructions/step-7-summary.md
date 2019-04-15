@@ -4,7 +4,7 @@ title: Etape 7 (sommaire)
 sidebar_label: Etape 7 (sommaire)
 ---
 
-## Etape 7 : Encapsulez la liste des experiences dans un HOC ([instructions détaillées](./step-7-detailed.md))
+## Encapsulez la liste des experiences dans un HOC ([instructions détaillées](./step-7-detailed.md))
 
 - React concepts utiles:
 

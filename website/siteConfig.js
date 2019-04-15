@@ -30,6 +30,7 @@ const siteConfig = {
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
     {doc: 'lab-intro', label: 'Lab'},
+    {href: '/slides/', label: 'Slides'},
     {page: 'about', label: 'A propos'},
     { href: "https://github.com/reactlab-dev/reactlab", label: "GitHub" },
   ],

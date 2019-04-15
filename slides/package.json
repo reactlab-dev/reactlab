@@ -1,0 +1,22 @@
+{
+  "name": "devoxxfr-2019-react-lab-slides",
+  "version": "1.0.0",
+  "description": "Slides of the Devoxx France 2019 React Lab",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "mdx-deck deck.mdx",
+    "pdf": "mdx-deck pdf deck.mdx",
+    "build": "mdx-deck build --no-html deck.mdx"
+  },
+  "dependencies": {
+    "file-loader": "^3.0.1",
+    "mdx-deck": "1.10.2",
+    "mdx-deck-code-surfer": "^0.5.5",
+    "mdx-deck-live-code": "^1.0.1",
+    "raw-loader": "^0.5.1",
+    "react": "^16.8.5",
+    "react-dom": "^16.8.5",
+    "styled-components": "^4.2.0"
+  }
+}

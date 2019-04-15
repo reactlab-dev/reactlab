@@ -1,0 +1,1937 @@
+import { Head } from 'mdx-deck'
+import { CodeSurfer } from 'mdx-deck-code-surfer'
+import { dark } from 'mdx-deck/themes'
+import nightOwl from "prism-react-renderer/themes/nightOwl"
+export { components } from "mdx-deck-code-surfer"
+
+export const theme = {
+  ...dark,
+  transitionDuration: '0s',
+  codeSurfer: {
+    ...nightOwl,
+    showNumbers: false
+  }
+}
+
+<Head>
+  <title>Lab React, prenez le train en marche (Devoxx France 2019)</title>
+</Head>
+
+# Lab React, prenez le train en marche
+### Eliott Balette & Thierry Abaléa
+### Devoxx France 2019
+
+---
+
+# JavaScript moderne
+
+---
+
+- ES5
+  - Array.prototype.map/filter
+- ES2015 / ES6
+  - const & let
+  - arrow function
+  - template literals
+  - object destructuring
+  - class
+  - module, import & export
+  - Promise
+- ES2017 / ES8
+  - async/await
+
+---
+
+<CodeSurfer
+  title='Array.prototype.map'
+  code={`var persons = [
+   {firstName: 'Eliott', lastName: 'Balette'},
+   {firstName: 'Thierry', lastName: 'Abaléa'}
+];
+  
+var firstNames = persons.map(function(p) {
+   return p.firstName;
+});
+  
+// firstNames: ["Eliott", "Thierry"]`}
+/>
+
+---
+
+<CodeSurfer
+  title='Array.prototype.filter'
+  code={`var persons = [
+   {firstName: 'Eliott', lastName: 'Balette', age: 27 },
+   {firstName: 'Thierry', lastName: 'Abaléa', age: 42 }
+];
+  
+var forties = persons.filter(function(p) {
+  return p.age >= 40 && p.age <= 49;
+});
+  
+// forties: [ {firstName: 'Thierry', lastName: 'Abaléa', age: 42 } ]`}
+/>
+
+---
+
+# ES2015 aka ES6
+## 2015
+
+---
+
+<CodeSurfer
+  title='var (avant ES6)'
+  code={`function f(p) {
+    var x = 1;
+    if (p) {
+      var x = 2;
+      console.log(x);
+    }
+    console.log(x);
+}
+  
+// f(true) output:
+// 2
+// 2
+`}
+/>
+
+---
+
+<CodeSurfer
+  title='let'
+  code={`function f(p) {
+    let x = 1;
+    if (p) {
+      let x = 2;
+      console.log(x);
+    }
+    console.log(x);
+}
+  
+// f(true) output:
+// 2
+// 1
+`}
+/>
+
+---
+
+<CodeSurfer
+  title="const"
+  code={`const x = 1; 
+x = 2; // TypeError: Assignment to constant variable`}
+/>
+
+---
+
+<CodeSurfer
+  title="const"
+  code={`const x = { a: 1 }; 
+x.a = 2; // OK`}
+  steps={[{ notes: "réassignation interdite mais objet référencé mutable" }]}
+/>
+
+---
+
+<CodeSurfer
+  title="arrow function"
+  code={`const sum = (a, b) => a + b;
+// equivalent ES5:
+// var sum = function(a, b) { return a + b }.bind(this);
+const result = sum(1, 2);`}
+  steps={[{ notes: "le 'this' de la fonction correspond au 'this' du contexte qui l'englobe" }]}
+/>
+
+---
+
+<CodeSurfer
+  title="arrow function"
+  code={`const persons = [
+   {firstName: 'Eliott', lastName: 'Balette'},
+   {firstName: 'Thierry', lastName: 'Abaléa'}
+];
+  
+const firstNames = persons.map((p) => p.firstName);
+  
+// firstNames: ["Eliott", "Thierry"]`}
+/>
+
+
+---
+
+<CodeSurfer
+  title="arrow function"
+  code={`const persons = [
+   {firstName: 'Eliott', lastName: 'Balette'},
+   {firstName: 'Thierry', lastName: 'Abaléa'}
+];
+  
+const fullNames = persons.map((p) => {
+  const capitalLastName = p.lastName.toUpperCase();
+  return p.firstName + ' ' + capitalLastName;
+});
+  
+// fullNames: ["Eliott BALETTE", "Thierry ABALÉA"]`}
+/>
+
+---
+
+<CodeSurfer
+  title="template literals"
+  code={`const eliott = {
+  firstName: 'Eliott',
+  lastName: 'Balette',
+  jobTitle: 'Full Stack Developer',
+  company: 'crème de la crème'
+};
+  
+const bio = (person) => \`name: \${person.firstName} \${person.lastName}
+job title: \${person.jobTitle}
+company: \${person.company}\`;
+  
+const eliottBio = bio(eliott);
+  
+// name: Eliott Balette
+// job title: Full Stack Developer
+// company: crème de la crème`}
+  steps={[{ notes: "multi-line strings & string interpolation" }]}
+/>
+
+---
+
+<CodeSurfer
+  title="object destructuring"
+  code={`const person = {firstName: 'Eliott', lastName: 'Balette', age: 27 };
+  
+const firstName = person.firstName;
+const lastName = person.lastName;
+  
+// version plus succincte:
+const {firstName, lastName} = person;`}
+  showNumbers
+/>
+
+---
+
+<CodeSurfer
+  title="object destructuring"
+  code={`const givenName = person.firstName;
+const lastName = person.lastName;
+  
+// renommage possible:
+const {firstName: givenName, lastName } = person;`}
+  showNumbers
+/>
+
+---
+
+<CodeSurfer
+  title="object destructuring"
+  code={`const person = {
+  firstName: 'Eliott',
+  lastName: 'Balette',
+  company: {
+    name: 'crème de la crème',
+    website: 'https://cremedelacreme.io',
+  }
+};
+  
+const firstName = person.firstName;
+const lastName = person.lastName;
+const name = person.company.name;
+  
+// version plus succincte:
+const {firstName, lastName, company: { name }} = person;`}
+  steps={[{ notes: "nested destructuring" }]}
+  showNumbers
+/>
+
+---
+
+<CodeSurfer
+  title="object destructuring"
+  code={`const person = {
+  firstName: 'Eliott',
+  lastName: 'Balette',
+  company: {
+    name: 'crème de la crème',
+    website: 'https://cremedelacreme.io',
+  }
+};
+  
+const firstName = person.firstName;
+const lastName = person.lastName;
+const companyName = person.company.name;
+  
+// version plus succincte:
+const {firstName, lastName, company: { name: companyName }} = person;`}
+  steps={[{ notes: "nested destructuring with renaming" }]}
+  showNumbers
+/>
+
+---
+
+<CodeSurfer
+  title="object destructuring"
+  code={`const eliott = { firstName: 'Eliott', lastName: 'Balette' };
+  
+const fullName = (person) => \`\${person.firstName} \${person.lastName}\`
+const eliottFullName = fullName(eliott);
+  
+// version plus succincte:
+const fullName = ({firstName: fn, lastName: ln}) => \`\${fn} \${ln}\`
+const eliottFullName = fullName(eliott);`}
+  steps={[{ notes: "destructuring parameter function" }]}
+  showNumbers
+/>
+
+---
+
+<CodeSurfer
+  title="class"
+  code={`class Rectangle {
+  constructor(height, width) {
+    this.height = height;
+    this.width = width;
+  }
+  // prototype method
+  calcArea() {
+    return this.height * this.width;
+  }
+  // getter
+  get area() {
+    return this.calcArea();
+  }
+  // static method
+  static isSquare(rectangle) {
+    return rectangle.height === rectangle.width;
+  }
+}
+  
+const square = new Rectangle(10, 10);
+  
+console.log(square.area); // 100
+console.log(Rectangle.isSquare(square)); // true`}
+/>
+
+---
+
+<CodeSurfer
+  title="module, import & export"
+  code={`// lib/math.js
+export function sum(x, y) {
+  return x + y;
+}
+export var pi = 3.141593;
+  
+// app.js
+import * as math from "lib/math";
+alert("2π = " + math.sum(math.pi, math.pi));`}
+/>
+
+---
+
+<CodeSurfer
+  title="module, import & export"
+  code={`// lib/math.js
+export function sum(x, y) {
+  return x + y;
+}
+export var pi = 3.141593;
+  
+// app.js
+import { sum, pi } from "lib/math";
+alert("2π = " + sum(pi, pi));`}
+/>
+
+---
+
+<CodeSurfer
+  title="module, import & export"
+  code={`// lib/math.js
+export default function sum(x, y) {
+  return x + y;
+}
+export var pi = 3.141593;
+  
+// app.js
+import sum, { pi } from "lib/math";
+alert("2π = " + sum(pi, pi));`}
+/>
+
+---
+
+<CodeSurfer
+  title="module, import & export"
+  code={`// lib/math.js
+export default function sum(x, y) {
+  return x + y;
+}
+export var pi = 3.141593;
+  
+// app.js
+import sum, { pi as archimedesConstant } from "lib/math";
+alert("2π = " + sum(archimedesConstant, archimedesConstant));`}
+/>
+
+---
+
+# Promise
+## définition: 
+## une promesse est un objet représentant l'achèvement (ou l'échec) éventuel d'une opération asynchrone et la valeur qui en résulte.
+
+---
+
+<CodeSurfer
+  title="Promise"
+  code={`const promise = new Promise(
+  (resolve, reject) =>
+    setTimeout(() => resolve('foo'), 1000)
+);
+  
+promise.then((value) => {
+  console.log(value);
+  console.log(promise);
+});
+  
+console.log(promise);
+  
+// Promise {<pending>}
+// foo
+// Promise {<resolved>: "foo"}`}
+  showNumbers
+/>
+
+---
+
+# ES2017 aka ES8
+## 2017
+
+---
+
+<CodeSurfer
+  title="async / await"
+  code={`const foo = new Promise(
+  (resolve, reject) =>
+    setTimeout(() => resolve('foo'), 1000)
+);
+  
+async function foobar() {
+  const value = await foo;
+  return value + 'bar';
+}
+  
+async function main() {
+  const value = await foobar();
+  console.log(value);
+  return value;
+}
+  
+main().then((value) => console.log(value))
+  
+// foobar
+// foobar`}
+  showNumbers
+/>
+
+---
+
+# TypeScript
+## les bases
+
+---
+
+## TypeScript est un sur-ensemble typé
+## qui compile en JavaScript
+
+---
+
+<CodeSurfer
+  title="sans TypeScript"
+  code={`// greeter.js
+  
+function greeter(who) {
+  return 'Hello ' + who;
+}
+  
+const who = 'folks';
+const greeting = greeter(who);
+  
+// Hello folks`}
+/>
+
+---
+
+<CodeSurfer
+  title="avec TypeScript"
+  code={`// greeter.ts
+  
+function greeter(who: string): string {
+  return 'Hello ' + who;
+}
+  
+const who: string = 'folks';
+const greeting: string = greeter(who);
+  
+// Hello folks`}
+  showNumbers
+/>
+
+---
+
+<CodeSurfer
+  title="inférence de type"
+  code={`// greeter.ts
+  
+function greeter(who: string) {
+  return 'Hello ' + who;
+}
+  
+const who = 'folks';
+const greeting = greeter(who);
+  
+// Hello folks`}
+  showNumbers
+/>
+
+---
+
+<CodeSurfer
+  title="inférence de type limitée"
+  code={`// greeter.ts
+  
+function greeter(who) {
+  return 'Hello ' + who;
+}
+  
+const who = 'folks';
+const greeting = greeter(who);
+  
+// Hello folks`}
+  showNumbers
+/>
+
+---
+
+<CodeSurfer
+  title="inférence de type limitée"
+  code={`// greeter.ts
+  
+function greeter(who: any) {
+  return 'Hello ' + who;
+}
+  
+const who = 'folks';
+const greeting = greeter(who);
+  
+// Hello folks`}
+  showNumbers
+/>
+
+---
+
+<CodeSurfer
+  title="noImplicitAny option"
+  code={`// greeter.ts
+  
+function greeter(who) {
+  return 'Hello ' + who;
+}
+  
+const who = 'folks';
+const greeting = greeter(who);
+  
+// line 1: Parameter 'who' implicitly has an 'any' type.`}
+  showNumbers
+/>
+
+---
+
+<CodeSurfer
+  title="bonne pratique: typer le paramètre de retour"
+  code={`// greeter.ts
+  
+function greeter(who: string): string {
+  return 'Hello ' + who;
+}
+  
+const who = 'folks';
+const greeting = greeter(who);`}
+  steps={[{ notes: "TypeScript aide à documenter le code" }]}
+  showNumbers
+/>
+
+---
+
+<CodeSurfer
+  title="sans TypeScript - bug de type"
+  code={`// greeter.js
+  
+function greeter(who) {
+  return 'Hello ' + who;
+}
+  
+const who = { firstName: 'Mélanie', lastName: 'Bonnet' };
+const greeting = greeter(who);
+  
+// Hello [object Object]`}
+  steps={[{ notes: "bug découvert à l'exécution" }]}
+/>
+
+---
+
+<CodeSurfer
+  title="avec TypeScript - bug de type"
+  code={`// greeter.ts
+  
+function greeter(who: string): string {
+  return 'Hello ' + who;
+}
+  
+const who = { firstName: 'Mélanie', lastName: 'Bonnet' };
+const greeting = greeter(who);
+  
+// line 8: Argument of type '{ firstName: string; lastName: string; }'
+// is not assignable to parameter of type 'string'.`}
+  steps={[{ notes: "bug découvert à l'édition du code" }]}
+  showNumbers
+/>
+
+---
+
+<CodeSurfer
+  title="avec TypeScript - correction"
+  code={`// greeter.ts
+  
+function greeter(who: string): string {
+  return 'Hello ' + who;
+}
+  
+const who = { firstName: 'Mélanie', lastName: 'Bonnet' };
+const greeting = greeter(who.firstName);
+  
+// Hello Mélanie`}
+/>
+
+---
+
+<CodeSurfer
+  title="avec TypeScript - correction alternative"
+  code={`// greeter.ts
+  
+function greeter(who: { firstName: string, lastName: string }): string {
+  return 'Hello ' + who.firstName;
+}
+  
+const who = { firstName: 'Mélanie', lastName: 'Bonnet' };
+const greeting = greeter(who);
+  
+// Hello Mélanie`}
+  steps={[{ notes: "interface" }]}
+/>
+
+---
+
+<CodeSurfer
+  title="structural subtyping"
+  code={`// greeter.ts
+  
+function greeter(who: { firstName: string }): string {
+  return 'Hello ' + who.firstName;
+}
+  
+const who = { firstName: 'Mélanie', lastName: 'Bonnet' };
+const greeting = greeter(who);
+  
+// Hello Mélanie`}
+/>
+
+---
+
+<CodeSurfer
+  title="parameter destructuring & parameter typing"
+  code={`// greeter.ts
+  
+function greeter({ firstName }: { firstName: string }): string {
+  return 'Hello ' + firstName;
+}
+  
+const who = { firstName: 'Mélanie', lastName: 'Bonnet' };
+const greeting = greeter(who);
+  
+// Hello Mélanie`}
+/>
+
+---
+
+<CodeSurfer
+  title="interface keyword"
+  code={`// greeter.ts
+  
+interface Person {
+  firstName: string,
+  lastName: string,
+}
+  
+function greeter(who: Person): string {
+  return 'Hello ' + who.firstName;
+}
+  
+const who = { firstName: 'Mélanie', lastName: 'Bonnet' };
+const greeting = greeter(who);
+  
+// Hello Mélanie`}
+/>
+
+---
+
+<CodeSurfer
+  title="optional properties"
+  code={`interface Person {
+  firstName: string,
+  lastName: string,
+}
+  
+function greeter(who: Person): string {
+  if (who.lastName) {
+    return \`Hello \${who.firstName} \${who.lastName}\`; 
+  } else {
+    return \`Hello \${who.firstName}\`; 
+  }
+}
+  
+const who = { firstName: 'Mélanie', lastName: 'Bonnet' };
+const greeting = greeter(who);
+  
+// Hello Mélanie Bonnet`}
+/>
+
+---
+
+<CodeSurfer
+  title="optional properties"
+  code={`interface Person {
+  firstName: string,
+  lastName: string,
+}
+  
+function greeter(who: Person): string {
+  if (who.lastName) {
+    return \`Hello \${who.firstName} \${who.lastName}\`; 
+  } else {
+    return \`Hello \${who.firstName}\`; 
+  }
+}
+  
+const who = { firstName: 'Mélanie' };
+const greeting = greeter(who);
+  
+// line 15: Argument of type '{ firstName: string; }' is not assignable
+// to parameter of type 'Person'.
+// Property 'lastName' is missing in type '{ firstName: string; }'
+// but required in type 'Person'.`}
+  showNumbers
+/>
+
+---
+
+<CodeSurfer
+  title="optional properties"
+  code={`interface Person {
+  firstName: string,
+  lastName?: string,
+}
+  
+function greeter(who: Person): string {
+  if (who.lastName) {
+    return \`Hello \${who.firstName} \${who.lastName}\`; 
+  } else {
+    return \`Hello \${who.firstName}\`; 
+  }
+}
+  
+const who = { firstName: 'Mélanie' };
+const greeting = greeter(who);
+  
+// Hello Mélanie`}
+  showNumbers
+/>
+
+---
+
+<CodeSurfer
+  title="strictNullChecks option disabled"
+  code={`interface Person {
+  firstName: string,
+  lastName?: string,
+}
+  
+const capitalizeLastName = (person: Person) => ({
+  ...person,
+  lastName: person.lastName.toUpperCase()
+}); 
+  
+const person = capitalizeLastName({ firstName: 'Mélanie' });
+  
+// Uncaught TypeError: Cannot read property 'toUpperCase' of undefined`}
+  showNumbers
+/>
+
+---
+
+<CodeSurfer
+  title="strictNullChecks option enabled"
+  code={`interface Person {
+  firstName: string,
+  lastName?: string,
+}
+  
+const capitalizeLastName = (person: Person) => ({
+  ...person,
+  lastName: person.lastName.toUpperCase()
+}); 
+  
+const person = capitalizeLastName({ firstName: 'Mélanie' });
+  
+// line 8: Object is possibly 'undefined'.`}
+  showNumbers
+/>
+
+---
+
+<CodeSurfer
+  title="strictNullChecks option enabled"
+  code={`interface Person {
+  firstName: string,
+  lastName?: string,
+}
+  
+const capitalizeLastName = (person: Person) => ({
+  ...person,
+  lastName: person.lastName ? person.lastName.toUpperCase() : undefined
+}); 
+  
+const person = capitalizeLastName({ firstName: 'Mélanie' });
+  
+// {"firstName":"Mélanie"}`}
+  showNumbers
+/>
+
+---
+
+<CodeSurfer
+  title="typing a function property"
+  code={`interface MathLib {
+  addition(x: number, y: number): number,
+  multiplication(x: number, y: number): number,
+  substraction(x: number, y: number): number,
+}
+  
+const mathLib: MathLib = {
+  addition: (x, y) => x + y,
+  multiplication: (x, y) => x * y,
+  substraction: (x, y) => x - y,
+}`}
+/>
+
+---
+
+<CodeSurfer
+  title="typing a function property"
+  code={`interface MathLib {
+  addition: (x: number, y: number) => number,
+  multiplication: (x: number, y: number) => number,
+  substraction: (x: number, y: number) => number,
+}
+  
+const mathLib: MathLib = {
+  addition: (x, y) => x + y,
+  multiplication: (x, y) => x * y,
+  substraction: (x, y) => x - y,
+}`}
+/>
+
+---
+
+<CodeSurfer
+  title="generic interface"
+  code={`interface Semigroup<A> {
+  concat(x: A, y: A): A;
+}
+  
+const additionSemigroup: Semigroup<number> = {
+  concat: (x, y) => x + y
+}
+  
+const multiplicationSemigroup: Semigroup<number> = {
+  concat: (x, y) => x * y
+}
+  
+const stringSemigroup: Semigroup<string> = {
+  concat: (x, y) => x + y
+}`}
+/>
+
+---
+
+<CodeSurfer
+  title="generic class"
+  code={`class Pair<F, S> {
+  private _first: F;
+  private _second: S;
+  
+  constructor(first: F, second: S) {
+    this._first = first;
+    this._second = second;
+  }
+  
+  get first(): F {
+    return this._first;
+  }
+  
+  get second(): S {
+    return this._second;
+  }
+}
+  
+const pair = new Pair<number, boolean>(10, true);
+const pair2 = new Pair<string, number>("1K", 1000);`}
+/>
+
+---
+
+<CodeSurfer
+  title="void type"
+  code={`function warnUser(): void {
+  console.log("This is my warning message");
+}`}
+/>
+
+---
+
+# React
+## A JavaScript library
+## for building user interfaces
+
+---
+
+<CodeSurfer
+  title="React Hello World"
+  code={`// index.html
+  
+<html>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>`}
+/>
+
+---
+
+<CodeSurfer
+  title="React Hello World"
+  code={`// index.js
+  
+ReactDOM.render(
+  <h1>Hello world</h1>,
+  document.getElementById('root')
+);`}
+/>
+
+---
+
+<CodeSurfer
+  title="JSX"
+  code={`const element = <h1>Hello world</h1>;`}
+  steps={[{ notes: "JSX produce React “elements”." }]}
+/>
+
+---
+
+<CodeSurfer
+  title="React elements can have “properties”"
+  code={`const element = <h1 className='greeting'>Hello world</h1>;`}
+  steps={[{ notes: "HTML elements have “attributes”" }]}
+/>
+
+---
+
+<CodeSurfer
+  title="JSX represents JavaScript objects"
+  code={`// JSX
+const element = <h1 className='greeting'>Hello world</h1>;
+  
+// JavaScript
+  
+const element = React.createElement(
+  'h1',
+  { className: 'greeting' },
+  'Hello world'
+);
+  
+// React.createElement() ouput
+// note: this structure is simplified
+const element = {
+  type: 'h1',
+  props: {
+    className: 'greeting',
+    children: 'Hello world'
+  }
+};`}
+  showNumbers
+/>
+
+---
+
+<CodeSurfer
+  title="JSX can contains JavaScript expressions"
+  code={`const who = 'Devoxx';
+  
+const element = <h1>Hello {who}</h1>;`}
+/>
+
+---
+
+<CodeSurfer
+  title="JSX can contains any valid JavaScript expressions"
+  code={`const person = {
+  firstName: 'Eliott',
+  lastName: 'Balette'
+};
+  
+const formatName = ({ firstName, lastName }) => \`\${firstName} \${lastName}\`;
+  
+const element = <h1>Hello {formatName(person)}</h1>;`}
+/>
+
+---
+
+<CodeSurfer
+  title="multilines JSX"
+  code={`const person = {
+  firstName: 'Eliott',
+  lastName: 'Balette'
+};
+  
+const formatName = ({ firstName, lastName }) => \`\${firstName} \${lastName}\`;
+  
+const element = (
+  <h1>
+    Hello {formatName(person)}
+  </h1>
+);`}
+/>
+
+---
+
+<CodeSurfer
+  title="multilines JSX"
+  code={`const person = {
+  firstName: 'Eliott',
+  lastName: 'Balette'
+};
+  
+const formatName = ({ firstName, lastName }) => \`\${firstName} \${lastName}\`;
+  
+const Hello = () => {
+  // bug: next line is equivalent to 'return ;' due to Automatic Semicolon Insertion
+  return
+    <h1>
+      Hello {formatName(person)}
+    </h1>
+};
+  
+const element = <Hello />`}
+  steps={[{ notes: "TypeScript catch this bug. But always surround multilines JSX with parentheses for consistency" }]}
+/>
+
+---
+
+<CodeSurfer
+  title="React function component"
+  code={`const person = {
+  firstName: 'Eliott',
+  lastName: 'Balette'
+};
+  
+const formatName = ({ firstName, lastName }) => \`\${firstName} \${lastName}\`;
+  
+// Greeting is a function component
+const Greeting = () => (
+  <h1>
+    Hello {formatName(person)}
+  </h1>
+);
+  
+// element is a React element
+const element = <Greeting/>;`}
+  steps={[{ notes: "a function component is a function that returns an element" }]}
+  showNumbers
+/>
+
+---
+
+<CodeSurfer
+  title="React function component"
+  code={`const person = {
+  firstName: 'Eliott',
+  lastName: 'Balette'
+};
+  
+const formatName = ({ firstName, lastName }) => \`\${firstName} \${lastName}\`;
+  
+// Greeting is a function component
+const Greeting = () =>
+  React.createElement(
+    "h1",
+    null,
+    "Hello ",
+    formatName(person))
+;
+  
+// element is a React element
+const element = React.createElement(Greeting, null);`}
+  steps={[{ notes: "JavaScript after JSX compilation" }]}
+  showNumbers
+/>
+
+---
+
+<CodeSurfer
+  title="React function component"
+  code={`const person = {
+  firstName: 'Eliott',
+  lastName: 'Balette'
+};
+  
+const formatName = ({ firstName, lastName }) => \`\${firstName} \${lastName}\`;
+  
+// Greeting is a function component
+const Greeting = () => (
+  <h1>
+    Hello {formatName(person)}
+  </h1>
+);
+  
+// element is a React element
+const element = Greeting();`}
+  steps={[{ notes: "here Greeting() is strictly equivalent to <Greeting/>" }]}
+  showNumbers
+/>
+
+---
+
+<CodeSurfer
+  title="function with props"
+  code={`// HelloWorld.tsx
+  
+import React from 'react';
+import ReactDOM from 'react-dom';
+  
+interface HelloWorldProps {
+  name: string;
+}
+  
+const HelloWorld = (props: HelloWorldProps) => (
+  <div>
+    Hello {props.name}
+  </div>
+);
+  
+const element = <HelloWorld name='World' />;`}
+  showNumbers
+/>
+
+---
+
+<CodeSurfer
+  title="a function component can mix JavaScript code and JSX expressions"
+  code={`const formatName =
+  ({ firstName, lastName }: Person) => \`\${firstName} \${lastName}\`;
+  
+interface Person {
+  firstName: string;
+  lastName: string;
+}
+  
+interface HelloWorldProps {
+  person?: Person;
+}
+  
+const HelloWorld = (props: HelloWorldProps) => {
+  if (props.person) {
+    return <div>Hello {formatName(props.person)}</div>;
+  } else {
+    return <div>Hello World</div>;
+  }
+};`}
+  showNumbers
+/>
+
+---
+
+<CodeSurfer
+  title="props are read-only"
+  code={`interface Person {
+  firstName: string;
+  lastName: string;
+}
+  
+interface HelloWorldProps {
+  person?: Person;
+}
+  
+const HelloWorld = (props: HelloWorldProps) => {
+  props.person.lastName = '***'; // never do this !!!
+  return <div>Hello {props.person.firstName} {props.person.lastName}</div>;
+};`}
+  steps={[{ notes: "a component must never modify its own props" }]}
+  showNumbers
+/>
+
+---
+
+<CodeSurfer
+  title="le JSX can contain or not children"
+  code={`// with 2 childrens
+const element = (
+  <div>
+    <h1>Hello Folks</h1>
+    <h2>Ravi de vous voir à Devoxx !</h2>
+  </div>
+);
+  
+// without children
+const element = <img src={user.avatarUrl} />;`}
+/>
+
+---
+
+<CodeSurfer
+  title="rendering a list of components"
+  code={`const numbers = [1, 2, 3, 4, 5];
+const listItems = numbers.map((number) =>
+  <div className={styles['list-item']}>{number}</div>
+);
+  
+const element = <div className={styles['list']}>{listItems}</div>;`}
+/>
+
+---
+
+<CodeSurfer
+  title="rendering a list of components"
+  code={`interface NumberListProps { numbers: number[] };
+  
+function NumberList({ numbers } : NumberListProps) {
+  return (
+    <div className={styles['list']}>
+      {numbers.map((number) =>
+        <div key={number.toString()} className={styles['list-item']}>
+          {number}
+        </div>
+      )}
+    </div>
+  );
+}`}
+  steps={[{ notes: "key must uniquely identifies a list item among other items to avoid perf issues" }]}
+  showNumbers
+/>
+
+---
+
+## un **React element** est un simple object JavaScript qui représente l'état de différents DOM elements à un instant t.
+---
+
+## Le code JSX est une expression JavaScript qui après évaluation donne une unique valeur: un React element.
+
+---
+
+## un React function component est une fonction, qui prends éventuellement un "props" object argument, et renvoie un React element.
+
+---
+
+<CodeSurfer
+  title="Create React App"
+  code={`# npx must be installed globally
+npx create-react-app my-app --typescript
+  
+# or
+  
+# create-react-app will be install globally
+yarn create react-app my-app --typescript`}
+/>
+
+---
+
+<CodeSurfer
+  title="CSS Module"
+  code={`// HelloWorld.module.css
+.HelloWorld-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(100px + 2vmin);
+  color: white;
+}
+  
+// HelloWorld.jsx
+import React from 'react';
+import styles from './HelloWorld.module.css';
+  
+const HelloWorld = () => (
+  <header className={styles['HelloWorld-header']}>
+    Hello Devoxx
+  </header>
+);
+  
+export default HelloWorld;`}
+  showNumbers
+/>
+
+---
+
+# présentation de l'application que vous allez coder
+
+---
+
+# à vous de jouer
+
+---
+
+# étape 1
+## afficher la liste des expériences depuis un fichier JSON
+
+---
+
+<CodeSurfer
+  title="React class component"
+  code={`import React from 'react';
+  
+class HelloWorld extends React.Component {
+  render() {
+    return <h1>Hello world</h1>;
+  }
+}
+  
+const HelloWorld = () => <h1>Hello world</h1>;
+  
+const element = <HelloWorld/>;`}
+  steps={[{ notes: "class and function component are use exactly the same way" }]}
+/>
+
+---
+
+<CodeSurfer
+  title="React class component"
+  code={`interface HelloWorldProps {
+  who: string;
+}
+  
+class HelloWorld extends React.Component<HelloWorldProps> {
+  render() {
+    return <h1>Hello {this.props.who}</h1>;
+  }
+}
+  
+const HelloWorld = ({ who }: HelloWorldProps) => <h1>Hello {who}</h1>;
+  
+const element = <HelloWorld who='Devoxx' />;`}
+/>
+
+---
+
+<CodeSurfer
+  title="state & lifecycle"
+  code={`interface ClockState {
+  date: Date;
+}
+  
+class Clock extends React.Component<{}, ClockState> {
+  private timerId: number;
+  
+  constructor(props: {}) {
+    super(props);
+    this.state = {date: new Date()};
+  }
+  
+  componentDidMount() {
+    this.timerId = setInterval(
+      () => this.tick(),
+      1000
+    );
+  }
+  
+  componentWillUnmount() {
+    clearInterval(this.timerId);
+  }
+  
+  tick() {
+    this.setState({
+      date: new Date()
+    });
+  }
+  
+  render() {
+    return (
+      <div>
+        <h1>Hello Devoxx</h1>
+        <h2>Il est {this.state.date.toLocaleTimeString()}.</h2>
+      </div>
+    );
+  }
+}`}
+showNumbers
+/>
+
+---
+
+# étape 2
+## afficher la liste des expériences depuis un service REST
+
+---
+
+<CodeSurfer
+  title="handling events"
+  code={`class HelloWorld extends React.Component<HelloWorldProps, HelloWorldState> {
+  constructor(props: HelloWorldProps) {
+    super(props);
+    this.state = { count: 0 };
+    this.incrementCount = this.incrementCount.bind(this);
+  }
+  
+  incrementCount() {
+    this.setState({ count: this.state.count + 1 });
+  }
+  
+  render() {
+    return (
+      <h1 onClick={this.incrementCount}>
+        Hello {this.props.who} (clicks: {this.state.count})
+      </h1>
+    );
+  }
+}`}
+steps={[{ notes: "binding event handler in the constructor" }]}
+showNumbers
+/>
+
+---
+
+<CodeSurfer
+  title="handling events"
+  code={`class HelloWorld extends React.Component<HelloWorldProps, HelloWorldState> {
+  constructor(props: HelloWorldProps) {
+    super(props);
+    this.state = { count: 0 };
+  }
+  
+  incrementCount() {
+    this.setState({ count: this.state.count + 1 });
+  }
+  
+  render() {
+    return (
+      <h1 onClick={() => this.incrementCount()}>
+        Hello {this.props.who} (clicks: {this.state.count})
+      </h1>
+    );
+  }
+}`}
+steps={[{ notes: "arrow function in the constructor - can cause performance issue" }]}
+showNumbers
+/>
+
+---
+
+<CodeSurfer
+  title="handling events"
+  code={`class HelloWorld extends React.Component<HelloWorldProps, HelloWorldState> {
+  constructor(props: HelloWorldProps) {
+    super(props);
+    this.state = { count: 0 };
+  }
+  
+  incrementCount = () => this.setState({ count: this.state.count + 1 };
+  
+  render() {
+    return (
+      <h1 onClick={this.incrementCount}>
+        Hello {this.props.who} (clicks: {this.state.count})
+      </h1>
+    );
+  }
+}`}
+steps={[{ notes: "best way to bind the handler in TypeScript ? we think so" }]}
+showNumbers
+/>
+
+---
+
+<CodeSurfer
+  title="handling events"
+  code={`import React, { ChangeEvent } from 'react';
+  
+interface HelloWorldState {
+  who: string;
+}
+  
+class HelloWorld extends React.Component<{}, HelloWorldState> {
+  constructor(props: {}) {
+    super(props);
+    this.state = { who: 'Devoxx' };
+  }
+  
+  onWhoChange = ({ target: { value: who } }: ChangeEvent<HTMLInputElement>) =>
+    this.setState({ who });
+  
+  render() {
+    return (
+      <div>
+        <input onChange={this.onWhoChange} />
+        <h1>Hello {this.state.who}</h1>
+      </div>
+    );
+  }
+}`}
+  steps={[{ notes: "input" }]}
+  showNumbers
+/>
+
+---
+
+# étape 3
+## proposer une search box pour rechercher dans la liste d'expérience
+
+---
+
+<CodeSurfer
+  title="conditional rendering"
+  code={`function Greeting(props) {
+  const isLoggedIn = props.isLoggedIn;
+  if (isLoggedIn) {
+    return <UserGreeting />;
+  }
+  return <GuestGreeting />;
+}`}
+  showNumbers
+  steps={[{ notes: "'if' keyword" }]}
+/>
+
+---
+
+<CodeSurfer
+  title="conditional rendering"
+  code={`function Mailbox(props) {
+  const unreadMessages = props.unreadMessages;
+  return (
+    <div>
+      <h1>Hello!</h1>
+      {unreadMessages.length > 0 &&
+        <h2>
+          You have {unreadMessages.length} unread messages.
+        </h2>
+      }
+    </div>
+  );
+}`}
+  showNumbers
+  steps={[{ notes: "Inline If with Logical && Operator" }]}
+/>
+
+---
+
+<CodeSurfer
+  title="conditional rendering"
+  code={`function Mailbox(props) {
+  const unreadMessages = props.unreadMessages;
+  return (
+    <div>
+      <h1>Hello!</h1>
+      {unreadMessages.length === 0 ? (
+        <h2>
+          Sorry no new messages :(
+        </h2>) : (
+        <h2>
+          You have {unreadMessages.length} unread messages.
+        </h2>
+        )
+      }
+    </div>
+  );
+}`}
+  showNumbers
+  steps={[{ notes: "Inline Conditional Operator (Ternary Operator)" }]}
+/>
+
+---
+
+<CodeSurfer
+  title="fragments"
+  code={`class Table extends React.Component {
+  render() {
+    return (
+      <table>
+        <tr>
+          <Columns />
+        </tr>
+      </table>
+    );
+  }
+}
+  
+class Columns extends React.Component {
+  render() {
+    return (
+      <>
+        <td>Hello</td>
+        <td>World</td>
+      </>
+    );
+  }
+}`}
+  showNumbers
+/>
+
+---
+
+<CodeSurfer
+  title="lifting state up"
+  code={`class TemperatureInput extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+  }
+  
+  onTemperatureChange =
+    ({ target: { value: temperature } }: ChangeEvent<HTMLInputElement>) =>
+      this.props.onTemperatureChange(temperature);
+  
+  render() {
+    const temperature = this.props.temperature;
+    return (
+      <div>
+        <h5>Enter temperature:</h5>
+        <input
+          value={temperature}
+          onChange={this.onTemperatureChange}
+        />
+      </div>
+    );
+  }
+}`}
+  showNumbers
+/>
+
+---
+
+# étape 4
+## afficher le détail d'une expérience
+
+---
+
+<CodeSurfer
+  title="hook - useState"
+  code={`import React, { useState } from 'react';
+  
+function Counter() {
+  // declare a new state variable, which we'll call "count"
+  const [count, setCount] = useState(0);
+  
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+    </div>
+  );
+}`}
+showNumbers
+/>
+
+---
+
+# étape 5
+## permettre l'ajout de personnes dans le formulaire de création d'experience
+
+---
+
+# Annexes
+
+---
+
+# JavaScript moderne
+
+---
+
+- ES5
+  - Array.prototype.forEach
+  - Array.prototype.reduce
+- ES2015 / ES6
+  - spread operator on array
+- ES2017 / ES8
+  - Object.values
+  - Object.entries
+- ES2018 / ES9
+  - spread operator in object literals
+
+---
+
+# ES5
+## 2009
+
+---
+
+<CodeSurfer
+  title='Array.prototype.forEach'
+  code={`var persons = [
+   {firstName: 'Eliott', lastName: 'Balette'},
+   {firstName: 'Thierry', lastName: 'Abaléa'}
+];
+  
+var firstNames = [];
+    
+persons.forEach(function(p) {
+   firstNames.push(p.firstName);
+});
+  
+// firstNames: ["Eliott", "Thierry"]`}
+/>
+
+---
+
+<CodeSurfer
+  title='Array.prototype.reduce'
+  code={`var persons = [
+   {firstName: 'Eliott', lastName: 'Balette', age: 27 },
+   {firstName: 'Thierry', lastName: 'Abaléa', age: 42 }
+];
+  
+var ageSum = persons.reduce(function(currentAgeSum, p) {
+  return currentAgeSum + p.age;
+}, 0);
+  
+// ageSum: 69`}
+/>
+
+---
+
+# ES2015 aka ES6
+## 2015
+
+---
+
+<CodeSurfer
+  title="spread operator on array"
+  code={`const goodTeam = ['Eliott', 'Thierry'];
+const greatTeam = [ 'Mélanie', ...goodTeam ];
+// greatTeam: [ 'Mélanie', 'Eliott', 'Thierry' ]`}
+  steps={[{ notes: "['Mélanie'].concat(goodTeam)" }]}
+/>
+
+
+---
+
+<CodeSurfer
+  title="spread operator on array"
+  code={`const greatTeam = [ 'Mélanie', 'Eliott', 'Thierry' ];
+const sameGreatTeam = [...greatTeam];
+// sameGreatTeam: [ 'Mélanie', 'Eliott', 'Thierry' ]`}
+  steps={[{ notes: "greatTeam.slice()" }]}
+/>
+
+---
+
+<CodeSurfer
+  title="spread operator on array"
+  code={`let team = ['Eliott', 'Mélanie'];
+team = [...team, 'Thierry'];
+// team: ['Eliott', 'Mélanie', 'Thierry']`}
+  steps={[{ notes: "team.push('Thierry')" }]}
+/>
+
+---
+
+# ES2017 aka ES8
+## 2017
+
+---
+
+<CodeSurfer
+  title="Object.values"
+  code={`const react = { code: 'react_js', name: 'React' };
+const reactNative = { code: 'react_native', name: 'React Native' };
+const typescript = { code: 'typescript', name: 'TypeScript' };
+  
+const technologiesMap = {
+  '1': react,
+  '2': reactNative,
+  '3': typescript
+};
+  
+const technologies = Object
+  .keys(technologiesMap)
+  .map((id) => technologiesMap[id]);
+  
+// version plus succincte:
+const technologies = Object.values(technologiesMap);
+  
+// technologies: [
+//   { code: 'react_js', name: 'React' },
+//   { code: 'react_native', name: 'React Native' },
+//   { code: 'typescript', name: 'TypeScript' }
+// ]`}
+  showNumbers
+/>
+
+---
+
+<CodeSurfer
+  title="Object.entries"
+  code={`const react = { code: 'react_js', name: 'React' };
+const reactNative = { code: 'react_native', name: 'React Native' };
+const typescript = { code: 'typescript', name: 'TypeScript' };
+  
+const technologiesMap = {
+  '1': react,
+  '2': reactNative,
+  '3': typescript
+};
+  
+const idTechnologiesPairs = Object
+  .keys(technologiesMap)
+  .map((id) => [id, technologiesMap[id]]);
+  
+// version plus succincte:
+const idTechnologiesPairs = Object.entries(technologiesMap);
+  
+// idTechnologiesPairs: [
+//   [ '1', { code: 'react_js', name: 'React' } ],
+//   [ '2', { code: 'react_native', name: 'React Native' } ],
+//   [ '3', { code: 'typescript', name: 'TypeScript' } ]
+// ]
+  
+idTechnologiesPairs.forEach(
+  ([id, techno]) => console.log(\`id: \${id}, code: \${techno.code}\`)
+);
+  
+// id: 1, name: react_js
+// id: 2, name: react_native
+// id: 3, name: typescript`}
+  showNumbers
+/>
+
+---
+
+# ES2018 aka ES9
+## 2018
+
+---
+
+<CodeSurfer
+  title="spread operator in object literals"
+  code={`const employee = {
+  firstName: 'Thierry',
+  lastName: 'Abaléa'
+};
+  
+const sameEmployee = { ...employee };`}
+  steps={[{ notes: "shallow clone" }]}
+/>
+
+---
+
+<CodeSurfer
+  title="spread operator in object literals"
+  code={`const person = {
+  firstName: 'Thierry',
+  lastName: 'Abaléa'
+};
+  
+const socialLinks = {
+  twitter: 'https://twitter.com/ThierryAbalea',
+  gitHub: 'https://github.com/ThierryAbalea'
+};
+  
+const personWithLinks = { ...person, ...socialLinks };
+  
+// personWithLinks: {
+//  firstName: 'Thierry',
+//  lastName: 'Abaléa',
+//  twitter: 'https://twitter.com/ThierryAbalea',
+//  gitHub: 'https://github.com/ThierryAbalea'
+// };`}
+  steps={[{ notes: "merge" }]}
+/>
+
+---
+
+<CodeSurfer
+  title="spread operator in object literals"
+  code={`const employee = {
+  firstName: 'Thierry',
+  lastName: 'Abaléa',
+  company: 'fluo'
+};
+  
+const cremeEmployee = { ...employee, company: 'crème de la crème' };
+  
+// cremeEmployee: {
+//   firstName: 'Thierry',
+//   lastName: 'Abaléa',
+//   company: 'crème de la crème'
+// };`}
+  steps={[{ notes: "override" }]}
+/>
+
+---
+
+<CodeSurfer
+  title="spread operator in object literals"
+  code={`const employee = {
+  firstName: 'Thierry',
+  lastName: 'Abaléa',
+  company: 'crème de la crème'
+};
+  
+const ctoEmployee = { ...employee, title: 'CTO' };
+  
+// ctoEmployee: {
+//   firstName: 'Thierry',
+//   lastName: 'Abaléa',
+//   company: 'crème de la crème',
+//   title: 'CTO'
+//};`}
+  steps={[{ notes: "add new properties" }]}
+/>
+
+---
+
+# React
+## A JavaScript library
+## for building user interfaces
+
+---
+
+## Declarative
+
+## Component-Based
+
+## Learn Once, Write Anywhere
+
+---
+
+React is “value UI”.
+
+Its core principle is that UI is a value, just like a string or an array.
+
+You can keep it in a variable, pass it around, use JavaScript control flow with it, and so on.
+
+That expressiveness is the point — not some diffing to avoid applying changes to the DOM.
+
+*Dan Abramov, 24 Nov 2018*

@@ -47,7 +47,6 @@ class ExperienceList extends React.Component<{}, ExperienceListState> {
 
 interface ListDataProviderState {
   experiences: Experience[];
-  detailsShowedExperienceId?: string;
 }
 interface ListDataProviderProps {
   filter?: string;

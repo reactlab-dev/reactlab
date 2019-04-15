@@ -15,7 +15,6 @@ interface ExperienceListState {
   filter?: string;
 }
 class ExperienceList extends React.Component<{}, ExperienceListState> {
-
   constructor(props: {}) {
     super(props);
     this.state = {};
@@ -26,7 +25,6 @@ class ExperienceList extends React.Component<{}, ExperienceListState> {
   }
 
   render() {
-    const ConnectedList = connectDataProvider(DefaultListContainer, this.state.filter);
     return (
       <div className={styles['list-main-container']}>
         <div>
@@ -36,29 +34,43 @@ class ExperienceList extends React.Component<{}, ExperienceListState> {
             onChange={({ target: { value } }) => {
               this.filterList(value);
             }}
-        />
+          />
         </div>
-        <ConnectedList />
-      </div>)
+        <ConnectedList filter={this.state.filter} />
+      </div>
+    );
   }
-};
+}
 
 function connectDataProvider(
   Composed: React.ComponentType<{ experiences: Experience[] }>,
-  filter?: string,
-): React.ComponentClass<{}> {
-  return class extends React.Component<{}, { experiences: Experience[] }> {
+): React.ComponentClass<{ filter?: string }> {
+  return class extends React.Component<
+    { filter?: string },
+    { experiences: Experience[] }
+  > {
     constructor(props: {}) {
       super(props);
       this.state = {
         experiences: [],
       };
     }
-    async componentDidMount() {
-      const experiences = await fetchExperiences(filter);
+
+    async fetchExperiences() {
+      const experiences = await fetchExperiences(this.props.filter);
       this.setState({
         experiences,
       });
+    }
+
+    async componentDidMount() {
+      await this.fetchExperiences();
+    }
+
+    async componentDidUpdate(prevProps: { filter?: string }) {
+      if (this.props.filter !== prevProps.filter) {
+        await this.fetchExperiences();
+      }
     }
 
     render() {
@@ -92,6 +104,8 @@ const DefaultListContainer = ({
     </div>
   );
 };
+
+const ConnectedList = connectDataProvider(DefaultListContainer);
 
 const ExperienceCard = ({
   experience,

@@ -15,7 +15,6 @@ interface ExperienceListState {
   filter?: string;
 }
 class ExperienceList extends React.Component<{}, ExperienceListState> {
-
   constructor(props: {}) {
     super(props);
     this.state = {};
@@ -35,25 +34,23 @@ class ExperienceList extends React.Component<{}, ExperienceListState> {
             onChange={({ target: { value } }) => {
               this.filterList(value);
             }}
-        />
+          />
         </div>
         <ListDataProvider
           filter={this.state.filter}
-          render={(experiences: Experience[]) => (
-            <DefaultListContainer experiences={experiences} />
-          )}
+          render={DefaultListContainer}
         />
-      </div>)
+      </div>
+    );
   }
-};
+}
 
 interface ListDataProviderState {
   experiences: Experience[];
-  detailsShowedExperienceId?: string;
 }
 interface ListDataProviderProps {
   filter?: string;
-  render: (experiences: Experience[]) => React.ReactElement<any>;
+  render: React.ComponentType<{ experiences: Experience[] }>;
 }
 class ListDataProvider extends React.Component<
   ListDataProviderProps,
@@ -66,7 +63,7 @@ class ListDataProvider extends React.Component<
     };
   }
 
-  async fetchExperience() {
+  async fetchExperiences() {
     const experiences = await fetchExperiences(this.props.filter);
     this.setState({
       experiences,
@@ -74,17 +71,19 @@ class ListDataProvider extends React.Component<
   }
 
   async componentDidMount() {
-    await this.fetchExperience();
+    await this.fetchExperiences();
   }
 
   async componentDidUpdate(prevProps: ListDataProviderProps) {
     if (this.props.filter !== prevProps.filter) {
-      await this.fetchExperience();
+      await this.fetchExperiences();
     }
   }
 
   render() {
-    return this.props.render(this.state.experiences);
+    return React.createElement(this.props.render, {
+      experiences: this.state.experiences,
+    });
   }
 }
 

@@ -31,7 +31,7 @@ class Informations extends React.Component<Props, State> {
         />
         <label className={styles['label']}>Description :</label>
 
-        <input
+        <textarea
           className={styles['input']}
           value={this.state.description}
           placeholder='Description'
@@ -50,7 +50,7 @@ class Informations extends React.Component<Props, State> {
           }}
         />
         <label className={styles['label']}>Location :</label>
-        <textarea
+        <input
           className={styles['textarea']}
           value={this.state.location}
           placeholder='Location'

@@ -36,55 +36,47 @@ class ExperienceList extends React.Component<{}, ExperienceListState> {
             }}
           />
         </div>
-        <ListDataProvider
-          filter={this.state.filter}
-          render={DefaultListContainer}
-        />
+        <ConnectedList filter={this.state.filter} />
       </div>
     );
   }
 }
 
-interface ListDataProviderState {
-  experiences: Experience[];
-}
-interface ListDataProviderProps {
-  filter?: string;
-  render: React.ComponentType<{ experiences: Experience[] }>;
-}
-class ListDataProvider extends React.Component<
-  ListDataProviderProps,
-  ListDataProviderState
-> {
-  constructor(props: ListDataProviderProps) {
-    super(props);
-    this.state = {
-      experiences: [],
-    };
-  }
+function connectDataProvider(
+  Component: React.ComponentType<{ experiences: Experience[] }>,
+): React.ComponentClass<{ filter?: string }> {
+  return class extends React.Component<
+    { filter?: string },
+    { experiences: Experience[] }
+  > {
+    constructor(props: {}) {
+      super(props);
+      this.state = {
+        experiences: [],
+      };
+    }
 
-  async fetchExperiences() {
-    const experiences = await fetchExperiences(this.props.filter);
-    this.setState({
-      experiences,
-    });
-  }
+    async fetchExperiences() {
+      const experiences = await fetchExperiences(this.props.filter);
+      this.setState({
+        experiences,
+      });
+    }
 
-  async componentDidMount() {
-    await this.fetchExperiences();
-  }
-
-  async componentDidUpdate(prevProps: ListDataProviderProps) {
-    if (this.props.filter !== prevProps.filter) {
+    async componentDidMount() {
       await this.fetchExperiences();
     }
-  }
 
-  render() {
-    return React.createElement(this.props.render, {
-      experiences: this.state.experiences,
-    });
-  }
+    async componentDidUpdate(prevProps: { filter?: string }) {
+      if (this.props.filter !== prevProps.filter) {
+        await this.fetchExperiences();
+      }
+    }
+
+    render() {
+      return <Component experiences={this.state.experiences} />;
+    }
+  };
 }
 
 const DefaultListContainer = ({
@@ -112,6 +104,8 @@ const DefaultListContainer = ({
     </div>
   );
 };
+
+const ConnectedList = connectDataProvider(DefaultListContainer);
 
 const ExperienceCard = ({
   experience,
@@ -146,4 +140,5 @@ const ExperienceSummary = ({
     <p className={styles['location']}>{location}</p>
   </>
 );
+
 export default ExperienceList;

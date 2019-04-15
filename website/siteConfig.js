@@ -25,7 +25,7 @@ const siteConfig = {
   // e.g., for the https://JoelMarcey.github.io site, it would be set like...
   //   organizationName: 'JoelMarcey'
 
-  editUrl: 'https://github.com/reactlab-dev/reactlab/edit/master/website/docs/',
+  editUrl: 'https://github.com/reactlab-dev/reactlab/edit/master/docs/',
 
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [

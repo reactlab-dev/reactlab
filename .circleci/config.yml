@@ -1,3 +1,9 @@
+aliases:
+  - &filter-only-master
+    branches:
+      only:
+        - master
+
 defaults: &defaults
   working_directory: ~/reactlab
   docker:
@@ -40,7 +46,4 @@ workflows:
   deploy-website:
     jobs:
       - deploy-website:
-          filters:
-            branches:
-              only: master
-              ignore: gh-pages
+          filters: *filter-only-master

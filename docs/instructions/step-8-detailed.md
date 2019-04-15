@@ -10,91 +10,71 @@ sidebar_label: Etape 8 (détaillée)
 
   - HOC
 
-- un Hight Order Component (HOC) est une fonction qui prend en paramètre un `React.ComponentType<any>` et qui retourne un `React.ComponentClass<any>`
+- un Hight Order Component (HOC) est une fonction qui prend en paramètre un `React.ComponentType<any>` et qui retourne un `React.ComponentClass<any>`. Vous allez devoir transformer `ListDataProvider` en une fonction `connectDataProvider`
 
-- Vous devrez encapsuler l'affichage de la liste dans un `HOC`, lequel se chargera de récupérer et de transmètre la liste d'experiences au composant qu'il recevra en paramètre.
-
-- Vous devrez créer une fonction `connectDataProvider` qui prend en paramètre un composant
-  de type `React.ComponentType`
-
-  ```tsx
-  // ExperienceList.tsx
-
-  function connectDataProvider(
-    Composed: React.ComponentType<{ experiences: Experience[] }>,
-    filter?: string,
-  ): React.ComponentClass<{}>;
-  ```
-
-- A l'interieur de cette fonction vous devrez retourner une class qui effectura un `fecth` de la liste d'experiences et l'affichera en utilisant le composant recut en paramètre.
+- Commencez par ecapsuler `ListDataProvider` dans une fonction `connectDataProvider` qui le retourne.
 
 ```tsx
 // ExperienceList.tsx
-// in connectDataProvider
-return class extends React.Component<{}, { experiences: Experience[] }> {
-  constructor(props: {}) {
-    super(props);
-    this.state = {
-      experiences: [],
-    };
-  }
-  async componentDidMount() {
-    const experiences = await fetchExperiences(filter);
-    this.setState({
-      experiences,
-    });
-  }
 
-  render() {
-    return <Composed experiences={this.state.experiences} />;
-  }
-};
+function connectDataProvider() {
+  return class ListDataProvider extends React.Component<
+    ListDataProviderProps,
+    ListDataProviderState
+  >
+
 ```
 
-- Extraire la l'affichage de la liste dans un nouveau component `DefaultListContainer`
+- Remplacez `<ListDataProvider ... >` par le retour de `connectDataProvider()`. Votre liste doit toujours s'afficher.
 
 ```tsx
 // ExperienceList.tsx
 
-const DefaultListContainer = ({
-  experiences,
-}: {
-  experiences: Experience[];
-}) => {
-  const [detailsShowedExperienceId, setDetailsShowedExperienceId] = useState();
-  return (
-    <div className={styles['list-container']}>
-      {experiences.map(experience => (
-        <ExperienceCard
-          experience={experience}
-          key={experience.id}
-          showDetails={detailsShowedExperienceId === experience.id}
-          onClick={() => {
-            setDetailsShowedExperienceId(
-              detailsShowedExperienceId !== experience.id
-                ? experience.id
-                : undefined,
-            );
-          }}
-        />
-      ))}
-    </div>
-  );
-};
+const ConnectedList = connectDataProvider();
+
+// ExperienceList's render
+
+<ConnectedList render={FilteredExperienceList} filter={this.state.filter} />;
 ```
 
-- Vous pouvez maintenant vous servir du composant que `connectDataProvider` retourne.
+- Dans notre cas `connectDataProvider` prend un argument : `Component: React.ComponentType<{ experiences: Experience[] }>` et retourne un `React.ComponentClass<{ filter?: string }>`. De manière à se que la class `ListDataProvider` ne reçoive plus `render` et se serve de `Component` pour afficher la liste.
 
 ```tsx
 // ExperienceList.tsx
-// in ExperienceList render
+const ConnectedList = connectDataProvider(FilteredExperienceList);
 
-const ConnectedList = connectDataProvider(
-  DefaultListContainer,
-  this.state.filter,
-);
-/*
- * ...
- */
-<ConnectedList />;
+function connectDataProvider(
+  Component: React.ComponentType<{ experiences: Experience[] }>,
+): React.ComponentClass<{ filter?: string }> {
+
+  return class ListDataProvider extends React.Component<
+    { filter?: string },
+    { experiences: Experience[] }
+  >
+   /*
+    * ...
+    */
+   render(){
+     return <Component experiences={this.state.experiences}/>
+   }
+
+
+```
+
+- Assurez vous d'afficher la liste et votre `HOC` sera fonctionel vous pouvez aussi faire de `ListDataProvider` une classe anonyme.
+
+```tsx
+// ExperienceList.tsx
+
+  /*
+   * ...
+   */
+  return class  extends React.Component<
+    { filter?: string },
+    { experiences: Experience[] }
+  >
+   /*
+    * ...
+    */
+
 ```

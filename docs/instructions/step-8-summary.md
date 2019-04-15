@@ -10,11 +10,39 @@ sidebar_label: Etape 8 (sommaire)
 
   - HOC
 
-- un Hight Order Component (HOC) est une fonction qui prend en paramètre un `React.ComponentType<any>` et qui retourne un `React.ComponentClass<any>`
+- un Hight Order Component (HOC) est une fonction qui prend en paramètre un `React.ComponentType<any>` et qui retourne un `React.ComponentClass<any>`. Vous allez devoir transformer `ListDataProvider` en une fonction `connectDataProvider`
 
-- Vous devrez encapsuler l'affichage de la liste dans un `HOC`, lequel se chargera de récupérer et de transmètre la liste d'experiences au composant qu'il recevra en paramètre.
+- Commencez par ecapsuler `ListDataProvider` dans une fonction `connectDataProvider` qui le retourne.
 
-- Vous devrez créer une fonction `connectDataProvider` qui prend en paramètre un composant
-  de type `React.ComponentType`
+```tsx
+// ExperienceList.tsx
 
-- A l'interieur de cette fonction vous devrez retourner une class qui effectura un `fecth` de la liste d'experiences et l'affichera en utilisant le composant recut en paramètre.
+function connectDataProvider() {
+  return class ListDataProvider extends React.Component<
+    ListDataProviderProps,
+    ListDataProviderState
+  >
+
+```
+
+- Remplacez `<ListDataProvider ... >` par le retour de `connectDataProvider()`. Votre liste doit toujours s'afficher.
+
+- Dans notre cas `connectDataProvider` prend un argument : `Component: React.ComponentType<{ experiences: Experience[] }>` et retourne un `React.ComponentClass<{ filter?: string }>`. De manière à se que la class `ListDataProvider` ne reçoive plus `render` et se serve de `Component` pour afficher la liste.
+
+```tsx
+// ExperienceList.tsx
+
+function connectDataProvider(
+  Component: React.ComponentType<{ experiences: Experience[] }>,
+): React.ComponentClass<{ filter?: string }> {
+  return class ListDataProvider extends React.Component<
+    { filter?: string },
+    { experiences: Experience[] }
+  >
+   /*
+    * ...
+    */
+
+```
+
+- Assurez vous d'afficher la liste et votre `HOC` sera fonctionel vous pouvez aussi faire de `ListDataProvider` une classe anonyme.

@@ -56,5 +56,85 @@
 <ul>
 <li>Render Props</li>
 </ul></li>
+<li><p>Dans cette étape vous devrez appliquer le pattern de <code>Render props</code>, pour cela l'objectif sera de créer une nouvelle class qui prendra en <code>props</code> un <code>filter</code> et un <code>React.ComponentType</code>. Cette class permettra de récupérer et de transmètre une liste d'experiences au component qu'elle recoit en paramètre.</p></li>
+<li><p>Concrètement vous devez créer une class <code>ListDataProvider</code> qui dans un premier temps ne prends qu'un <code>filter</code> en props et a une liste d'experiences : <code>experiences</code> dans son <code>state</code></p></li>
 </ul>
+<pre><code class="hljs css language-tsx"><span class="hljs-comment">// ExperienceList.tsx</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ListDataProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component&lt;</span></span>
+  {filter?: string},
+  {experiences: <span class="hljs-type">Experience</span>[]}
+&gt;
+</code></pre>
+<ul>
+<li>Depuis <code>FilteredExperienceList</code> extrayez la récupération de la liste et mettez la dans <code>ListDataProvider</code>.</li>
+</ul>
+<pre><code class="hljs css language-tsx"><span class="hljs-comment">// ExerienceList.tsx</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ListDataProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component&lt;</span></span>
+  {filter?: string},
+  {experiences: <span class="hljs-type">Experience</span>[]}
+&gt; {
+  constructor(props: <span class="hljs-type">ListDataProviderProps</span>) {
+    <span class="hljs-keyword">super</span>(props);
+    <span class="hljs-keyword">this</span>.state = {
+      experiences: [],
+    };
+  }
+
+  async fetchExperiences() ...
+
+  async componentDidMount() ...
+
+  async componentDidUpdate(prevProps: <span class="hljs-type">ListDataProviderProps</span>) ...
+
+</code></pre>
+<ul>
+<li><code>FilteredExperienceList</code> devient donc une classe qui n'affiche que la liste. Utilisez <code>FilteredExperienceList</code> dans <code>ListDataProvider</code> afin d'afficher la liste.</li>
+</ul>
+<pre><code class="hljs css language-tsx"><span class="hljs-comment">// ExperienceList.tsx</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FilteredExperienceList</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component&lt;</span></span>
+  {experiences: <span class="hljs-type">Experience</span>[]},
+  {detailsShowedExperienceId?: string }
+&gt; ...
+
+<span class="hljs-comment">// ListDataProvider</span>
+
+<span class="hljs-comment">/*
+ * ...
+ */</span>
+render() {
+    <span class="hljs-keyword">return</span> &lt;<span class="hljs-type">FilteredExperienceList</span> experiences={<span class="hljs-keyword">this</span>.state.experiences}/&gt;
+<span class="hljs-comment">/*
+ * ...
+ */</span>
+
+</code></pre>
+<ul>
+<li>Maintenant vous pouvez passer la class <code>FilteredExperienceList</code> en <code>props</code> à <code>ListDataProvider</code>,</li>
+</ul>
+<pre><code class="hljs css language-tsx"><span class="hljs-comment">// ListDataProvider's props</span>
+
+interface <span class="hljs-type">ListDataProviderState</span> {
+  experiences: <span class="hljs-type">Experience</span>[];
+}
+interface <span class="hljs-type">ListDataProviderProps</span> {
+  filter?: string;
+  render: <span class="hljs-type">React</span>.<span class="hljs-type">ComponentType</span>&lt;{ experiences: <span class="hljs-type">Experience</span>[] }&gt;;
+}
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ListDataProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component&lt;</span></span>
+  <span class="hljs-type">ListDataProviderProps</span>,
+  <span class="hljs-type">ListDataProviderState</span>
+&gt; {
+</code></pre>
+<ul>
+<li>Remplacez <code>&lt;FilteredExperienceList/&gt;</code> par <code>render</code> des <code>props</code>. Afin de pouvoir retourner la liste au travers de <code>this.props.render</code> vous devez retourner un <code>React.Element</code> servez vous de la méthode <code>React.createElement</code>.</li>
+</ul>
+<pre><code class="hljs css language-tsx">    render() {
+        <span class="hljs-keyword">return</span> React.createElement(<span class="hljs-keyword">this</span>.props.render, {
+        experiences: <span class="hljs-keyword">this</span>.state.experiences,
+        });
+    }
+</code></pre>
 </span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/instructions/instructions-step-6-detailed"><span class="arrow-prev">← </span><span>Etape 6 (détaillée)</span></a><a class="docs-next button" href="/docs/instructions/instructions-step-8-detailed"><span>Etape 8 (détaillée)</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#afficher-la-liste-d-experiences-en-utilisant-le-props-rendering-instructions-sommaires-docs-instructions-instructions-step-7-summary">Afficher la liste d'experiences en utilisant le Props Rendering (<a href="/docs/instructions/instructions-step-7-summary">instructions sommaires</a>)</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/logo.svg" alt="React Lab" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/en/lab-intro.html">Introduction</a><a href="/docs/en/instructions/instructions-step-1-summary">Instructions sommaires</a><a href="/docs/en/instructions/instructions-step-1-detailed.html">Instructions détaillées</a></div><div><h5>More</h5><a href="https://github.com/reactlab-dev/reactlab">GitHub</a><a class="github-button" href="https://github.com/reactlab-dev/reactlab" data-icon="octicon-star" data-count-href="/reactlab-dev/reactlab/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Thierry Abaléa &amp; Eliott Balette (2019)</section></footer></div></body></html>

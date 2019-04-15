@@ -43,7 +43,7 @@ class ExperienceList extends React.Component<{}, ExperienceListState> {
 }
 
 function connectDataProvider(
-  Composed: React.ComponentType<{ experiences: Experience[] }>,
+  Component: React.ComponentType<{ experiences: Experience[] }>,
 ): React.ComponentClass<{ filter?: string }> {
   return class extends React.Component<
     { filter?: string },
@@ -74,7 +74,7 @@ function connectDataProvider(
     }
 
     render() {
-      return <Composed experiences={this.state.experiences} />;
+      return <Component experiences={this.state.experiences} />;
     }
   };
 }

@@ -18,5 +18,5 @@
 <url> <loc>https://reactlab.dev/docs/instructions/instructions-step-7-summary</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://reactlab.dev/docs/instructions/instructions-step-7-summary" /> </url>
 <url> <loc>https://reactlab.dev/docs/instructions/instructions-step-8-detailed</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://reactlab.dev/docs/instructions/instructions-step-8-detailed" /> </url>
 <url> <loc>https://reactlab.dev/docs/instructions/instructions-step-8-summary</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://reactlab.dev/docs/instructions/instructions-step-8-summary" /> </url>
-<url> <loc>https://reactlab.dev/docs/</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://reactlab.dev/docs/" /> </url>
+<url> <loc>https://reactlab.dev/docs/intro-lab</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://reactlab.dev/docs/intro-lab" /> </url>
 </urlset>

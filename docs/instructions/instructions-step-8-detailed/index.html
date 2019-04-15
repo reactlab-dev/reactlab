@@ -56,84 +56,67 @@
 <ul>
 <li>HOC</li>
 </ul></li>
-<li><p>un Hight Order Component (HOC) est une fonction qui prend en paramètre un <code>React.ComponentType&lt;any&gt;</code> et qui retourne un <code>React.ComponentClass&lt;any&gt;</code></p></li>
-<li><p>Vous devrez encapsuler l'affichage de la liste dans un <code>HOC</code>, lequel se chargera de récupérer et de transmètre la liste d'experiences au composant qu'il recevra en paramètre.</p></li>
-<li><p>Vous devrez créer une fonction <code>connectDataProvider</code> qui prend en paramètre un composant
-de type <code>React.ComponentType</code></p>
-<pre><code class="hljs css language-tsx"><span class="hljs-comment">// ExperienceList.tsx</span>
-
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">connectDataProvider</span><span class="hljs-params">(
-  Composed: React.ComponentType&lt;<span class="hljs-comment">{ experiences: Experience[] }</span>&gt;,
-  filter?: <span class="hljs-keyword">string</span>,
-)</span>:</span> React.ComponentClass&lt;<span class="hljs-comment">{}</span>&gt;;
-</code></pre></li>
-<li><p>A l'interieur de cette fonction vous devrez retourner une class qui effectura un <code>fecth</code> de la liste d'experiences et l'affichera en utilisant le composant recut en paramètre.</p></li>
+<li><p>un Hight Order Component (HOC) est une fonction qui prend en paramètre un <code>React.ComponentType&lt;any&gt;</code> et qui retourne un <code>React.ComponentClass&lt;any&gt;</code>. Vous allez devoir transformer <code>ListDataProvider</code> en une fonction <code>connectDataProvider</code></p></li>
+<li><p>Commencez par ecapsuler <code>ListDataProvider</code> dans une fonction <code>connectDataProvider</code> qui le retourne.</p></li>
 </ul>
 <pre><code class="hljs css language-tsx"><span class="hljs-comment">// ExperienceList.tsx</span>
-<span class="hljs-comment">// in connectDataProvider</span>
-<span class="hljs-keyword">return</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component&lt;</span></span>{}, { experiences: <span class="hljs-type">Experience</span>[] }&gt; {
-  constructor(props: {}) {
-    <span class="hljs-keyword">super</span>(props);
-    <span class="hljs-keyword">this</span>.state = {
-      experiences: [],
-    };
-  }
-  async componentDidMount() {
-    const experiences = await fetchExperiences(filter);
-    <span class="hljs-keyword">this</span>.setState({
-      experiences,
-    });
-  }
 
-  render() {
-    <span class="hljs-keyword">return</span> &lt;<span class="hljs-type">Composed</span> experiences={<span class="hljs-keyword">this</span>.state.experiences} /&gt;;
-  }
-};
+function connectDataProvider() {
+  <span class="hljs-keyword">return</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ListDataProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component&lt;</span></span>
+    <span class="hljs-type">ListDataProviderProps</span>,
+    <span class="hljs-type">ListDataProviderState</span>
+  &gt;
+
 </code></pre>
 <ul>
-<li>Extraire la l'affichage de la liste dans un nouveau component <code>DefaultListContainer</code></li>
+<li>Remplacez <code>&lt;ListDataProvider ... &gt;</code> par le retour de <code>connectDataProvider()</code>. Votre liste doit toujours s'afficher.</li>
 </ul>
 <pre><code class="hljs css language-tsx"><span class="hljs-comment">// ExperienceList.tsx</span>
 
-<span class="hljs-keyword">const</span> DefaultListContainer = ({
-  experiences,
-}: {
-  <span class="hljs-attr">experiences</span>: Experience[];
-}) =&gt; {
-  <span class="hljs-keyword">const</span> [detailsShowedExperienceId, setDetailsShowedExperienceId] = useState();
-  <span class="hljs-keyword">return</span> (
-    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">{styles[</span>'<span class="hljs-attr">list-container</span>']}&gt;</span>
-      {experiences.map(experience =&gt; (
-        <span class="hljs-tag">&lt;<span class="hljs-name">ExperienceCard</span>
-          <span class="hljs-attr">experience</span>=<span class="hljs-string">{experience}</span>
-          <span class="hljs-attr">key</span>=<span class="hljs-string">{experience.id}</span>
-          <span class="hljs-attr">showDetails</span>=<span class="hljs-string">{detailsShowedExperienceId</span> === <span class="hljs-string">experience.id}</span>
-          <span class="hljs-attr">onClick</span>=<span class="hljs-string">{()</span> =&gt;</span> {
-            setDetailsShowedExperienceId(
-              detailsShowedExperienceId !== experience.id
-                ? experience.id
-                : undefined,
-            );
-          }}
-        /&gt;
-      ))}
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-  );
-};
-</span></code></pre>
-<ul>
-<li>Vous pouvez maintenant vous servir du composant que <code>connectDataProvider</code> retourne.</li>
-</ul>
-<pre><code class="hljs css language-tsx">// ExperienceList.tsx
-// <span class="hljs-keyword">in</span> ExperienceList render
+<span class="hljs-keyword">const</span> ConnectedList = connectDataProvider();
 
-const ConnectedList = connectDataProvider(
-  DefaultListContainer,
-  this.<span class="hljs-keyword">state</span>.filter,
-);
-/*
- * ...
- */
-<span class="hljs-variable">&lt;ConnectedList /&gt;</span>;
+<span class="hljs-comment">// ExperienceList's render</span>
+
+&lt;ConnectedList render={FilteredExperienceList} <span class="hljs-built_in">filter</span>={<span class="hljs-keyword">this</span>.state.<span class="hljs-built_in">filter</span>} /&gt;;
+</code></pre>
+<ul>
+<li>Dans notre cas <code>connectDataProvider</code> prend un argument : <code>Component: React.ComponentType&lt;{ experiences: Experience[] }&gt;</code> et retourne un <code>React.ComponentClass&lt;{ filter?: string }&gt;</code>. De manière à se que la class <code>ListDataProvider</code> ne reçoive plus <code>render</code> et se serve de <code>Component</code> pour afficher la liste.</li>
+</ul>
+<pre><code class="hljs css language-tsx"><span class="hljs-comment">// ExperienceList.tsx</span>
+const <span class="hljs-type">ConnectedList</span> = connectDataProvider(<span class="hljs-type">FilteredExperienceList</span>);
+
+function connectDataProvider(
+  <span class="hljs-type">Component</span>: <span class="hljs-type">React</span>.<span class="hljs-type">ComponentType</span>&lt;{ experiences: <span class="hljs-type">Experience</span>[] }&gt;,
+): <span class="hljs-type">React</span>.<span class="hljs-type">ComponentClass</span>&lt;{ filter?: string }&gt; {
+
+  <span class="hljs-keyword">return</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ListDataProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component&lt;</span></span>
+    { filter?: string },
+    { experiences: <span class="hljs-type">Experience</span>[] }
+  &gt;
+   <span class="hljs-comment">/*
+    * ...
+    */</span>
+   render(){
+     <span class="hljs-keyword">return</span> &lt;<span class="hljs-type">Component</span> experiences={<span class="hljs-keyword">this</span>.state.experiences}/&gt;
+   }
+
+
+</code></pre>
+<ul>
+<li>Assurez vous d'afficher la liste et votre <code>HOC</code> sera fonctionel vous pouvez aussi faire de <code>ListDataProvider</code> une classe anonyme.</li>
+</ul>
+<pre><code class="hljs css language-tsx"><span class="hljs-comment">// ExperienceList.tsx</span>
+
+  <span class="hljs-comment">/*
+   * ...
+   */</span>
+  <span class="hljs-keyword">return</span> <span class="hljs-class"><span class="hljs-keyword">class</span>  <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component&lt;</span></span>
+    { filter?: string },
+    { experiences: <span class="hljs-type">Experience</span>[] }
+  &gt;
+   <span class="hljs-comment">/*
+    * ...
+    */</span>
+
 </code></pre>
 </span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/instructions/instructions-step-7-detailed"><span class="arrow-prev">← </span><span>Etape 7 (détaillée)</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#encapsulez-la-liste-des-experiences-dans-un-hoc-instructions-sommaires-docs-instructions-instructions-step-8-summary">Encapsulez la liste des experiences dans un HOC (<a href="/docs/instructions/instructions-step-8-summary">instructions sommaires</a>)</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/logo.svg" alt="React Lab" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/en/lab-intro.html">Introduction</a><a href="/docs/en/instructions/instructions-step-1-summary">Instructions sommaires</a><a href="/docs/en/instructions/instructions-step-1-detailed.html">Instructions détaillées</a></div><div><h5>More</h5><a href="https://github.com/reactlab-dev/reactlab">GitHub</a><a class="github-button" href="https://github.com/reactlab-dev/reactlab" data-icon="octicon-star" data-count-href="/reactlab-dev/reactlab/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Thierry Abaléa &amp; Eliott Balette (2019)</section></footer></div></body></html>

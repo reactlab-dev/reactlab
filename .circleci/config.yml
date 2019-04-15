@@ -61,11 +61,11 @@ jobs:
               git checkout gh-pages
               git status
               if ! git diff-index --quiet HEAD --; then
-                git add -A .
+                git add slides
                 git commit -m "Deploy slides"
                 git push origin gh-pages
               fi
-              popd
+              cd ~/reactlab
             else
               echo "Skipping slides deploy."
             fi

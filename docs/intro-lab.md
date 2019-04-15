@@ -1,5 +1,5 @@
 ---
-id: index
+id: intro-lab
 title: Introduction
 sidebar_label: Introduction
 ---

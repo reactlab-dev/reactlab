@@ -50,10 +50,11 @@ jobs:
               git clone --branch gh-pages --depth=50 \
                 https://reactlab-bot@github.com/reactlab-dev/reactlab.git \
                 $GH_PAGES_DIR
+              ls -lsa $GH_PAGES_DIR
               pushd slides
               yarn ; yarn build
               rm -rf $GH_PAGES_DIR/slides
-              mkdir $GH_PAGES_DIR/slides
+              mkdir -p $GH_PAGES_DIR/slides
               cp -Rf dist/* $GH_PAGES_DIR/slides
               cd $GH_PAGES_DIR
               git status

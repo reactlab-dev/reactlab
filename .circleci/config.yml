@@ -46,7 +46,7 @@ jobs:
               echo "Skipping deploy. No relevant slides files have changed"
             elif [[ $CIRCLE_PROJECT_USERNAME == "reactlab-dev" && -z $CI_PULL_REQUEST && -z $CIRCLE_PR_USERNAME ]]; then
               echo "Deploying website..."
-              GH_PAGES_DIR="$CIRCLE_BUILD_URL"/../reactlab-slides-gh-pages
+              GH_PAGES_DIR="$CIRCLE_WORKING_DIRECTORY"/../reactlab-slides-gh-pages
               git clone --branch gh-pages --depth=50 \
                 https://reactlab-bot@github.com/reactlab-dev/reactlab.git \
                 $GH_PAGES_DIR

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './ExperienceList.module.css';
 import { Experience } from '../model/experience';
 import Details from './ExperienceDetails';
@@ -11,17 +11,10 @@ async function fetchExperiences(filter?: string): Promise<Experience[]> {
   return response;
 }
 
-interface ExperienceListState {
-  filter?: string;
-}
-class ExperienceList extends React.Component<{}, ExperienceListState> {
+class ExperienceList extends React.Component<{}, { filter?: string }> {
   constructor(props: {}) {
     super(props);
     this.state = {};
-  }
-
-  filterList(filter?: string) {
-    this.setState({ filter });
   }
 
   render() {
@@ -31,87 +24,72 @@ class ExperienceList extends React.Component<{}, ExperienceListState> {
           Filter :
           <input
             className={styles['input']}
-            onChange={({ target: { value } }) => {
-              this.filterList(value);
+            onChange={async ({ target: { value } }) => {
+              this.setState({ filter: value });
             }}
           />
         </div>
-        <ListDataProvider
-          filter={this.state.filter}
-          render={DefaultListContainer}
-        />
+        <FilteredExperienceList filter={this.state.filter} />
       </div>
     );
   }
 }
 
-interface ListDataProviderState {
+interface State {
   experiences: Experience[];
+  detailsShowedExperienceId?: string;
 }
-interface ListDataProviderProps {
-  filter?: string;
-  render: React.ComponentType<{ experiences: Experience[] }>;
-}
-class ListDataProvider extends React.Component<
-  ListDataProviderProps,
-  ListDataProviderState
+
+class FilteredExperienceList extends React.Component<
+  { filter?: string },
+  State
 > {
-  constructor(props: ListDataProviderProps) {
+  constructor(props: {}) {
     super(props);
     this.state = {
       experiences: [],
     };
   }
 
-  async fetchExperiences() {
-    const experiences = await fetchExperiences(this.props.filter);
+  async componentDidMount() {
+    const experiences = await fetchExperiences();
     this.setState({
       experiences,
     });
   }
-
-  async componentDidMount() {
-    await this.fetchExperiences();
-  }
-
-  async componentDidUpdate(prevProps: ListDataProviderProps) {
-    if (this.props.filter !== prevProps.filter) {
-      await this.fetchExperiences();
+  async componentDidUpdate(prevProps: { filter?: string }) {
+    if (prevProps !== this.props) {
+      this.filterList(this.props.filter);
     }
   }
 
+  async filterList(filter?: string) {
+    const experiences = await fetchExperiences(filter);
+    this.setState({ experiences });
+  }
+
   render() {
-    return React.createElement(this.props.render, {
-      experiences: this.state.experiences,
-    });
+    return (
+      <div className={styles['list-container']}>
+        {this.state.experiences.map((experience) => (
+          <ExperienceCard
+            experience={experience}
+            key={experience.id}
+            showDetails={this.state.detailsShowedExperienceId === experience.id}
+            onClick={() => {
+              this.setState({
+                detailsShowedExperienceId:
+                  this.state.detailsShowedExperienceId !== experience.id
+                    ? experience.id
+                    : undefined,
+              });
+            }}
+          />
+        ))}
+      </div>
+    );
   }
 }
-
-const DefaultListContainer = ({
-  experiences,
-}: {
-  experiences: Experience[];
-}) => {
-  const [detailsShowedExperienceId, setDetailsShowedExperienceId] = useState();
-  return (
-    <div className={styles['list-container']}>
-      {experiences.map((experience) => (
-        <ExperienceCard
-          experience={experience}
-          key={experience.id}
-          showDetails={detailsShowedExperienceId === experience.id}
-          onClick={() => {
-            setDetailsShowedExperienceId(
-              detailsShowedExperienceId !== experience.id
-                ? experience.id
-                : undefined,
-            );
-          }}
-        />
-      ))}
-    </div>
-  );
-};
 
 const ExperienceCard = ({
   experience,
@@ -146,4 +124,5 @@ const ExperienceSummary = ({
     <p className={styles['location']}>{location}</p>
   </>
 );
+
 export default ExperienceList;

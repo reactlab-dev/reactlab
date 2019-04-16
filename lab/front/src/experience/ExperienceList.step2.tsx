@@ -9,7 +9,7 @@ function ExperienceList() {
     <div className={styles['list-main-container']}>
       <div className={styles['list-container']}>
         {experiences.map((experience) => (
-          <ExperienceCard experience={experience} />
+          <ExperienceCard experience={experience} key={experience.id} />
         ))}
       </div>
     </div>
@@ -17,15 +17,16 @@ function ExperienceList() {
 }
 
 const ExperienceCard = ({
-  experience: { id, name, description, organisation, location },
+  experience: { name, organisation, expertise },
 }: {
   experience: Experience;
 }) => (
-  <div className={styles['experience-card']} key={id}>
+  <div className={styles['experience-card']}>
     <h5 className={styles['name']}>{name}</h5>
-    <p className={styles['text']}>{description}</p>
+    <p className={styles['expertise']}>{expertise}</p>
+    <p className={styles['organisation-label']}>Team organisation</p>
     <p className={styles['text']}>{organisation}</p>
-    <p className={styles['location']}>{location}</p>
+    <p className={styles['more-about']}>More about</p>
   </div>
 );
 

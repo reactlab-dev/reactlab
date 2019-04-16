@@ -41,17 +41,18 @@ class ExperienceList extends React.Component<{}, State> {
   }
 }
 
-const ExperienceCard = ({
-  experience: { id, name, description, organisation, location },
+const ExperienceSummary = ({
+  experience: { name, organisation, expertise },
 }: {
   experience: Experience;
 }) => (
-  <div className={styles['experience-card']} key={id}>
+  <>
     <h5 className={styles['name']}>{name}</h5>
-    <p className={styles['text']}>{description}</p>
+    <p className={styles['expertise']}>{expertise}</p>
+    <p className={styles['organisation-label']}>Team organisation</p>
     <p className={styles['text']}>{organisation}</p>
-    <p className={styles['location']}>{location}</p>
-  </div>
+    <p className={styles['more-about']}>More about</p>
+  </>
 );
 
 export default ExperienceList;

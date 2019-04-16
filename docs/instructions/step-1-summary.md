@@ -6,11 +6,11 @@ sidebar_label: Etape 1 (sommaire)
 
 Cette 1ère étape nécessite d'avoir pris connaissance des pages du cours React suivantes:
 
-* [A propos de ce cours](../react/react-intro)
-* [Hello World](../react/react-hello-world)
-* [JSX & React Element](../react/react-jsx-element)
-* [Function Component](../react/react-function-component)
-* [List & keys](../react/react-list-and-keys)
+- [A propos de ce cours](../react/react-intro)
+- [Hello World](../react/react-hello-world)
+- [JSX & React Element](../react/react-jsx-element)
+- [Function Component](../react/react-function-component)
+- [List & keys](../react/react-list-and-keys)
 
 ## Afficher la liste des expériences depuis un fichier JSON ([instructions détaillées](./step-1-detailed.md))
 
@@ -24,9 +24,9 @@ Cette étape consiste à afficher la liste des expériences depuis un fichier JS
 
   - Props
 
-- Implémenter le composant `ExperienceList` dans [./front/src/experience/ExperienceList.tsx](./front/src/experience/ExperienceList.tsx). Appuyez vous sur le fichier HTML [./front/html-css-integration/ExperienceList.html](./front/html-css-integration/ExperienceList.html) et sur le fichier CSS [./front/src/experience/ExperienceList.module.css](./front/src/experience/ExperienceList.module.css).
+- Implémenter le composant `ExperienceList` dans `./front/src/experience/ExperienceList.tsx`. Appuyez vous sur le fichier HTML `./front/html-css-integration/ExperienceList.html` et sur le fichier CSS `./front/src/experience/ExperienceList.module.css`.
 
-- La liste des expériences venant du fichier [./front/src/data/experiences.json](./front/src/data/experiences.json) peut être chargée avec le code suivant :
+- La liste des expériences venant du fichier `./front/src/data/experiences.json` peut être chargée avec le code suivant :
 
   ```typescript
   const experiences: Experience[] = require('../data/experiences.json');

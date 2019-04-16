@@ -20,10 +20,9 @@ class ExperienceList extends React.Component<{}, { filter?: string }> {
   render() {
     return (
       <div className={styles['list-main-container']}>
-        <div>
-          Filter :
+        <div className={styles['filter-container']}>
           <input
-            className={styles['input']}
+            className={styles['filter-input']}
             onChange={async ({ target: { value } }) => {
               this.setState({ filter: value });
             }}
@@ -129,15 +128,16 @@ const ExperienceCard = ({
 );
 
 const ExperienceSummary = ({
-  experience: { name, description, location, organisation },
+  experience: { name, organisation, expertise },
 }: {
   experience: Experience;
 }) => (
   <>
     <h5 className={styles['name']}>{name}</h5>
-    <p className={styles['text']}>{description}</p>
+    <p className={styles['expertise']}>{expertise}</p>
+    <p className={styles['organisation-label']}>Team organisation</p>
     <p className={styles['text']}>{organisation}</p>
-    <p className={styles['location']}>{location}</p>
+    <p className={styles['more-about']}>More about</p>
   </>
 );
 

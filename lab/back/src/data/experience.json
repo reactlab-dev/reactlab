@@ -2,141 +2,56 @@
   {
     "id": "1",
     "name": "Crème de la crème",
+    "expertise": "Fullstack developer",
     "description":
-      "ubdcdjkc hdmoihcmds cnds kjcnsdjkchds mcbdjkcn dskjcn mdjksckdsjncsdkj : csmdicj djchdjc djncd cdnckjdnck dsùcmcs:jcnds ncd cdnc djnd cd jn j ddj dfhzmco qizekjnc janc m  nvj nvmar ",
+      "Nous connectons les entreprises avec une communauté de freelances soigneusement sélectionnés pour leurs expertises et leurs dernières compétences digitales.",
     "organisation":
-      "opjcnd ,cd c,dùkc, dùcm,dù lkv,fo vn ,dv klfù,v fkjvei zvdfk,v fdl,vdfùsvds",
-    "practices": [
-      "react",
-      "node",
-      "go",
-      "angular",
-      "mob progamming",
-      "pear programming"
-    ],
-    "location": "Paris 18eme",
-    "teamGeneral": [{ "name": "Paul Doe", "role": "CTO" }],
-    "teamInvolved": [
-      {
-        "name": "Jack Dupond",
-        "role": "Developeur fullStack"
-      }
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.",
+    "practices": ["react", "node", "go", "angularjs", "mob progamming"],
+    "location": "71 rue ordener, Paris",
+    "team": [
+      { "name": "Eliott Balette", "role": "Fullstack developer" },
+      { "name": "Melanie Bonnet", "role": "Fullstack developer" }
     ]
   },
-  {
-    "id": "2",
-    "name": "BNP",
-    "description":
-      "ubdcdjkc hdmoihcmds cnds kjcnsdjkchds mcbdjkcn dskjcn mdjksckdsjncsdkj : csmdicj djchdjc djncd cdnckjdnck dsùcmcs:jcnds ncd cdnc djnd cd jn j ddj dfhzmco qizekjnc janc m  nvj nvmar ",
-    "organisation":
-      "opjcnd ,cd c,dùkc, dùcm,dù lkv,fo vn ,dv klfù,v fkjvei zvdfk,v fdl,vdfùsvds",
-    "practices": [
-      "react",
-      "node",
-      "go",
-      "angular",
-      "mob progamming",
-      "pear programming"
-    ],
-    "location": "Paris 18eme",
-    "teamGeneral": [{ "name": "Paul Doe", "role": "CTO" }],
-    "teamInvolved": [
-      {
-        "name": "Jack Dupond",
-        "role": "Developeur fullStack"
-      }
-    ]
-  },
+
   {
     "id": "3",
-    "name": "Apple",
+    "name": "BlaBlaCar",
+    "expertise": "UX Designer",
     "description":
-      "ubdcdjkc hdmoihcmds cnds kjcnsdjkchds mcbdjkcn dskjcn mdjksckdsjncsdkj : csmdicj djchdjc djncd cdnckjdnck dsùcmcs:jcnds ncd cdnc djnd cd jn j ddj dfhzmco qizekjnc janc m  nvj nvmar ",
+      "BlaBlaCar est le leader mondial du covoiturage longue distance avec plus de 60 millions de membres dans 22 pays. Le service met en relation les conducteurs et les passagers souhaitant partager les frais d’un même trajet. Les conducteurs publient une annonce dans laquelle ils décrivent leur trajet et indiquent leur nombre de places libres.",
     "organisation":
-      "opjcnd ,cd c,dùkc, dùcm,dù lkv,fo vn ,dv klfù,v fkjvei zvdfk,v fdl,vdfùsvds",
-    "practices": [
-      "react",
-      "node",
-      "go",
-      "angular",
-      "mob progamming",
-      "pear programming"
-    ],
-    "location": "Paris 18eme",
-    "teamGeneral": [{ "name": "Paul Doe", "role": "CTO" }],
-    "teamInvolved": [
-      {
-        "name": "Jack Dupond",
-        "role": "Developeur fullStack"
-      }
+      "L’équipe BlaBlaCar compte 350 collaborateurs passionnés et innovants, de 24 nationalités différentes et maitrisant tous l’anglais. Par ailleurs, 1/4 de l’équipe fait partie des Ambassadeurs BlaBlaCar.",
+    "practices": ["android", "Python", "Go", "Swift", "React"],
+    "location": "84 Avenue de la République, 75011 Paris",
+    "team": [
+      { "name": "Frédéric MAZZELLA", "role": "Président-Fondateur" },
+      { "name": "Francis Nappez", "role": "CTO" }
     ]
   },
   {
     "id": "4",
     "name": "Google",
+    "expertise": "Data Scientist",
     "description":
-      "ubdcdjkc hdmoihcmds cnds kjcnsdjkchds mcbdjkcn dskjcn mdjksckdsjncsdkj : csmdicj djchdjc djncd cdnckjdnck dsùcmcs:jcnds ncd cdnc djnd cd jn j ddj dfhzmco qizekjnc janc m  nvj nvmar ",
+      "Since our founding in 1998, Google has grown by leaps and bounds. From offering search in a single language we now offer dozens of products and services—including various forms of advertising and web applications for all kinds of tasks—in scores of languages. And starting from two computer science students in a university dorm room, we now have thousands of employees and offices around the world. A lot has changed since the first Google search engine appeared. But some things haven’t changed: our dedication to our users and our belief in the possibilities of the Internet itself.",
     "organisation":
-      "opjcnd ,cd c,dùkc, dùcm,dù lkv,fo vn ,dv klfù,v fkjvei zvdfk,v fdl,vdfùsvds",
-    "practices": [
-      "react",
-      "node",
-      "go",
-      "angular",
-      "mob progamming",
-      "pear programming"
-    ],
-    "location": "Paris 18eme",
-    "teamGeneral": [{ "name": "Paul Doe", "role": "CTO" }],
-    "teamInvolved": [
-      {
-        "name": "Jack Dupond",
-        "role": "Developeur fullStack"
-      }
-    ]
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.",
+    "practices": ["bigQuery", "Angular", "Go"],
+    "location": "8 Rue de Londres, 75009 Paris",
+    "team": [{ "name": "Jhon Doe", "role": "CTO" }]
   },
   {
     "id": "5",
     "name": "Algolia",
     "description":
-      "ubdcdjkc hdmoihcmds cnds kjcnsdjkchds mcbdjkcn dskjcn mdjksckdsjncsdkj : csmdicj djchdjc djncd cdnckjdnck dsùcmcs:jcnds ncd cdnc djnd cd jn j ddj dfhzmco qizekjnc janc m  nvj nvmar ",
+      "Algolia is the leading Search & Discovery API for websites and mobile apps. We help the most innovative companies across e-commerce, media and SaaS industries create powerful, relevant and scalable discovery experiences for their users. Unlike other solutions, our hosted platform reduces the complexities of building and scaling a fast, relevant digital experience and helps teams accelerate development time. More than 5,000 companies like Under Armour, Twitch, Periscope, Medium and Stripe rely on Algolia to manage 40 billion search queries a month.",
     "organisation":
-      "opjcnd ,cd c,dùkc, dùcm,dù lkv,fo vn ,dv klfù,v fkjvei zvdfk,v fdl,vdfùsvds",
-    "practices": [
-      "react",
-      "node",
-      "go",
-      "angular",
-      "mob progamming",
-      "pear programming"
-    ],
-    "location": "Paris 18eme",
-    "teamGeneral": [{ "name": "Paul Doe", "role": "CTO" }],
-    "teamInvolved": [
-      {
-        "name": "Jack Dupond",
-        "role": "Developeur fullStack"
-      }
-    ]
-  },
-  {
-    "id": "6",
-    "name": "Carrefour",
-    "description":
-      "ubdcdjkc hdmoihcmds cnds kjcnsdjkchds mcbdjkcn dskjcn mdjksckdsjncsdkj : csmdicj djchdjc djncd cdnckjdnck dsùcmcs:jcnds ncd cdnc djnd cd jn j ddj dfhzmco qizekjnc janc m  nvj nvmar ",
-    "organisation":
-      "opjcnd ,cd c,dùkc, dùcm,dù lkv,fo vn ,dv klfù,v fkjvei zvdfk,v fdl,vdfùsvds",
-    "practices": [
-      "react",
-      "node",
-      "go",
-      "angular",
-      "mob progamming",
-      "pear programming"
-    ],
-    "location": "Paris 18eme",
-    "teamGeneral": [{ "name": "Paul Doe", "role": "CTO" }],
-    "teamInvolved": [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.",
+    "practices": ["react", "node", "go"],
+    "location": "55 Rue d'Amsterdam, 75008 Paris",
+    "team": [
       {
         "name": "Jack Dupond",
         "role": "Developeur fullStack"

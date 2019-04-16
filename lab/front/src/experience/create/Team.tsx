@@ -16,7 +16,8 @@ class Team extends React.Component<{}, State> {
   render() {
     return (
       <div className={styles['team-container']}>
-        <label className={styles['label']}>Team :</label>
+        <label className={styles['title']}>Your team</label>
+
         <AddPeople
           onAdd={(people) => {
             this.setState({
@@ -68,29 +69,34 @@ export const AddPeople = (props: { onAdd: (people: People) => void }) => {
   const [name, setName] = useState('');
   const [role, setRole] = useState('');
   return (
-    <div className={styles['inline']}>
-      <label className={styles['label-inline']}>Name :</label>
-      <input
-        className={styles['input-inline']}
-        type='text'
-        value={name}
-        placeholder='Name'
-        onChange={({ target: { value } }) => {
-          setName(value);
-        }}
-      />
-      <label className={styles['label-inline']}>Role :</label>
-      <input
-        className={styles['input-inline']}
-        type='text'
-        value={role}
-        placeholder='Role'
-        onChange={({ target: { value } }) => {
-          setRole(value);
-        }}
-      />
+    <div className={styles['line-container']}>
+      <div className={styles['input-container']}>
+        <label className={styles['label']}>Name :</label>
+        <input
+          className={styles['input']}
+          type='text'
+          value={name}
+          placeholder='Name'
+          onChange={({ target: { value } }) => {
+            setName(value);
+          }}
+        />
+      </div>
+      <div className={styles['input-container']}>
+        <label className={styles['label']}>Role :</label>
+        <input
+          className={styles['input']}
+          type='text'
+          value={role}
+          placeholder='Role'
+          onChange={({ target: { value } }) => {
+            setRole(value);
+          }}
+        />
+      </div>
+
       <button
-        className={styles['button-inline']}
+        className={styles['button']}
         onClick={() => {
           if (name && role) {
             props.onAdd({

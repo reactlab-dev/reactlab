@@ -15,35 +15,53 @@ class ExperienceDetails extends React.Component<Props, {}> {
       <DetailsPage>
         <DetailsContainer>
           <Name>{this.props.experience.name}</Name>
+          <Expertise>{this.props.experience.expertise}</Expertise>
+          <OrganisationLabel>Company description</OrganisationLabel>
           <Text>{this.props.experience.description}</Text>
+          <OrganisationLabel>Team organisation</OrganisationLabel>
           <Text>{this.props.experience.organisation}</Text>
-          <Label>Main team : </Label>
-          <PeopleContaner data-testid='general-team-container'>
-            {this.props.experience.teamGeneral.map((people, index) => (
-              <People key={index}>
-                <PeopleName>{people.name}</PeopleName>
-                <PeopleRole> {people.role}</PeopleRole>
-              </People>
-            ))}
-          </PeopleContaner>
 
-          <Label>Practices : </Label>
+          <Label>TOOLS/TECHNOS </Label>
           <PracticesContainer data-testid='practices-container'>
             {this.props.experience.practices.map((practice, index) => (
               <div key={index}>{practice}</div>
             ))}
           </PracticesContainer>
+
+          <Label>TEAM </Label>
+          <PeopleContainer data-testid='general-team-container'>
+            {this.props.experience.team.map((people, index) => (
+              <People key={index}>
+                <span> {people.name}</span>
+                <PeopleRole> {people.role}, </PeopleRole>
+              </People>
+            ))}
+          </PeopleContainer>
+
+          <Label>PLACE </Label>
+          <Place>{this.props.experience.location}</Place>
+
+          <CloseDetails>Close details</CloseDetails>
         </DetailsContainer>
       </DetailsPage>
     );
   }
 }
 
+const OrganisationLabel = styled.label`
+  margin: 0;
+  color: #222222;
+  font-family: 'Graphik Web';
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 22px;
+  margin-bottom: 12px;
+`;
+
 const DetailsPage = styled.div`
   display: flex;
   width: 100%;
   flex-direction: column;
-  align-items: center;
 `;
 const DetailsContainer = styled.div`
   display: flex;
@@ -53,49 +71,95 @@ const DetailsContainer = styled.div`
 const PracticesContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 10px;
   > div {
-    margin: 0 10px 10px 0;
-    padding: 3px 10px;
-    border-radius: 4px;
-    border: 1px solid #5c9ead;
-    white-space: nowrap;
-    color: #326273;
+    border-radius: 2px;
+    background-color: #253ab6;
+    margin: 0 20px 10px 0;
+    color: #ffffff;
+    font-family: 'Graphik Web';
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+    padding: 0 8px;
   }
 `;
 
-const Name = styled.h2`
-  color: #326273;
+const CloseDetails = styled.p`
   margin: 0;
-  padding: 10px 0;
+  color: #253ab6;
+  font-family: 'Graphik Web';
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 22px;
+  text-align: justify;
+`;
+
+const Name = styled.h2`
+  margin: 0;
+  color: #222222;
+  font-size: 20px;
+  line-height: 30px;
+  margin-bottom: 14px;
+  font-weight: 400;
+`;
+
+const Expertise = styled.h2`
+  margin: 0;
+  color: #222222;
+  font-family: 'Graphik Web';
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 30px;
+  margin-bottom: 14px;
 `;
 
 const Text = styled.p`
-  color: #5c9ead;
   margin: 0;
-  padding: 5px 0;
+  color: #222222;
+  font-family: 'Graphik Web';
+  font-size: 16px;
+  line-height: 22px;
+  text-align: justify;
+  margin-bottom: 14px;
 `;
 
 const Label = styled.p`
   margin: 0;
-  padding: 10px 0;
-  color: #326273;
+  margin-bottom: 8px;
+  color: #253ab6;
+  font-family: 'Graphik Web';
+  font-size: 12px;
+  line-height: 18px;
 `;
 
 const People = styled.div`
-  padding: 5px 10px;
-  border-radius: 5px;
-  border: 1px solid #e39774;
+  color: #222222;
+  font-family: 'Graphik Web';
   font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  margin-left: 10px;
+  &:first-child {
+    margin-left: 0;
+  }
 `;
-const PeopleContaner = styled.div`
+
+const Place = styled.div`
+  color: #222222;
+  font-family: 'Graphik Web';
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  margin-bottom: 20px;
+`;
+const PeopleContainer = styled.span`
   display: flex;
-  flex: 1;
-`;
-const PeopleName = styled.span`
-  color: #326273;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
 `;
 const PeopleRole = styled.span`
-  color: #5c9ead;
+  color: #253ab6;
 `;
 
 export default ExperienceDetails;

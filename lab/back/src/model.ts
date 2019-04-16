@@ -13,12 +13,3 @@ export interface People {
   name: string;
   role: string;
 }
-
-export interface Infos {
-  name?: string;
-  description?: string;
-  organisation?: string;
-  location?: string;
-  practices: string[];
-  expertise?: string;
-}

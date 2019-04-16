@@ -13,7 +13,7 @@
       "pear programming"
     ],
     "location": "Paris 18eme",
-    "teamGeneral": [{ "name": "Paul Doe", "role": "CTO" }],
+    "team": [{ "name": "Paul Doe", "role": "CTO" }],
     "teamInvolved": [
       {
         "name": "Jack Dupond",
@@ -35,7 +35,7 @@
       "pear programming"
     ],
     "location": "Paris 18eme",
-    "teamGeneral": [{ "name": "Paul Doe", "role": "CTO" }],
+    "team": [{ "name": "Paul Doe", "role": "CTO" }],
     "teamInvolved": [
       {
         "name": "Jack Dupond",
@@ -57,7 +57,7 @@
       "pear programming"
     ],
     "location": "Paris 18eme",
-    "teamGeneral": [{ "name": "Paul Doe", "role": "CTO" }],
+    "team": [{ "name": "Paul Doe", "role": "CTO" }],
     "teamInvolved": [
       {
         "name": "Jack Dupond",
@@ -79,7 +79,7 @@
       "pear programming"
     ],
     "location": "Paris 18eme",
-    "teamGeneral": [{ "name": "Paul Doe", "role": "CTO" }],
+    "team": [{ "name": "Paul Doe", "role": "CTO" }],
     "teamInvolved": [
       {
         "name": "Jack Dupond",
@@ -101,7 +101,7 @@
       "pear programming"
     ],
     "location": "Paris 18eme",
-    "teamGeneral": [{ "name": "Paul Doe", "role": "CTO" }],
+    "team": [{ "name": "Paul Doe", "role": "CTO" }],
     "teamInvolved": [
       {
         "name": "Jack Dupond",
@@ -123,7 +123,7 @@
       "pear programming"
     ],
     "location": "Paris 18eme",
-    "teamGeneral": [{ "name": "Paul Doe", "role": "CTO" }],
+    "team": [{ "name": "Paul Doe", "role": "CTO" }],
     "teamInvolved": [
       {
         "name": "Jack Dupond",

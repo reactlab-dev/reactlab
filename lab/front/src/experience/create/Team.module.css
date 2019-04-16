@@ -70,3 +70,30 @@
   margin-bottom: 20px;
   text-align: center;
 }
+
+.people-container {
+  display: flex;
+  padding-bottom: 20px;
+}
+
+.people {
+  border: 1px solid #c8c8c8;
+  border-radius: 2px;
+  background-color: #ffffff;
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
+  display: flex;
+  color: #222222;
+  font-family: 'Graphik Web';
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  padding: 0 8px;
+  align-items: center;
+  margin-right: 20px;
+}
+.people:last-child {
+  margin-right: 0px;
+}
+.people img {
+  margin-left: 8px;
+}

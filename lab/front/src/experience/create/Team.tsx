@@ -31,22 +31,19 @@ class Team extends React.Component<{}, State> {
               className={styles['people']}
               key={`${name}+${indexToFound}+${role}`}
             >
-              <span className={styles['people-name']}>{name} </span>
-              <span className={styles['people-role']}> {role} </span>
-              <span
-                className={styles['people-delete']}
+              <span>
+                {name} - {role}
+              </span>
+              <img
+                src='/images/close_icon_black.png'
+                width='16'
                 onClick={() => {
-                  const team = this.state.team.reduce(
-                    (acc: Array<People>, people, index) => {
-                      return indexToFound !== index ? [...acc, people] : acc;
-                    },
-                    [],
-                  );
+                  const team = this.state.team.filter((people, index) => {
+                    return indexToFound !== index;
+                  }, []);
                   this.setState({ team });
                 }}
-              >
-                X
-              </span>
+              />
             </div>
           ))}
         </div>

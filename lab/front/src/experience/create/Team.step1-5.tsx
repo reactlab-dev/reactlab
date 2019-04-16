@@ -1,17 +1,23 @@
 import React from 'react';
-import styles from './Informations.module.css';
+import { People } from '../../model/experience';
+import styles from './Team.module.css';
 
-interface State {}
+interface State {
+  team: People[];
+}
 
 class Team extends React.Component<{}, State> {
   constructor(props: {}) {
     super(props);
-    this.state = {};
+    this.state = {
+      team: [],
+    };
   }
   render() {
     return (
-      <div className={styles['information-container']}>
-        <label className={styles['label']}>Team :</label>
+      <div className={styles['team-container']}>
+        <label className={styles['title']}>Your team</label>
+
         {/* 
         
         STEP 6 : REPLACE THIS COMMENT BY PEOPLE INPUTS 
@@ -37,4 +43,5 @@ class Team extends React.Component<{}, State> {
     );
   }
 }
+
 export default Team;

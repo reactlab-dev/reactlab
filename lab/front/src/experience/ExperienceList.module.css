@@ -19,6 +19,7 @@
 }
 
 .experience-card {
+  height: fit-content;
   padding: 40px;
   border-radius: 4px;
   background-color: #ffffff;

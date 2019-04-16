@@ -10,7 +10,7 @@ sidebar_label: Etape 3 (détaillée)
 
   - Handling Events (input.onChange)
 
-- Ajouter un React input component en guise de Search Box. Pour le positionner et le styliser comme attendu, appuyez vous sur le fichier HTML [./front/html-css-integration/ExperienceList.searchBox.html](./front/html-css-integration/ExperienceList.searchBox.html).
+- Ajouter un React input component en guise de Search Box. Pour le positionner et le styliser comme attendu, appuyez vous sur le fichier HTML `./front/html-css-integration/ExperienceList.searchBox.html`.
 
 ```tsx
 class ExperienceList extends React.Component<{}, State> {
@@ -21,11 +21,10 @@ class ExperienceList extends React.Component<{}, State> {
   render() {
     return (
       <div className={styles['list-main-container']}>
-        <div>
-          Filter :
+        <div className={styles['filter-container']}>
           <input
-            className={styles['input']}
-            onChange={async ({ target: { value } }) => {
+            className={styles['filter-input']}
+            onChange={async ({ target: { value: filter } }) => {
               //
             }}
           />

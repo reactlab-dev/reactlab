@@ -40,7 +40,7 @@ class ExperienceList extends React.Component<{}, State> {
           <input
             className={styles['filter-input']}
             onChange={async ({ target: { value: filter } }) => {
-              this.setState({ filter });
+              this.filterList(filter);
             }}
           />
         </div>
@@ -54,18 +54,18 @@ class ExperienceList extends React.Component<{}, State> {
   }
 }
 
-const ExperienceSummary = ({
+const ExperienceCard = ({
   experience: { name, organisation, expertise },
 }: {
   experience: Experience;
 }) => (
-  <>
+  <div className={styles['experience-card']}>
     <h5 className={styles['name']}>{name}</h5>
     <p className={styles['expertise']}>{expertise}</p>
     <p className={styles['organisation-label']}>Team organisation</p>
     <p className={styles['text']}>{organisation}</p>
     <p className={styles['more-about']}>More about</p>
-  </>
+  </div>
 );
 
 export default ExperienceList;

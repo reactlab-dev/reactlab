@@ -31,15 +31,16 @@ const ExperienceSummary = ({
   <>
     {/* <> or <div> */}
     <h5 className={styles['name']}>{name}</h5>
-    <p className={styles['text']}>{description}</p>
+    <p className={styles['expertise']}>{expertise}</p>
+    <p className={styles['organisation-label']}>Team organisation</p>
     <p className={styles['text']}>{organisation}</p>
-    <p className={styles['location']}>{location}</p>
+    <p className={styles['more-about']}>More about</p>
     {/* </> or </div> */}
   </>
 );
 ```
 
-- Pour afficher les détails vous devez vous servir du component `ExperienceDetails` se trouvant dans [./front/src/experience/ExperienceDetails.tsx](./front/src/experience/ExperienceDetails.tsx). Ce dernier prend en `props` une experience de type `Experience`
+- Pour afficher les détails vous devez vous servir du component `ExperienceDetails` se trouvant dans `./front/src/experience/ExperienceDetails.tsx`. Ce dernier prend en `props` une experience de type `Experience`
 
 ```tsx
 // Exemple

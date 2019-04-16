@@ -42,7 +42,7 @@ class ExperienceList extends React.Component<{}, State> {
           <input
             className={styles['filter-input']}
             onChange={async ({ target: { value: filter } }) => {
-              this.setState({ filter });
+              this.setState(filter);
             }}
           />
         </div>

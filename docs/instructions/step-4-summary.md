@@ -16,7 +16,7 @@ Nous souhaitons offir la possibilité à l'utilisateur d'avoir le détail d'une 
 
 - Refactorer le composant `ExperienceCard` en extrayant les `children` de la `<div className={styles['experience-card']}>`dans un component nommé `ExperienceSummary`. Un composant ne pouvant renvoyer qu'un `React.Element`, wrappez les `children` dans une `<div></div>` ou dans `<></>` le deuxieme choix ne crée aucun element html : [voir ici](https://reactjs.org/docs/fragments.html#short-syntax)
 
-* Pour afficher les détails vous devez vous servir du component `ExperienceDetails` se trouvant dans [./front/src/experience/ExperienceDetails.tsx](./front/src/experience/ExperienceDetails.tsx). Ce dernier prend en `props` une experience de type `Experience`
+* Pour afficher les détails vous devez vous servir du component `ExperienceDetails` se trouvant dans `./front/src/experience/ExperienceDetails.tsx`. Ce dernier prend en `props` une experience de type `Experience`
 
 - Lors d'un clic sur une `ExperienceCard` vous devez :
   - Affichez le composant `ExperienceDetails` à la place du composant `ExperienceSummary`. Afin de faire cela utilisez le concept de `Conditional Rendering`.

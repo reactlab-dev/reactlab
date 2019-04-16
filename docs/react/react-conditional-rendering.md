@@ -6,7 +6,7 @@ sidebar_label: Conditional Rendering
 
 Vous pouvez décider d'évaluer une expression JSX plutôt qu'une autre de manière conditionnelle en utilisant différentes techniques.
 
-### if statement
+## if statement
 
 Vous pouvez utiliser la déclaration *if ... else*.
 
@@ -32,7 +32,7 @@ const HelloWorld = (props: HelloWorldProps) => {
 };
 ```
 
-### Inline If avec l'opérateur logique &&
+## Inline If avec l'opérateur logique &&
 
 Dans certains cas, plutôt que d'utiliser le mot clé *if*, il est plus pratique et plus concis de recourir à une condition à la volée (Inline If) avec l'opérateur &&.
 
@@ -52,7 +52,7 @@ function Mailbox(props) {
 }
 ```
 
-### Opérateur ternaire conditionnel (... ? ... : ...)
+## Opérateur ternaire conditionnel (... ? ... : ...)
 
 ```jsx
 function Mailbox(props) {

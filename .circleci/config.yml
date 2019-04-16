@@ -28,7 +28,7 @@ jobs:
           name: Deploy Website
           # Skip the deploy if we don't have the right org (reactlab-dev), or if this is just a pull request
           command: |
-            if ! git diff-tree --no-commit-id --name-only -r HEAD | grep -E "(^docs\/.*)|(website\/.*)"; then
+            if ! git diff-tree --no-commit-id --name-only -r HEAD | grep -E "(^docs\/.*)|(website\/.*)|(^slides\/.*)"; then
               echo "Skipping deploy. No relevant docs/website files have changed"
             elif [[ $CIRCLE_PROJECT_USERNAME == "reactlab-dev" && -z $CI_PULL_REQUEST && -z $CIRCLE_PR_USERNAME ]]; then
               echo "Deploying website..."
@@ -36,15 +36,8 @@ jobs:
               yarn install --non-interactive
               # publish
               GIT_USER=reactlab-bot USE_SSH=false yarn run publish-gh-pages
-            else
-              echo "Skipping docs/website deploy."
-            fi
-      - run:
-          name: Deploy Slides
-          command: |
-            if ! git diff-tree --no-commit-id --name-only -r HEAD | grep -E "(^slides\/.*)"; then
-              echo "Skipping deploy. No relevant slides files have changed"
-            elif [[ $CIRCLE_PROJECT_USERNAME == "reactlab-dev" && -z $CI_PULL_REQUEST && -z $CIRCLE_PR_USERNAME ]]; then
+
+              # docusaurus publish seems to remove the slides directory so let's redeploy the slides
               echo "Deploying website..."
               cd ~
               git clone --branch gh-pages --depth=50 \
@@ -62,7 +55,7 @@ jobs:
               git push origin gh-pages
               cd ~/reactlab
             else
-              echo "Skipping slides deploy."
+              echo "Skipping docs/website/slides deploy."
             fi
 
 workflows:

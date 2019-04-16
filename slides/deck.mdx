@@ -996,8 +996,8 @@ const element = <h1>Hello {who}</h1>;`}
 <CodeSurfer
   title="JSX can contains any valid JavaScript expressions"
   code={`const person = {
-  firstName: 'Eliott',
-  lastName: 'Balette'
+  firstName: 'Thierry',
+  lastName: 'Abaléa'
 };
   
 const formatName = ({ firstName, lastName }) => \`\${firstName} \${lastName}\`;
@@ -1010,8 +1010,8 @@ const element = <h1>Hello {formatName(person)}</h1>;`}
 <CodeSurfer
   title="multilines JSX"
   code={`const person = {
-  firstName: 'Eliott',
-  lastName: 'Balette'
+  firstName: 'Thierry',
+  lastName: 'Abaléa'
 };
   
 const formatName = ({ firstName, lastName }) => \`\${firstName} \${lastName}\`;
@@ -1028,8 +1028,8 @@ const element = (
 <CodeSurfer
   title="multilines JSX"
   code={`const person = {
-  firstName: 'Eliott',
-  lastName: 'Balette'
+  firstName: 'Thierry',
+  lastName: 'Abaléa'
 };
   
 const formatName = ({ firstName, lastName }) => \`\${firstName} \${lastName}\`;
@@ -1099,36 +1099,8 @@ const element = React.createElement(Greeting, null);`}
 ---
 
 <CodeSurfer
-  title="React function component"
-  code={`const person = {
-  firstName: 'Eliott',
-  lastName: 'Balette'
-};
-  
-const formatName = ({ firstName, lastName }) => \`\${firstName} \${lastName}\`;
-  
-// Greeting is a function component
-const Greeting = () => (
-  <h1>
-    Hello {formatName(person)}
-  </h1>
-);
-  
-// element is a React element
-const element = Greeting();`}
-  steps={[{ notes: "here Greeting() is strictly equivalent to <Greeting/>" }]}
-  showNumbers
-/>
-
----
-
-<CodeSurfer
   title="function with props"
-  code={`// HelloWorld.tsx
-  
-import React from 'react';
-import ReactDOM from 'react-dom';
-  
+  code={`
 interface HelloWorldProps {
   name: string;
 }
@@ -1140,32 +1112,6 @@ const HelloWorld = (props: HelloWorldProps) => (
 );
   
 const element = <HelloWorld name='World' />;`}
-  showNumbers
-/>
-
----
-
-<CodeSurfer
-  title="a function component can mix JavaScript code and JSX expressions"
-  code={`const formatName =
-  ({ firstName, lastName }: Person) => \`\${firstName} \${lastName}\`;
-  
-interface Person {
-  firstName: string;
-  lastName: string;
-}
-  
-interface HelloWorldProps {
-  person?: Person;
-}
-  
-const HelloWorld = (props: HelloWorldProps) => {
-  if (props.person) {
-    return <div>Hello {formatName(props.person)}</div>;
-  } else {
-    return <div>Hello World</div>;
-  }
-};`}
   showNumbers
 />
 

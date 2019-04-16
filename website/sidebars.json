@@ -1,6 +1,6 @@
 {
   "docs": {
-    "Lab": ["intro-lab"],
+    "Lab": ["lab-intro"],
     "Instructions sommaires": [
       "instructions/instructions-step-1-summary",
       "instructions/instructions-step-2-summary",
@@ -20,6 +20,15 @@
       "instructions/instructions-step-6-detailed",
       "instructions/instructions-step-7-detailed",
       "instructions/instructions-step-8-detailed"
+    ],
+    "React - Les fondamentaux": [
+      "react/react-intro",
+      "react/react-hello-world",
+      "react/react-jsx-element",
+      "react/react-function-component",
+      "react/react-list-and-keys",
+      "react/react-class-component",
+      "react/react-conditional-rendering"
     ]
   }
 }

@@ -29,7 +29,7 @@ const siteConfig = {
 
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
-    {doc: 'intro-lab', label: 'Lab'},
+    {doc: 'lab-intro', label: 'Lab'},
     {href: '/slides/', label: 'Slides'},
     {page: 'about', label: 'A propos'},
     { href: "https://github.com/reactlab-dev/reactlab", label: "GitHub" },
@@ -92,6 +92,12 @@ const siteConfig = {
   // enableUpdateTime: true,
 
   docsSideNavCollapsible: true,
+
+  algolia: {
+    apiKey: '8f16006c7ae6da2f883b852ca36a428b',
+    indexName: 'reactlab-dev',
+    algoliaOptions: {} // Optional, if provided by Algolia
+  },
 
   // You may provide arbitrary config keys to be used as needed by your
   // template. For example, if you need your repo's URL...

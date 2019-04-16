@@ -39,6 +39,10 @@
     .navigationSlider .slidingNav ul {
       background: none;
     }
+
+    .separateOnPageNav .docsNavContainer {
+      flex: 0 0 260px;
+    }
   }
   
   @media only screen and (max-width: 1023px) {

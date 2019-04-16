@@ -2,18 +2,43 @@ import React from 'react';
 import styles from './ExperienceList.module.css';
 import { Experience } from '../model';
 
-const experiences: Experience[] = require('../data/experiences.json');
-
-function ExperienceList() {
-  return (
-    <div className={styles['list-main-container']}>
-      <div className={styles['list-container']}>
-        {experiences.map(experience => (
-          <ExperienceCard experience={experience} key={experience.id} />
-        ))}
-      </div>
-    </div>
+async function fetchExperiences(filter?: string): Promise<Experience[]> {
+  const result = await fetch(
+    `https://z251j2o0xm.sse.codesandbox.io/list/experience/${filter || ''}`,
   );
+  const { response } = await result.json();
+  return response;
+}
+
+interface State {
+  experiences: Experience[];
+}
+
+class ExperienceList extends React.Component<{}, State> {
+  constructor(props: {}) {
+    super(props);
+    this.state = {
+      experiences: [],
+    };
+  }
+  async componentDidMount() {
+    const experiences = await fetchExperiences();
+    this.setState({
+      experiences,
+    });
+  }
+
+  render() {
+    return (
+      <div className={styles['list-main-container']}>
+        <div className={styles['list-container']}>
+          {this.state.experiences.map(experience => (
+            <ExperienceCard experience={experience} key={experience.id} />
+          ))}
+        </div>
+      </div>
+    );
+  }
 }
 
 const ExperienceCard = ({

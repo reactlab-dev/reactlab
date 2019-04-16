@@ -56,7 +56,7 @@
 <ul>
 <li>Handling Events (input.onChange)</li>
 </ul></li>
-<li><p>Ajouter un React input component en guise de Search Box. Pour le positionner et le styliser comme attendu, appuyez vous sur le fichier HTML <a href="./front/html-css-integration/ExperienceList.searchBox.html">./front/html-css-integration/ExperienceList.searchBox.html</a>.</p></li>
+<li><p>Ajouter un React input component en guise de Search Box. Pour le positionner et le styliser comme attendu, appuyez vous sur le fichier HTML <code>./front/html-css-integration/ExperienceList.searchBox.html</code>.</p></li>
 </ul>
 <pre><code class="hljs css language-tsx"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ExperienceList</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component&lt;</span></span>{}, <span class="hljs-type">State</span>&gt; {
   <span class="hljs-comment">/*
@@ -66,11 +66,10 @@
   render() {
     <span class="hljs-keyword">return</span> (
       &lt;div className={styles[<span class="hljs-symbol">'list</span>-main-container']}&gt;
-        &lt;div&gt;
-          <span class="hljs-type">Filter</span> :
+        &lt;div className={styles[<span class="hljs-symbol">'filter</span>-container']}&gt;
           &lt;input
-            className={styles[<span class="hljs-symbol">'inpu</span>t']}
-            onChange={async ({ target: { value } }) =&gt; {
+            className={styles[<span class="hljs-symbol">'filter</span>-input']}
+            onChange={async ({ target: { value: filter } }) =&gt; {
               <span class="hljs-comment">//</span>
             }}
           /&gt;

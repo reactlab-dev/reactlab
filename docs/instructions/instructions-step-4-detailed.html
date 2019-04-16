@@ -75,15 +75,16 @@ const ExperienceSummary = ({
   <span class="hljs-tag">&lt;&gt;</span>
     {/* <span class="hljs-tag">&lt;&gt;</span> or <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span> */}
     <span class="hljs-tag">&lt;<span class="hljs-name">h5</span> <span class="hljs-attr">className</span>=<span class="hljs-string">{styles[</span>'<span class="hljs-attr">name</span>']}&gt;</span>{name}<span class="hljs-tag">&lt;/<span class="hljs-name">h5</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">className</span>=<span class="hljs-string">{styles[</span>'<span class="hljs-attr">text</span>']}&gt;</span>{description}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">className</span>=<span class="hljs-string">{styles[</span>'<span class="hljs-attr">expertise</span>']}&gt;</span>{expertise}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">className</span>=<span class="hljs-string">{styles[</span>'<span class="hljs-attr">organisation-label</span>']}&gt;</span>Team organisation<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">className</span>=<span class="hljs-string">{styles[</span>'<span class="hljs-attr">text</span>']}&gt;</span>{organisation}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">className</span>=<span class="hljs-string">{styles[</span>'<span class="hljs-attr">location</span>']}&gt;</span>{location}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">className</span>=<span class="hljs-string">{styles[</span>'<span class="hljs-attr">more-about</span>']}&gt;</span>More about<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
     {/* <span class="hljs-tag">&lt;/&gt;</span> or <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span> */}
   <span class="hljs-tag">&lt;/&gt;</span>
 );
 </span></code></pre>
 <ul>
-<li>Pour afficher les détails vous devez vous servir du component <code>ExperienceDetails</code> se trouvant dans <a href="./front/src/experience/ExperienceDetails.tsx">./front/src/experience/ExperienceDetails.tsx</a>. Ce dernier prend en <code>props</code> une experience de type <code>Experience</code></li>
+<li>Pour afficher les détails vous devez vous servir du component <code>ExperienceDetails</code> se trouvant dans <code>./front/src/experience/ExperienceDetails.tsx</code>. Ce dernier prend en <code>props</code> une experience de type <code>Experience</code></li>
 </ul>
 <pre><code class="hljs css language-tsx"><span class="hljs-comment">// Exemple</span>
 <span class="hljs-comment">// ExperienceList.tsx</span>

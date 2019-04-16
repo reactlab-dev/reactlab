@@ -10,13 +10,12 @@ sidebar_label: Etape 5 (détaillée)
 
   - Hook (useState)
 
-Depuis [la page Informations](http://localhost:3001/experience/create/informations) lorsque vous cliquez sur `Suivant` vous êtes redirigé sur la route [http://localhost:3000/experience/create/team](http://localhost:3001/experience/create/team) qui affiche le component `Team` de [./front/src/experience/create/Informations.tsx](./front/src/experience/create/Informations.tsx)
-
+Cliquez sur `Create my experience` vous arrivez sur la page Informations ensuit lorsque vous cliquez sur `Next step` vous êtes redirigé sur la pafe `Team` qui affiche le component `Team` de `./front/src/experience/create/Informations.tsx`
 Vous allez devoir créer un formulaire pour renseigner le nom et le role d'un membre et en suite afficher la liste des membres : [HTML final](./front/html-css-integration/Team.html)
 
 #### tâches:
 
-- créer un **Function** Component nommé AddPeople permettant l'ajout d'une personne (cf [HTML final](./front/html-css-integration/Team.html) pour voir la structure HTML). Appuyez vous sur la fonctionnalité Hooks (useState) pour gérer l'état de ce composant. Ce component a en props une fonction `onAdd` qui retourne la personne crée de type [People](./front/src/model/experience.ts). Assurez vous de désactiver le bouton si tous les champs ne sont pas saisies. Au clic sur le bouton 'add', vider les champs.
+- créer un **Function** Component nommé AddPeople permettant l'ajout d'une personne (cf `./front/html-css-integration/Team.html`) pour voir la structure HTML). Appuyez vous sur la fonctionnalité Hooks (useState) pour gérer l'état de ce composant. Ce component a en props une fonction `onAdd` qui retourne la personne crée de type `People` (./front/src/model/experience.ts). Assurez vous de désactiver le bouton si tous les champs ne sont pas saisies. Au clic sur le bouton 'add', vider les champs.
 
 - implémenter La liste :
   - Afficher la liste des membres ajoutés à l'équipe
@@ -30,12 +29,16 @@ import { People } from '../../model/experience';
  */
 export const AddPeople = (props: { onAdd: (people: People) => void }) => {
   return (
-    <div className={styles['inline']}>
-      <label className={styles['label-inline']}>Name :</label>
-      <input className={styles['input-inline']} />
-      <label className={styles['label-inline']}>Role :</label>
-      <input className={styles['input-inline']} />
-      <button className={styles['button-inline']}>Add</button>
+    <div className={styles['line-container']}>
+      <div className={styles['input-container']}>
+        <label className={styles['label']}>Name :</label>
+        <input className={styles['input']} placeholder="Name" />
+      </div>
+      <div className={styles['input-container']}>
+        <label className={styles['label']}>Role :</label>
+        <input className={styles['input']} placeholder="Role" />
+      </div>
+      <button className={styles['button']}>Add</button>
     </div>
   );
 };
@@ -65,7 +68,7 @@ export const AddPeople = (props: { onChange: (people: People) => void }) => {
 // Team.tsx
 // in AddPeople
 <input
-  className={styles['input-inline']}
+  className={styles['input']}
   type="text"
   placeholder="Role"
   onChange={({ target: { value } }) => {
@@ -81,7 +84,7 @@ export const AddPeople = (props: { onChange: (people: People) => void }) => {
 // Team.tsx
 // in AddPeople
 <button
-  className={styles['button-inline']}
+  className={styles['button']}
   onClick={() => {
     if (name && role) {
       props.onAdd({
@@ -101,7 +104,7 @@ export const AddPeople = (props: { onChange: (people: People) => void }) => {
 // Team.tsx
 // in AddPeople
 <input
-  className={styles['input-inline']}
+  className={styles['input']}
   type="text"
   placeholder="Role"
   value={role}
@@ -110,7 +113,7 @@ export const AddPeople = (props: { onChange: (people: People) => void }) => {
   }}
 />
 <button
-  className={styles['button-inline']}
+  className={styles['button']}
   onClick={() => {
     if (name && role) {
       props.onAdd({
@@ -137,7 +140,7 @@ export const AddPeople = (props: { onChange: (people: People) => void }) => {
 render() {
     return (
       <div className={styles['team-container']}>
-        <label className={styles['label']}>Team :</label>
+        <label className={styles['title']}>Your team</label>
         <AddPeople
           onAdd={(people) => {}}
         />
@@ -181,8 +184,8 @@ class Team extends React.Component<{}, State> {
 */
 render() {
     return (
-      <div className={styles['team-container']}>
-        <label className={styles['label']}>Team :</label>
+       <div className={styles['team-container']}>
+        <label className={styles['title']}>Your team</label>
         <AddPeople
           onAdd={(people) => {
             this.setState({team: [...this.state.team, people]})
@@ -209,14 +212,13 @@ render() {
         className={styles['people']}
         key={`${name}+${indexToFound}+${role}`}
       >
-        <span className={styles['people-name']}>{name} </span>
-        <span className={styles['people-role']}>{role} </span>
-        <span
-          className={styles['people-delete']}
+        <span className={styles['people-name']}>{name} - {role} </span>
+
+        <img
+          src='/images/close_icon_black.png'
+          width='16'
           onClick={}
-        >
-          X
-        </span>
+        />
       </div>
     ))}
   </div>
@@ -228,20 +230,20 @@ render() {
 - Il ne manque qu'a retirer un element de la liste au clique sur `X`, pour cela l'utilisation de `filter` sur la liste est conseillé.
 
 ```tsx
-{ thiis.state.team.map((people, indexTofind) => {
+{ this.state.team.map((people, indexTofind) => {
 
 /* ... */
- <span
-    className={styles['people-delete']}
-    onClick={() => {
-      const newTeam = this.state.team.filter((elem, peopleIndex) => {
-       return peopleIndex !== indexToFind ; // true is returned elem is push in newTeam
-      })
-      this.setState({team: newTeam});
-    }}
-  >
-    X
-  </span>
+    <img
+          src='/images/close_icon_black.png'
+          width='16'
+          onClick={() => {
+            const newTeam = this.state.team.filter((elem, peopleIndex) => {
+            return peopleIndex !== indexToFind ; // true is returned elem is push in newTeam
+            })
+            this.setState({team: newTeam});
+          }}
+    />
+
 /* ... */
 
 })

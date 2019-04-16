@@ -30,6 +30,13 @@ function About() {
           Eliott Balette
           </a>.</p>
         </div>
+        <div className="post">
+          <header className="postHeader">
+            <h1>Remerciements</h1>
+          </header>
+          <p>Nous tenons à remercier les équipes en charge de <b>React</b>, la documentation française officielle de React (<b>Christophe Porteneuve</b>), <b>Codesandbox</b>, <b>Docusaurus</b>, <b>MDX</b> et <b>MDX Deck</b>.</p>
+          <p>Nous remercions également l'équipe de notre entreprise <b>crème de la crème</b> pour leur soutien et leur aide. Merci tout spécial à <b>Pia Sabran</b>, UX/UI Designer, qui a réalisé en un temps record le design de la petite application associée à ce Lab. Merci à son mentor <b>Hugo Demanuel</b>. Enfin merci à <b>Mélanie Bonnet</b> de nous aider dans la préparation de ce lab.</p>
+        </div>
       </Container>
     </div>
   );

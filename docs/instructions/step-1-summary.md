@@ -4,6 +4,14 @@ title: Etape 1 (sommaire)
 sidebar_label: Etape 1 (sommaire)
 ---
 
+Cette 1ère étape nécessite d'avoir pris connaissance des pages du cours React suivantes:
+
+* [A propos de ce cours](../react/react-intro)
+* [Hello World](../react/react-hello-world)
+* [JSX & React Element](../react/react-jsx-element)
+* [Function Component](../react/react-function-component)
+* [List & keys](../react/react-list-and-keys)
+
 ## Afficher la liste des expériences depuis un fichier JSON ([instructions détaillées](./step-1-detailed.md))
 
 Cette étape consiste à afficher la liste des expériences depuis un fichier JSON.

@@ -76,7 +76,7 @@ class HomeSplash extends React.Component {
         <div className="inner">
           <ProjectTitle />
           <PromoSection>
-            <Button href={docUrl('intro-lab', language)}>
+            <Button href={docUrl('lab-intro', language)}>
               C'est parti !
             </Button>
           </PromoSection>
@@ -123,7 +123,7 @@ const LocalDevelopment = props => (
 
 \`\`\`sh
 git clone git@github.com:reactlab-dev/reactlab.git
-cd reactlab ; yarn ; yarn start
+cd reactlab/lab/front ; yarn ; yarn start
 \`\`\``,
       },
     ]}

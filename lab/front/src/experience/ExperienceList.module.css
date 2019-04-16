@@ -1,16 +1,13 @@
 .list-main-container {
   display: flex;
-  width: 100%;
-  height: 100%;
-  overflow-y: auto;
   flex-direction: column;
+  align-items: center;
 }
 
 .list-container {
   display: flex;
   flex-wrap: wrap;
-  width: 100%;
-  height: 100%;
+  width: 80%;
   padding-top: 30px;
 }
 
@@ -19,61 +16,25 @@
 }
 
 .experience-card {
-  height: fit-content;
-  padding: 40px;
+  padding: 20px;
+  border: 2px solid #e39774;
   border-radius: 4px;
-  background-color: #ffffff;
-
   width: 100%;
-  margin-bottom: 20px;
+  margin: 0 20px 20px 0;
 }
 
 .name {
-  margin: 0;
-  color: #222222;
-  font-size: 20px;
-  line-height: 30px;
-  margin-bottom: 14px;
-  font-weight: 400;
-}
-
-.expertise {
-  margin: 0;
-  color: #222222;
-  font-family: 'Graphik Web';
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 30px;
-  margin-bottom: 14px;
-}
-
-.organisation-label {
-  margin: 0;
-  color: #222222;
-  font-family: 'Graphik Web';
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 22px;
-  margin-bottom: 12px;
+  margin: 0px;
+  font-size: 18px;
+  padding-bottom: 10px;
+  color: #373e40;
 }
 
 .text {
-  margin: 0;
-  color: #222222;
-  font-family: 'Graphik Web';
-  font-size: 16px;
-  line-height: 22px;
-  text-align: justify;
-  margin-bottom: 14px;
-}
-
-.more-about {
-  color: #253ab6;
-  font-family: 'Graphik Web';
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 22px;
-  text-align: justify;
+  padding: 5px 0;
+  margin: 0px;
+  font-size: 14px;
+  color: #305252;
 }
 
 .location {
@@ -89,29 +50,4 @@
   border: 1px solid #5ea3b285;
   padding: 5px 10px;
   width: 50%;
-}
-
-.filter-container {
-  min-width: 200px;
-  position: relative;
-  border-radius: 2px;
-  background-color: #ffffff;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
-  padding-left: 36px;
-}
-
-.filter-container:before {
-  content: url(/images/search_icon.png);
-  position: absolute;
-  left: 9px;
-  top: 9px;
-}
-
-.filter-input {
-  width: 100%;
-  border: none;
-  line-height: 36px;
-  color: #222222;
-  font-family: 'Graphik Web';
-  font-size: 16px;
 }

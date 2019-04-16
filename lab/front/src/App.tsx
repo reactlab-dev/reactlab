@@ -9,15 +9,13 @@ export const App = () => {
     <BrowserRouter>
       <div className={styles['main-container']}>
         <div className={styles['header']}>
-          <Link to='/'>
-            <span>BEES</span>
-          </Link>
-          <Link to='/experience/create/informations'>
-            <button className={styles['button']}>Create my experience</button>
+          Experiences
+          <Link to="/experience/create/informations">
+            <button className={styles['button']}>Créer une experience</button>
           </Link>
         </div>
-        <Route path='/' exact component={ExperienceList} />
-        <Route path='/experience/create' component={CreateWizard} />
+        <Route path="/" exact component={ExperienceList} />
+        <Route path="/experience/create" component={CreateWizard} />
       </div>
     </BrowserRouter>
   );

@@ -28,49 +28,73 @@ class ExperienceList extends React.Component<{}, { filter?: string }> {
             }}
           />
         </div>
-        <FilteredExperienceList filter={this.state.filter} />
+        <ListDataProvider
+          render={FilteredExperienceList}
+          filter={this.state.filter}
+        />
       </div>
     );
   }
 }
 
 interface State {
-  experiences: Experience[];
   detailsShowedExperienceId?: string;
 }
 
-class FilteredExperienceList extends React.Component<
-  { filter?: string },
-  State
+interface ListDataProviderState {
+  experiences: Experience[];
+}
+interface ListDataProviderProps {
+  filter?: string;
+  render: React.ComponentType<{ experiences: Experience[] }>;
+}
+class ListDataProvider extends React.Component<
+  ListDataProviderProps,
+  ListDataProviderState
 > {
-  constructor(props: {}) {
+  constructor(props: ListDataProviderProps) {
     super(props);
     this.state = {
       experiences: [],
     };
   }
 
-  async componentDidMount() {
-    const experiences = await fetchExperiences();
+  async fetchExperiences() {
+    const experiences = await fetchExperiences(this.props.filter);
     this.setState({
       experiences,
     });
   }
-  async componentDidUpdate(prevProps: { filter?: string }) {
-    if (prevProps !== this.props) {
-      this.filterList(this.props.filter);
+
+  async componentDidMount() {
+    await this.fetchExperiences();
+  }
+
+  async componentDidUpdate(prevProps: ListDataProviderProps) {
+    if (this.props.filter !== prevProps.filter) {
+      await this.fetchExperiences();
     }
   }
 
-  async filterList(filter?: string) {
-    const experiences = await fetchExperiences(filter);
-    this.setState({ experiences });
+  render() {
+    return React.createElement(this.props.render, {
+      experiences: this.state.experiences,
+    });
   }
+}
 
+class FilteredExperienceList extends React.Component<
+  { experiences: Experience[] },
+  State
+> {
+  constructor(props: { experiences: Experience[] }) {
+    super(props);
+    this.state = {};
+  }
   render() {
     return (
       <div className={styles['list-container']}>
-        {this.state.experiences.map(experience => (
+        {this.props.experiences.map(experience => (
           <ExperienceCard
             experience={experience}
             key={experience.id}

@@ -5,6 +5,7 @@
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
+    "@types/react-dom": "^16.8.4",
     "@types/react-router": "4.4.5",
     "@types/react-router-dom": "4.3.2",
     "@types/styled-components": "4.1.14",

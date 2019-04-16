@@ -10,17 +10,18 @@ class Team extends React.Component<{}, State> {
   constructor(props: {}) {
     super(props);
     this.state = {
-      team: []
+      team: [],
     };
   }
   render() {
     return (
       <div className={styles['team-container']}>
-        <label className={styles['label']}>Team :</label>
+        <label className={styles['title']}>Your team</label>
+
         <AddPeople
           onAdd={people => {
             this.setState({
-              team: [...this.state.team, people]
+              team: [...this.state.team, people],
             });
           }}
         />
@@ -30,22 +31,19 @@ class Team extends React.Component<{}, State> {
               className={styles['people']}
               key={`${name}+${indexToFound}+${role}`}
             >
-              <span className={styles['people-name']}>{name} </span>
-              <span className={styles['people-role']}> {role} </span>
-              <span
-                className={styles['people-delete']}
+              <span>
+                {name} - {role}
+              </span>
+              <img
+                src="/images/close_icon_black.png"
+                width="16"
                 onClick={() => {
-                  const team = this.state.team.reduce(
-                    (acc: Array<People>, people, index) => {
-                      return indexToFound !== index ? [...acc, people] : acc;
-                    },
-                    []
-                  );
+                  const team = this.state.team.filter((people, index) => {
+                    return indexToFound !== index;
+                  }, []);
                   this.setState({ team });
                 }}
-              >
-                X
-              </span>
+              />
             </div>
           ))}
         </div>
@@ -68,34 +66,39 @@ export const AddPeople = (props: { onAdd: (people: People) => void }) => {
   const [name, setName] = useState('');
   const [role, setRole] = useState('');
   return (
-    <div className={styles['inline']}>
-      <label className={styles['label-inline']}>Name :</label>
-      <input
-        className={styles['input-inline']}
-        type="text"
-        value={name}
-        placeholder="Name"
-        onChange={({ target: { value } }) => {
-          setName(value);
-        }}
-      />
-      <label className={styles['label-inline']}>Role :</label>
-      <input
-        className={styles['input-inline']}
-        type="text"
-        value={role}
-        placeholder="Role"
-        onChange={({ target: { value } }) => {
-          setRole(value);
-        }}
-      />
+    <div className={styles['line-container']}>
+      <div className={styles['input-container']}>
+        <label className={styles['label']}>Name :</label>
+        <input
+          className={styles['input']}
+          type="text"
+          value={name}
+          placeholder="Name"
+          onChange={({ target: { value } }) => {
+            setName(value);
+          }}
+        />
+      </div>
+      <div className={styles['input-container']}>
+        <label className={styles['label']}>Role :</label>
+        <input
+          className={styles['input']}
+          type="text"
+          value={role}
+          placeholder="Role"
+          onChange={({ target: { value } }) => {
+            setRole(value);
+          }}
+        />
+      </div>
+
       <button
-        className={styles['button-inline']}
+        className={styles['button']}
         onClick={() => {
           if (name && role) {
             props.onAdd({
               name,
-              role
+              role,
             });
             setName('');
             setRole('');

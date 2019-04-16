@@ -3,10 +3,10 @@ export interface Experience {
   name: string;
   description: string;
   organisation: string;
+  expertise: string;
   practices: string[];
   location: string;
-  teamGeneral: People[];
-  teamInvolved: People[];
+  team: People[];
 }
 
 export interface People {
@@ -20,9 +20,5 @@ export interface Infos {
   organisation?: string;
   location?: string;
   practices: string[];
-}
-
-export interface Teams {
-  generalTeam: Array<Partial<People>>;
-  involvedTeam: Array<Partial<People>>;
+  expertise?: string;
 }

@@ -1,11 +1,24 @@
 import styled from 'styled-components';
 
-export const FullSizeContainer = styled.div`
+export const FormContainer = styled.div`
+  background: #fff;
+  border-radius: 4px;
   display: flex;
-  flex-direction: column;
-
+  padding: 40px;
   width: 100%;
+  position: relative;
+  height: fit-content;
+  flex-direction: column;
 `;
+
+export const TitleWizard = styled.span`
+  color: #222222;
+  font-family: 'Graphik Web';
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 30px;
+`;
+
 export const ListMainContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -72,12 +85,6 @@ export const Header = styled.div`
   font-size: 26px;
   line-height: 50px;
   color: #e39774;
-`;
-
-export const TitleWizard = styled.h4`
-  color: #5c9ead;
-  font-size: 26px;
-  margin: 10px;
 `;
 
 export const Button = styled.button`

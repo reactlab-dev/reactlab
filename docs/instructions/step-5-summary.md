@@ -16,7 +16,7 @@ Vous allez devoir créer un formulaire pour renseigner le nom et le role d'un me
 
 #### tâches:
 
-- créer un **Function** Component nommé AddPeople permettant l'ajout d'une personne (`./front/html-css-integration/Team.html` pour voir la structure HTML). Appuyez vous sur la fonctionnalité Hooks (useState) pour gérer l'état de ce composant. Ce component a en props une fonction `onAdd` qui retourne la personne crée de type `People` dans (./front/src/model/experience.ts). Assurez vous de désactiver le bouton si tous les champs ne sont pas saisies. Au clic sur le bouton 'add', vider les champs.
+- créer un **Function** Component nommé AddPeople permettant l'ajout d'une personne (`./front/html-css-integration/Team.html` pour voir la structure HTML). Appuyez vous sur la fonctionnalité Hooks (useState) pour gérer l'état de ce composant. Ce component a en props une fonction `onAdd` qui retourne la personne crée de type `People` dans (./front/src/model.ts). Assurez vous de désactiver le bouton si tous les champs ne sont pas saisies. Au clic sur le bouton 'add', vider les champs.
 
 - implémenter La liste :
   - Afficher la liste des membres ajoutés à l'équipe

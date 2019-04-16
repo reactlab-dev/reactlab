@@ -45,7 +45,7 @@ function ExperienceList() {
   // ExperienceList.tsx
   import React from 'react';
   import styles from './ExperienceList.module.css';
-  import { Experience } from '../model/experience';
+  import { Experience } from '../model';
   const experiences: Experience[] = require('../data/experiences.json');
   ```
 

@@ -3,7 +3,7 @@ import { Route } from 'react-router';
 import Informations from './Informations';
 import Team from './Team';
 import { Infos } from '../../model';
-import { FullSizeContainer, TitleWizard } from '../../styles';
+import { FormContainer, TitleWizard } from '../../styles';
 
 interface Props {}
 
@@ -15,12 +15,12 @@ class CreateWizard extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      informations: { practices: [] }
+      informations: { practices: [] },
     };
   }
   render() {
     return (
-      <FullSizeContainer>
+      <FormContainer>
         <TitleWizard>Create your experience </TitleWizard>
         <Route
           exact
@@ -40,7 +40,7 @@ class CreateWizard extends React.Component<Props, State> {
           path="/experience/create/team"
           component={Team}
         />
-      </FullSizeContainer>
+      </FormContainer>
     );
   }
 }

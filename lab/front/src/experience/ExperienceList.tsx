@@ -28,9 +28,22 @@ class ExperienceList extends React.Component<{}, State> {
     });
   }
 
+  async filterList(filter?: string) {
+    const experiences = await fetchExperiences(filter);
+    this.setState({ experiences });
+  }
+
   render() {
     return (
       <div className={styles['list-main-container']}>
+        <div className={styles['filter-container']}>
+          <input
+            className={styles['filter-input']}
+            onChange={async ({ target: { value: filter } }) => {
+              this.filterList(filter);
+            }}
+          />
+        </div>
         <div className={styles['list-container']}>
           {this.state.experiences.map(experience => (
             <ExperienceCard experience={experience} key={experience.id} />

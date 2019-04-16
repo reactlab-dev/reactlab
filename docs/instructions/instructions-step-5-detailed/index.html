@@ -57,11 +57,11 @@
 <li>Hook (useState)</li>
 </ul></li>
 </ul>
-<p>Depuis <a href="http://localhost:3001/experience/create/informations">la page Informations</a> lorsque vous cliquez sur <code>Suivant</code> vous êtes redirigé sur la route <a href="http://localhost:3001/experience/create/team">http://localhost:3000/experience/create/team</a> qui affiche le component <code>Team</code> de <a href="./front/src/experience/create/Informations.tsx">./front/src/experience/create/Informations.tsx</a></p>
-<p>Vous allez devoir créer un formulaire pour renseigner le nom et le role d'un membre et en suite afficher la liste des membres : <a href="./front/html-css-integration/Team.html">HTML final</a></p>
+<p>Cliquez sur <code>Create my experience</code> vous arrivez sur la page Informations ensuit lorsque vous cliquez sur <code>Next step</code> vous êtes redirigé sur la pafe <code>Team</code> qui affiche le component <code>Team</code> de <code>./front/src/experience/create/Informations.tsx</code>
+Vous allez devoir créer un formulaire pour renseigner le nom et le role d'un membre et en suite afficher la liste des membres : <a href="./front/html-css-integration/Team.html">HTML final</a></p>
 <h4><a class="anchor" aria-hidden="true" id="taches"></a><a href="#taches" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>tâches:</h4>
 <ul>
-<li><p>créer un <strong>Function</strong> Component nommé AddPeople permettant l'ajout d'une personne (cf <a href="./front/html-css-integration/Team.html">HTML final</a> pour voir la structure HTML). Appuyez vous sur la fonctionnalité Hooks (useState) pour gérer l'état de ce composant. Ce component a en props une fonction <code>onAdd</code> qui retourne la personne crée de type <a href="./front/src/model/experience.ts">People</a>. Assurez vous de désactiver le bouton si tous les champs ne sont pas saisies. Au clic sur le bouton 'add', vider les champs.</p></li>
+<li><p>créer un <strong>Function</strong> Component nommé AddPeople permettant l'ajout d'une personne (cf <code>./front/html-css-integration/Team.html</code>) pour voir la structure HTML). Appuyez vous sur la fonctionnalité Hooks (useState) pour gérer l'état de ce composant. Ce component a en props une fonction <code>onAdd</code> qui retourne la personne crée de type <code>People</code> (./front/src/model/experience.ts). Assurez vous de désactiver le bouton si tous les champs ne sont pas saisies. Au clic sur le bouton 'add', vider les champs.</p></li>
 <li><p>implémenter La liste :</p>
 <ul>
 <li>Afficher la liste des membres ajoutés à l'équipe</li>
@@ -75,12 +75,16 @@ import </span><span class="hljs-template-variable">{ People }</span><span class=
  */
 export const AddPeople = (props: </span><span class="hljs-template-variable">{ onAdd: (people: People) =&gt; void }</span><span class="xml">) =&gt; </span><span class="hljs-template-variable">{
   return (
-    &lt;div className={styles['inline']}</span><span class="xml">&gt;
-      <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">className</span>=</span></span><span class="hljs-template-variable">{styles['label-inline']}</span><span class="xml"><span class="hljs-tag">&gt;</span>Name :<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">className</span>=</span></span><span class="hljs-template-variable">{styles['input-inline']}</span><span class="xml"><span class="hljs-tag"> /&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">className</span>=</span></span><span class="hljs-template-variable">{styles['label-inline']}</span><span class="xml"><span class="hljs-tag">&gt;</span>Role :<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">className</span>=</span></span><span class="hljs-template-variable">{styles['input-inline']}</span><span class="xml"><span class="hljs-tag"> /&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">className</span>=</span></span><span class="hljs-template-variable">{styles['button-inline']}</span><span class="xml"><span class="hljs-tag">&gt;</span>Add<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    &lt;div className={styles['line-container']}</span><span class="xml">&gt;
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=</span></span><span class="hljs-template-variable">{styles['input-container']}</span><span class="xml"><span class="hljs-tag">&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">className</span>=</span></span><span class="hljs-template-variable">{styles['label']}</span><span class="xml"><span class="hljs-tag">&gt;</span>Name :<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">className</span>=</span></span><span class="hljs-template-variable">{styles['input']}</span><span class="xml"><span class="hljs-tag"> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"Name"</span> /&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=</span></span><span class="hljs-template-variable">{styles['input-container']}</span><span class="xml"><span class="hljs-tag">&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">className</span>=</span></span><span class="hljs-template-variable">{styles['label']}</span><span class="xml"><span class="hljs-tag">&gt;</span>Role :<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">className</span>=</span></span><span class="hljs-template-variable">{styles['input']}</span><span class="xml"><span class="hljs-tag"> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"Role"</span> /&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">className</span>=</span></span><span class="hljs-template-variable">{styles['button']}</span><span class="xml"><span class="hljs-tag">&gt;</span>Add<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
   );
 };
@@ -107,7 +111,7 @@ export const AddPeople = (props: </span><span class="hljs-template-variable">{ o
 <pre><code class="hljs css language-tsx">// Team.tsx
 // <span class="hljs-keyword">in</span> AddPeople
 &lt;<span class="hljs-keyword">input</span>
-  className={styles[<span class="hljs-string">'input-inline'</span>]}
+  className={styles[<span class="hljs-string">'input'</span>]}
   <span class="hljs-keyword">type</span>="text"
   placeholder="Role"
   onChange={({ target: { <span class="hljs-keyword">value</span> } }) =&gt; {
@@ -122,7 +126,7 @@ export const AddPeople = (props: </span><span class="hljs-template-variable">{ o
 <pre><code class="hljs css language-tsx">// Team.tsx
 // <span class="hljs-keyword">in</span> AddPeople
 &lt;button
-  className={styles[<span class="hljs-string">'button-inline'</span>]}
+  className={styles[<span class="hljs-string">'button'</span>]}
   onClick={() =&gt; {
     <span class="hljs-keyword">if</span> (<span class="hljs-type">name</span> &amp;&amp; <span class="hljs-keyword">role</span>) {
       props.onAdd({
@@ -141,7 +145,7 @@ export const AddPeople = (props: </span><span class="hljs-template-variable">{ o
 <pre><code class="hljs css language-tsx">// Team.tsx
 // <span class="hljs-keyword">in</span> AddPeople
 &lt;<span class="hljs-keyword">input</span>
-  className={styles[<span class="hljs-string">'input-inline'</span>]}
+  className={styles[<span class="hljs-string">'input'</span>]}
   <span class="hljs-keyword">type</span>="text"
   placeholder="Role"
   <span class="hljs-keyword">value</span>={<span class="hljs-keyword">role</span>}
@@ -150,7 +154,7 @@ export const AddPeople = (props: </span><span class="hljs-template-variable">{ o
   }}
 /&gt;
 &lt;button
-  className={styles[<span class="hljs-string">'button-inline'</span>]}
+  className={styles[<span class="hljs-string">'button'</span>]}
   onClick={() =&gt; {
     <span class="hljs-keyword">if</span> (<span class="hljs-type">name</span> &amp;&amp; <span class="hljs-keyword">role</span>) {
       props.onAdd({
@@ -176,7 +180,7 @@ export const AddPeople = (props: </span><span class="hljs-template-variable">{ o
 <span class="hljs-function"><span class="hljs-title">render</span><span class="hljs-params">()</span></span> {
     return (
       &lt;<span class="hljs-selector-tag">div</span> className={styles[<span class="hljs-string">'team-container'</span>]}&gt;
-        &lt;<span class="hljs-selector-tag">label</span> className={styles[<span class="hljs-string">'label'</span>]}&gt;Team :&lt;/label&gt;
+        &lt;<span class="hljs-selector-tag">label</span> className={styles[<span class="hljs-string">'title'</span>]}&gt;Your team&lt;/label&gt;
         &lt;AddPeople
           onAdd={(people) =&gt; {}}
         /&gt;
@@ -218,8 +222,8 @@ interface <span class="hljs-type">State</span> {
 */</span>
 <span class="hljs-function"><span class="hljs-title">render</span><span class="hljs-params">()</span></span> {
     return (
-      &lt;<span class="hljs-selector-tag">div</span> className={styles[<span class="hljs-string">'team-container'</span>]}&gt;
-        &lt;<span class="hljs-selector-tag">label</span> className={styles[<span class="hljs-string">'label'</span>]}&gt;Team :&lt;/label&gt;
+       &lt;<span class="hljs-selector-tag">div</span> className={styles[<span class="hljs-string">'team-container'</span>]}&gt;
+        &lt;<span class="hljs-selector-tag">label</span> className={styles[<span class="hljs-string">'title'</span>]}&gt;Your team&lt;/label&gt;
         &lt;AddPeople
           onAdd={(people) =&gt; {
             this.setState({team: [..<span class="hljs-selector-class">.this</span><span class="hljs-selector-class">.state</span><span class="hljs-selector-class">.team</span>, people]})
@@ -245,14 +249,13 @@ interface <span class="hljs-type">State</span> {
         <span class="hljs-attr">className</span>=</span></span><span class="hljs-template-variable">{styles['people']}</span><span class="xml"><span class="hljs-tag">
         <span class="hljs-attr">key</span>=</span></span><span class="hljs-template-variable">{`${name}</span><span class="xml"><span class="hljs-tag">+$</span></span><span class="hljs-template-variable">{indexToFound}</span><span class="xml"><span class="hljs-tag">+$</span></span><span class="hljs-template-variable">{role}</span><span class="xml"><span class="hljs-tag">`}
       &gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">className</span>=</span></span><span class="hljs-template-variable">{styles['people-name']}</span><span class="xml"><span class="hljs-tag">&gt;</span></span><span class="hljs-template-variable">{name}</span><span class="xml"> <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">className</span>=</span></span><span class="hljs-template-variable">{styles['people-role']}</span><span class="xml"><span class="hljs-tag">&gt;</span></span><span class="hljs-template-variable">{role}</span><span class="xml"> <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">span</span>
-          <span class="hljs-attr">className</span>=</span></span><span class="hljs-template-variable">{styles['people-delete']}</span><span class="xml"><span class="hljs-tag">
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">className</span>=</span></span><span class="hljs-template-variable">{styles['people-name']}</span><span class="xml"><span class="hljs-tag">&gt;</span></span><span class="hljs-template-variable">{name}</span><span class="xml"> - </span><span class="hljs-template-variable">{role}</span><span class="xml"> <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">img</span>
+          <span class="hljs-attr">src</span>=<span class="hljs-string">'/images/close_icon_black.png'</span>
+          <span class="hljs-attr">width</span>=<span class="hljs-string">'16'</span>
           <span class="hljs-attr">onClick</span>=</span></span><span class="hljs-template-variable">{}</span><span class="xml"><span class="hljs-tag">
-        &gt;</span>
-          X
-        <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+        /&gt;</span>
       <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
     ))}
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
@@ -263,21 +266,21 @@ interface <span class="hljs-type">State</span> {
 <ul>
 <li>Il ne manque qu'a retirer un element de la liste au clique sur <code>X</code>, pour cela l'utilisation de <code>filter</code> sur la liste est conseillé.</li>
 </ul>
-<pre><code class="hljs css language-tsx">{ thiis.state.team.map((<span class="hljs-name">people</span>, indexTofind) =&gt; {
+<pre><code class="hljs css language-tsx">{ <span class="hljs-keyword">this</span>.state.team.map(<span class="hljs-function">(<span class="hljs-params">people, indexTofind</span>) =&gt;</span> {
 
-/* ... */
- &lt;span
-    className={styles['people-delete']}
-    onClick={() =&gt; {
-      const newTeam = this.state.team.filter((<span class="hljs-name">elem</span>, peopleIndex) =&gt; {
-       return peopleIndex !== indexToFind <span class="hljs-comment">; // true is returned elem is push in newTeam</span>
-      })
-      this.setState({team: newTeam})<span class="hljs-comment">;</span>
-    }}
-  &gt;
-    X
-  &lt;/span&gt;
-/* ... */
+<span class="hljs-comment">/* ... */</span>
+    &lt;img
+          src=<span class="hljs-string">'/images/close_icon_black.png'</span>
+          width=<span class="hljs-string">'16'</span>
+          onClick={<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+            <span class="hljs-keyword">const</span> newTeam = <span class="hljs-keyword">this</span>.state.team.filter(<span class="hljs-function">(<span class="hljs-params">elem, peopleIndex</span>) =&gt;</span> {
+            <span class="hljs-keyword">return</span> peopleIndex !== indexToFind ; <span class="hljs-comment">// true is returned elem is push in newTeam</span>
+            })
+            <span class="hljs-keyword">this</span>.setState({team: newTeam});
+          }}
+    /&gt;
+
+<span class="hljs-comment">/* ... */</span>
 
 })
 </code></pre>

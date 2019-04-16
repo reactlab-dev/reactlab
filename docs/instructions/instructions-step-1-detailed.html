@@ -95,22 +95,23 @@
     <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">{styles[</span>'<span class="hljs-attr">list-main-container</span>']}&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">{styles[</span>'<span class="hljs-attr">list-container</span>']}&gt;</span>
         <span class="hljs-comment">&lt;!-- THE LIST GO HERE  --&gt;</span>
-        {experience.length} // : 6
+        {experience.length}
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
 );
 }
 </code></pre></li>
 <li><p>Pour afficher une expérience vous pouvez vous servire de ce html dans votre boucle sur la liste:</p>
-<pre><code class="hljs css language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">{styles[</span>'<span class="hljs-attr">experience-card</span>']} <span class="hljs-attr">key</span>=<span class="hljs-string">"experience id"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">h5</span> <span class="hljs-attr">className</span>=<span class="hljs-string">{styles[</span>'<span class="hljs-attr">name</span>']}&gt;</span> experience name <span class="hljs-tag">&lt;/<span class="hljs-name">h5</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">className</span>=<span class="hljs-string">{styles[</span>'<span class="hljs-attr">text</span>']}&gt;</span> experience description <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">className</span>=<span class="hljs-string">{styles[</span>'<span class="hljs-attr">text</span>']}&gt;</span> experience organisation <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">className</span>=<span class="hljs-string">{styles[</span>'<span class="hljs-attr">location</span>']}&gt;</span> experience location <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<pre><code class="hljs css language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">{styles[</span>'<span class="hljs-attr">experience-card</span>']} <span class="hljs-attr">key</span>=<span class="hljs-string">{id}</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">h5</span> <span class="hljs-attr">className</span>=<span class="hljs-string">{styles[</span>'<span class="hljs-attr">name</span>']}&gt;</span>{name}<span class="hljs-tag">&lt;/<span class="hljs-name">h5</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">className</span>=<span class="hljs-string">{styles[</span>'<span class="hljs-attr">expertise</span>']}&gt;</span>{expertise}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">className</span>=<span class="hljs-string">{styles[</span>'<span class="hljs-attr">organisation-label</span>']}&gt;</span>Team organisation<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">className</span>=<span class="hljs-string">{styles[</span>'<span class="hljs-attr">text</span>']}&gt;</span>{organisation}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">className</span>=<span class="hljs-string">{styles[</span>'<span class="hljs-attr">more-about</span>']}&gt;</span>More about<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 </code></pre></li>
 </ul>
-<p>Refactorer le code en extrayant le code lié à une expérience dans un composant ExperienceCard. A titre d'exercice, utilisez une arrow function plutôt que le mot clé <code>function</code>. Faites l'exerice également d'utiliser la <code>nested destructuration</code>(cf slide #??) sur le paramètre du composant afin de pouvoir utiliser directement les noms des propriétés de l'objet Experience.</p>
+<p>Refactorer le code en extrayant le code lié à une expérience dans un composant ExperienceCard. A titre d'exercice, utilisez une arrow function plutôt que le mot clé <code>function</code>. Faites l'exerice également d'utiliser la <code>nested destructuration</code> sur le paramètre du composant afin de pouvoir utiliser directement les noms des propriétés de l'objet Experience.</p>
 <pre><code class="hljs css language-ts"><span class="hljs-keyword">const</span> ExperienceCard = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> (
     <span class="hljs-comment">/* returned content : experience card */</span>
 )

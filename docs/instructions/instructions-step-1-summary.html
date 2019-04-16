@@ -67,8 +67,8 @@
 <li><p>Lists and Keys</p></li>
 <li><p>Props</p></li>
 </ul></li>
-<li><p>Implémenter le composant <code>ExperienceList</code> dans <a href="./front/src/experience/ExperienceList.tsx">./front/src/experience/ExperienceList.tsx</a>. Appuyez vous sur le fichier HTML <a href="./front/html-css-integration/ExperienceList.html">./front/html-css-integration/ExperienceList.html</a> et sur le fichier CSS <a href="./front/src/experience/ExperienceList.module.css">./front/src/experience/ExperienceList.module.css</a>.</p></li>
-<li><p>La liste des expériences venant du fichier <a href="./front/src/data/experiences.json">./front/src/data/experiences.json</a> peut être chargée avec le code suivant :</p>
+<li><p>Implémenter le composant <code>ExperienceList</code> dans <code>./front/src/experience/ExperienceList.tsx</code>. Appuyez vous sur le fichier HTML <code>./front/html-css-integration/ExperienceList.html</code> et sur le fichier CSS <code>./front/src/experience/ExperienceList.module.css</code>.</p></li>
+<li><p>La liste des expériences venant du fichier <code>./front/src/data/experiences.json</code> peut être chargée avec le code suivant :</p>
 <pre><code class="hljs css language-typescript"><span class="hljs-keyword">const</span> experiences: Experience[] = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../data/experiences.json'</span>);
 </code></pre></li>
 <li><p>Refactorer le code en extrayant le code lié à une expérience dans un composant ExperienceCard. A titre d'exercice, utilisez une arrow function plutôt que le mot clé <code>function</code>. Faites l'exerice également d'utiliser la <code>nested destructuration</code>(cf slide #??) sur le paramètre du composant afin de pouvoir utiliser directement les noms des propriétés de l'objet Experience.</p></li>

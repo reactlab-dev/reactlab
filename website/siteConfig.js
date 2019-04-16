@@ -93,6 +93,12 @@ const siteConfig = {
 
   docsSideNavCollapsible: true,
 
+  algolia: {
+    apiKey: '8f16006c7ae6da2f883b852ca36a428b',
+    indexName: 'reactlab-dev',
+    algoliaOptions: {} // Optional, if provided by Algolia
+  },
+
   // You may provide arbitrary config keys to be used as needed by your
   // template. For example, if you need your repo's URL...
   repoUrl: 'https://github.com/reactlab-dev/reactlab',

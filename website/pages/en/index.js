@@ -76,14 +76,7 @@ class HomeSplash extends React.Component {
         <div className="inner">
           <ProjectTitle />
           <PromoSection>
-            <Button
-              href={docUrl(
-                'https://codesandbox.io/s/github/reactlab-dev/reactlab/tree/step-1/lab/front',
-                language,
-              )}
-            >
-              C'est parti !
-            </Button>
+            <Button href={docUrl('lab-into', language)}>C'est parti !</Button>
           </PromoSection>
         </div>
       </SplashContainer>
@@ -113,7 +106,7 @@ const Codesandbox = props => (
     {[
       {
         title: 'Démarrer immédiatement avec Codesandbox',
-        content: `La première étape commence [ici](https://codesandbox.io/s/l9lo1jkn8l)`,
+        content: `La première étape commence [ici](https://codesandbox.io/s/github/reactlab-dev/reactlab/tree/step-1/lab/front)`,
       },
     ]}
   </Block>

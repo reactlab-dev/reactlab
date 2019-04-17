@@ -76,7 +76,12 @@ class HomeSplash extends React.Component {
         <div className="inner">
           <ProjectTitle />
           <PromoSection>
-            <Button href={docUrl('lab-intro', language)}>
+            <Button
+              href={docUrl(
+                'https://codesandbox.io/s/github/reactlab-dev/reactlab/tree/step-1/lab/front',
+                language,
+              )}
+            >
               C'est parti !
             </Button>
           </PromoSection>

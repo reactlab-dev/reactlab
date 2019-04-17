@@ -26,4 +26,5 @@
 <url> <loc>https://reactlab.dev/docs/react/react-intro</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://reactlab.dev/docs/react/react-intro" /> </url>
 <url> <loc>https://reactlab.dev/docs/react/react-jsx-element</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://reactlab.dev/docs/react/react-jsx-element" /> </url>
 <url> <loc>https://reactlab.dev/docs/react/react-list-and-keys</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://reactlab.dev/docs/react/react-list-and-keys" /> </url>
+<url> <loc>https://reactlab.dev/docs/react/react-state-and-lifecycle</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://reactlab.dev/docs/react/react-state-and-lifecycle" /> </url>
 </urlset>

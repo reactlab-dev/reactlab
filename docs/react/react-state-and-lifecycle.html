@@ -1,0 +1,178 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>State &amp; Lifecycle · React Lab</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;h2&gt;&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; id=&quot;state&quot;&gt;&lt;/a&gt;&lt;a href=&quot;#state&quot; aria-hidden=&quot;true&quot; class=&quot;hash-link&quot;&gt;&lt;svg class=&quot;hash-link-icon&quot; aria-hidden=&quot;true&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;State&lt;/h2&gt;
+"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="State &amp; Lifecycle · React Lab"/><meta property="og:type" content="website"/><meta property="og:url" content="https://reactlab.dev/"/><meta property="og:description" content="&lt;h2&gt;&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; id=&quot;state&quot;&gt;&lt;/a&gt;&lt;a href=&quot;#state&quot; aria-hidden=&quot;true&quot; class=&quot;hash-link&quot;&gt;&lt;svg class=&quot;hash-link-icon&quot; aria-hidden=&quot;true&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;State&lt;/h2&gt;
+"/><meta property="og:image" content="https://reactlab.dev/img/docusaurus.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://reactlab.dev/img/docusaurus.png"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="stylesheet" href="/css/code-block-buttons.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script><script type="text/javascript" src="/js/code-block-buttons.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/logo.svg" alt="React Lab"/><h2 class="headerTitleWithLogo">React Lab</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/lab-intro" target="_self">Lab</a></li><li class=""><a href="/slides/" target="_self">Slides</a></li><li class=""><a href="/about" target="_self">A propos</a></li><li class=""><a href="https://github.com/reactlab-dev/reactlab" target="_self">GitHub</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>React - Les fondamentaux</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Lab<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/lab-intro">Introduction</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Instructions sommaires<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/instructions/instructions-step-1-summary">Etape 1 (sommaire)</a></li><li class="navListItem"><a class="navItem" href="/docs/instructions/instructions-step-2-summary">Etape 2 (sommaire)</a></li><li class="navListItem"><a class="navItem" href="/docs/instructions/instructions-step-3-summary">Etape 3 (sommaire)</a></li><li class="navListItem"><a class="navItem" href="/docs/instructions/instructions-step-4-summary">Etape 4 (sommaire)</a></li><li class="navListItem"><a class="navItem" href="/docs/instructions/instructions-step-5-summary">Etape 5 (sommaire)</a></li><li class="navListItem"><a class="navItem" href="/docs/instructions/instructions-step-6-summary">Etape 6 (sommaire)</a></li><li class="navListItem"><a class="navItem" href="/docs/instructions/instructions-step-7-summary">Etape 7 (sommaire)</a></li><li class="navListItem"><a class="navItem" href="/docs/instructions/instructions-step-8-summary">Etape 8 (sommaire)</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Instructions détaillées<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/instructions/instructions-step-1-detailed">Etape 1 (détaillée)</a></li><li class="navListItem"><a class="navItem" href="/docs/instructions/instructions-step-2-detailed">Etape 2 (détaillée)</a></li><li class="navListItem"><a class="navItem" href="/docs/instructions/instructions-step-3-detailed">Etape 3 (détaillée)</a></li><li class="navListItem"><a class="navItem" href="/docs/instructions/instructions-step-4-detailed">Etape 4 (détaillée)</a></li><li class="navListItem"><a class="navItem" href="/docs/instructions/instructions-step-5-detailed">Etape 5 (détaillée)</a></li><li class="navListItem"><a class="navItem" href="/docs/instructions/instructions-step-6-detailed">Etape 6 (détaillée)</a></li><li class="navListItem"><a class="navItem" href="/docs/instructions/instructions-step-7-detailed">Etape 7 (détaillée)</a></li><li class="navListItem"><a class="navItem" href="/docs/instructions/instructions-step-8-detailed">Etape 8 (détaillée)</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">React - Les fondamentaux<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/react/react-intro">A propos de ce cours</a></li><li class="navListItem"><a class="navItem" href="/docs/react/react-hello-world">Hello World</a></li><li class="navListItem"><a class="navItem" href="/docs/react/react-jsx-element">JSX &amp; React Element</a></li><li class="navListItem"><a class="navItem" href="/docs/react/react-function-component">Function Component</a></li><li class="navListItem"><a class="navItem" href="/docs/react/react-list-and-keys">List &amp; keys</a></li><li class="navListItem"><a class="navItem" href="/docs/react/react-class-component">Class Component</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/react/react-state-and-lifecycle">State &amp; Lifecycle</a></li><li class="navListItem"><a class="navItem" href="/docs/react/react-conditional-rendering">Conditional Rendering</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              const headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                if (event.target.tagName === 'A') {
+                  document.body.classList.remove('tocActive');
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/reactlab-dev/reactlab/edit/master/docs/react/react-state-and-lifecycle.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 class="postHeaderTitle">State &amp; Lifecycle</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="state"></a><a href="#state" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>State</h2>
+<p>Un Class Component peut disposer d'un état qui lui est propre qui peut changer dans le temps contrairement au Function Component (<a href="react-class-component#l-interet-des-class-components">sans usage des Hooks</a>).</p>
+<p>Prenons l'exemple d'un composant Clock qui a pour but d'afficher l'heure courante. Dans cet exemple, l'heure affiché n'évolue pas au fil du temps. Nous souhaitons ici l'heure au moment de l'affichage du composant.</p>
+<p>Il est possible de conserver l'heure dans le State du composant et de le récupérer comme l'illustre le code suivant:</p>
+<pre><code class="hljs css language-jsx">interface ClockState {
+  <span class="hljs-attr">date</span>: <span class="hljs-built_in">Date</span>;
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Clock</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span>&lt;</span>{}, ClockState&gt; {
+  <span class="hljs-keyword">constructor</span>(props: {}) {
+    <span class="hljs-keyword">super</span>(props);
+    <span class="hljs-keyword">this</span>.state = { <span class="hljs-attr">date</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>() };
+  }
+
+  render() {
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hello, world!<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>It is {this.state.date.toLocaleTimeString()}.<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+    );
+  }
+}
+</code></pre>
+<p>Vous devez toujours initialiser le State avec un objet éventuellement vide (si on souhaite que les propriétés du state reste undefined). Si vous ne le faite pas vous aurez une erreur (TypeError: null or undefined has no properties) lors de l'accès à une property depuis la méthode render par exemple.</p>
+<p>Vous avez donc toujours implémenter le constructeur lorsque votre component à un état.</p>
+<p>Vous noterez l'appel au constructeur de base avec en argument l'objet properties. Si votre Class Component comporte un constructeur, vous devez toujours ajouter l'instruction <em>super(props)</em> en première ligne de ce dernier. C'est ainsi toujours à faire si votre Class Component est Stateful (comporte un état).</p>
+<h2><a class="anchor" aria-hidden="true" id="lifecycle-mise-a-jour-du-state"></a><a href="#lifecycle-mise-a-jour-du-state" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Lifecycle &amp; mise à jour du state</h2>
+<h3><a class="anchor" aria-hidden="true" id="liberation-de-ressources"></a><a href="#liberation-de-ressources" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Libération de ressources</h3>
+<p>Un Class Component offre via son lifecycle la possibilité de libérer des ressources.</p>
+<p>Prenons pour exemple, une horloge qui s'afficherait à l'utilisateur.</p>
+<p>Nous devons mettre en place un minuteur avec la fonction setInterval quand l'horloge apparaît dans le DOM pour la première fois. Nous allons devoir le faire après la phase nommée en React montage/mounting associée au composant Horloge. Nous aurons alors besoin d'implémenter la méthode de prototype componentDidMount.</p>
+<p>Pour nettoyer le minuteur et éviter des fuites mémoires, il convient d'appeler la fonction clearInterval avant le démontage/unmounting du composant. Pour celà, nous devons implémenter la méthode de prototype componentWillUnmount.</p>
+<p>Le code suivant correspond à l'implémentation de notre composant Horloge:</p>
+<pre><code class="hljs css language-tsx">interface ClockState {
+  <span class="hljs-attr">date</span>: <span class="hljs-built_in">Date</span>;
+}
+  
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Clock</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span>&lt;</span>{}, ClockState&gt; {
+  private timerId: number;
+  
+  <span class="hljs-keyword">constructor</span>(props: {}) {
+    <span class="hljs-keyword">super</span>(props);
+    <span class="hljs-keyword">this</span>.state = { <span class="hljs-attr">date</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>() };
+  }
+  
+  componentDidMount() {
+    <span class="hljs-keyword">this</span>.timerId = setInterval(
+      <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-keyword">this</span>.tick(),
+      <span class="hljs-number">1000</span>
+    );
+  }
+  
+  componentWillUnmount() {
+    clearInterval(<span class="hljs-keyword">this</span>.timerId);
+  }
+  
+  tick() {
+    <span class="hljs-keyword">this</span>.setState({
+      <span class="hljs-attr">date</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>()
+    });
+  }
+  
+  render() {
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hello Devoxx<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Il est {this.state.date.toLocaleTimeString()}.<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+    );
+  }
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="appel-a-une-api-rest"></a><a href="#appel-a-une-api-rest" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Appel à une API REST</h3>
+<p>Vous ne devez jamais faire d'appel asynchrone depuis la méthode render.</p>
+<p>Si vous devez faire un appel à API de type REST par exemple, il convient de le faire avec la méthode de prototype componentDidMount</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-keyword">async</span> componentDidMount() {
+    <span class="hljs-keyword">const</span> experiences = <span class="hljs-keyword">await</span> fetch(url);
+    <span class="hljs-keyword">this</span>.setState({ experiences });
+}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="utiliser-le-state-correctement"></a><a href="#utiliser-le-state-correctement" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Utiliser le State correctement</h2>
+<h3><a class="anchor" aria-hidden="true" id="ne-modifiez-pas-l-etat-directement"></a><a href="#ne-modifiez-pas-l-etat-directement" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Ne modifiez pas l’état directement</h3>
+<p>Dans les exemples précédents, vous noterez l'appel de la méthode de prototype setState pour modifier le state. Vous ne devez jamais modifier directement le state (ne pas faire: this.state.date = ...) en dehors du constructeur. A ma connaissance, au moins deux raisons expliquent celà:</p>
+<ul>
+<li>React doit être averti des changements du state.</li>
+<li>L'un des principes de React est que le state ne doit jamais changer durant toute l'éxecution de la méthode render.</li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="les-mises-a-jour-du-state-peuvent-etre-asynchrones"></a><a href="#les-mises-a-jour-du-state-peuvent-etre-asynchrones" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Les mises à jour du State peuvent être asynchrones</h3>
+<p>React peut grouper plusieurs appels à setState() en une seule mise à jour pour des raisons de performance.</p>
+<p>Comme this.props et this.state peuvent être mises à jour de façon asynchrone, vous ne devez pas vous baser sur leurs valeurs pour calculer le prochain état.</p>
+<p>Par exemple, ce code peut échouer pour mettre à jour un compteur :</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-comment">// Erroné</span>
+<span class="hljs-keyword">this</span>.setState({
+  <span class="hljs-attr">counter</span>: <span class="hljs-keyword">this</span>.state.counter + <span class="hljs-keyword">this</span>.props.increment,
+});
+</code></pre>
+<p>Vous devez utiliser une fonction qui prends en paramètre le state et les props:</p>
+<pre><code class="hljs css language-jsx"><span class="hljs-comment">// Correct</span>
+<span class="hljs-keyword">this</span>.setState(<span class="hljs-function">(<span class="hljs-params">state, props</span>) =&gt;</span> ({
+  <span class="hljs-attr">counter</span>: state.counter + props.increment
+}));
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="les-mises-a-jour-du-state-sont-fusionnes-merges"></a><a href="#les-mises-a-jour-du-state-sont-fusionnes-merges" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Les mises à jour du State sont fusionnés/mergés</h3>
+<p>Si le state d'un composant comporte deux propriétés, vous pouvez passer au setState un objet ne contenant que l'une des deux propriétés à mettre à jour, sans risque de perdre la valeur associée à l'autre propriété.</p>
+<p>En effet, les mises à jour du State sont fusionnés/mergés</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/react/react-class-component"><span class="arrow-prev">← </span><span>Class Component</span></a><a class="docs-next button" href="/docs/react/react-conditional-rendering"><span>Conditional Rendering</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#state">State</a></li><li><a href="#lifecycle-mise-a-jour-du-state">Lifecycle &amp; mise à jour du state</a><ul class="toc-headings"><li><a href="#liberation-de-ressources">Libération de ressources</a></li><li><a href="#appel-a-une-api-rest">Appel à une API REST</a></li></ul></li><li><a href="#utiliser-le-state-correctement">Utiliser le State correctement</a><ul class="toc-headings"><li><a href="#ne-modifiez-pas-l-etat-directement">Ne modifiez pas l’état directement</a></li><li><a href="#les-mises-a-jour-du-state-peuvent-etre-asynchrones">Les mises à jour du State peuvent être asynchrones</a></li><li><a href="#les-mises-a-jour-du-state-sont-fusionnes-merges">Les mises à jour du State sont fusionnés/mergés</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/logo.svg" alt="React Lab" width="66" height="58"/></a><div><h5>Lab</h5><a href="/docs/en/lab-intro.html">Introduction</a><a href="/docs/en/react/react-intro">Cours React</a></div><div><h5>More</h5><a href="https://github.com/reactlab-dev/reactlab">GitHub</a><a class="github-button" href="https://github.com/reactlab-dev/reactlab" data-icon="octicon-star" data-count-href="/reactlab-dev/reactlab/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Thierry Abaléa &amp; Eliott Balette (2019)</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '8f16006c7ae6da2f883b852ca36a428b',
+                indexName: 'reactlab-dev',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {}
+              });
+            </script></body></html>

@@ -9,7 +9,8 @@
       "instructions/instructions-step-5-summary",
       "instructions/instructions-step-6-summary",
       "instructions/instructions-step-7-summary",
-      "instructions/instructions-step-8-summary"
+      "instructions/instructions-step-8-summary",
+      "instructions/instructions-step-9-summary"
     ],
     "Instructions détaillées": [
       "instructions/instructions-step-1-detailed",
@@ -19,7 +20,8 @@
       "instructions/instructions-step-5-detailed",
       "instructions/instructions-step-6-detailed",
       "instructions/instructions-step-7-detailed",
-      "instructions/instructions-step-8-detailed"
+      "instructions/instructions-step-8-detailed",
+      "instructions/instructions-step-9-detailed"
     ],
     "React - Les fondamentaux": [
       "react/react-intro",
@@ -29,7 +31,10 @@
       "react/react-list-and-keys",
       "react/react-class-component",
       "react/react-state-and-lifecycle",
-      "react/react-conditional-rendering"
+      "react/react-handling-events",
+      "react/react-conditional-rendering",
+      "react/react-lifting-state-up",
+      "react/react-fragments"
     ]
   }
 }

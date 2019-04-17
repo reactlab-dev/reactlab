@@ -13,6 +13,7 @@ Nous souhaitons offir la possibilité à l'utilisateur d'avoir le détail d'une 
   - Handling Events (div.onClick)
   - Conditional Rendering
   - Lifting State Up
+  - Fragments
 
 - Refactorer le composant `ExperienceCard` en extrayant les `children` de la `<div className={styles['experience-card']}>`dans un component nommé `ExperienceSummary`. Un composant ne pouvant renvoyer qu'un `React.Element`, wrappez les `children` dans une `<div></div>` ou dans `<></>` le deuxieme choix ne crée aucun element html : [voir ici](https://reactjs.org/docs/fragments.html#short-syntax)
 

@@ -4,6 +4,10 @@ title: Etape 6 (sommaire)
 sidebar_label: Etape 6 (sommaire)
 ---
 
+Cette 6ème étape nécessite d'avoir pris connaissance de la page du cours React suivante:
+
+- [componentDidUpdate](../react/react-componentdidupdate)
+
 ## Extraire l'affichage et la recupération de la liste dans un nouveau composant ([instructions détaillées](./step-6-detailed.md))
 
 - React concepts utiles:

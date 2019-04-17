@@ -35,6 +35,12 @@
       "react/react-conditional-rendering",
       "react/react-lifting-state-up",
       "react/react-fragments"
+    ],
+    "React - Les concepts avancés": [
+      "react/react-hooks",
+      "react/react-componentdidupdate",
+      "react/react-render-props",
+      "react/react-hoc"
     ]
   }
 }

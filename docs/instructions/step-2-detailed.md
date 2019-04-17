@@ -4,6 +4,11 @@ title: Etape 2 (détaillée)
 sidebar_label: Etape 2 (détaillée)
 ---
 
+Cette 2ème étape nécessite d'avoir pris connaissance des pages du cours React suivantes:
+
+- [Class Component](../react-class-component),
+- [State & Lifecycle](../react/react-state-and-lifecycle)
+
 ## Afficher la liste des expériences depuis un service REST ([instructions sommaires](./step-2-summary.md))
 
 Cette étape consiste à afficher la liste des expériences depuis un service REST.

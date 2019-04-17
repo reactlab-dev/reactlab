@@ -4,6 +4,10 @@ title: Etape 8 (détaillée)
 sidebar_label: Etape 8 (détaillée)
 ---
 
+Cette 8ème étape nécessite d'avoir pris connaissance de la page du cours React suivante:
+
+- [High-Order Component](../react/react-hoc)
+
 ## Encapsulez la liste des experiences dans un HOC ([instructions sommaires](./step-8-summary.md))
 
 - React concepts utiles:

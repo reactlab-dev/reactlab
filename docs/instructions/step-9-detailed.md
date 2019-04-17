@@ -4,6 +4,10 @@ title: Etape 9 (détaillée)
 sidebar_label: Etape 9 (détaillée)
 ---
 
+Cette 9ème étape nécessite d'avoir pris connaissance de la page du cours React suivante:
+
+- [Context API](https://reactjs.org/docs/context.html)
+
 ## Faire communiquer des composants via la Context API ([instructions sommaires](./step-8-summary.md))
 
 - React concepts utiles:

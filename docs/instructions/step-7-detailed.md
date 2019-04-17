@@ -4,6 +4,10 @@ title: Etape 7 (détaillée)
 sidebar_label: Etape 7 (détaillée)
 ---
 
+Cette 7ème étape nécessite d'avoir pris connaissance de la page du cours React suivante:
+
+- [Render Props](../react/react-render-props)
+
 ## Afficher la liste d'experiences en utilisant le Props Rendering ([instructions sommaires](./step-7-summary.md))
 
 - React concepts utiles:

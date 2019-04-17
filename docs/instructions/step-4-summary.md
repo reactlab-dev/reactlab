@@ -4,6 +4,12 @@ title: Etape 4 (sommaire)
 sidebar_label: Etape 4 (sommaire)
 ---
 
+Cette 4ème étape nécessite d'avoir pris connaissance des pages du cours React suivantes:
+
+- [Conditional Rendering](../react/react-conditional-rendering)
+- [Lifting State Up](../react/react-lifting-state-up)
+- [Conditional Rendering](../react/react-fragments)
+
 ## Afficher le détail d'une expérience ([instructions détaillées](./step-4-detailed.md))
 
 Nous souhaitons offir la possibilité à l'utilisateur d'avoir le détail d'une expérience en cliquant sur cette celle-ci. Un second clique sur l'expérience permet de revenir au summary (informations affichés dans les précédentes étapes). Une seul expérience peut avoir son détail affiché à un moment donné.

@@ -4,6 +4,10 @@ title: Etape 6 (détaillée)
 sidebar_label: Etape 6 (détaillée)
 ---
 
+Cette 6ème étape nécessite d'avoir pris connaissance de la page du cours React suivante:
+
+- [componentDidUpdate](../react/react-componentdidupdate)
+
 ## ([instructions sommaires](./step-6-summary.md))
 
 - React concepts utiles:

@@ -4,6 +4,10 @@ title: Etape 3 (sommaire)
 sidebar_label: Etape 3 (sommaire)
 ---
 
+Cette 3ème étape nécessite d'avoir pris connaissance de la page du cours React suivante:
+
+- [Handling Events](../react/react-handling-events)
+
 ## Proposer une search box pour rechercher dans la liste d'expérience ([instructions détaillées](./step-3-detailed.md))
 
 - React concepts utiles:

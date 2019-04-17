@@ -4,13 +4,13 @@ title: Etape 4 (détaillée)
 sidebar_label: Etape 4 (détaillée)
 ---
 
+## [Sandbox](https://codesandbox.io/s/github/reactlab-dev/reactlab/tree/step-4/lab/front)
+
 Cette 4ème étape nécessite d'avoir pris connaissance des pages du cours React suivantes:
 
 - [Conditional Rendering](../react/react-conditional-rendering)
 - [Lifting State Up](../react/react-lifting-state-up)
 - [Conditional Rendering](../react/react-fragments)
-
-- [Sandbox](https://codesandbox.io/s/github/reactlab-dev/reactlab/tree/step-4/lab/front)
 
 ## Afficher le détail d'une expérience ([instructions sommaires](./step-4-summary.md))
 

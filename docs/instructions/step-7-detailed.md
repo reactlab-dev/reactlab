@@ -4,11 +4,11 @@ title: Etape 7 (détaillée)
 sidebar_label: Etape 7 (détaillée)
 ---
 
+## [Sandbox](https://codesandbox.io/s/github/reactlab-dev/reactlab/tree/step-7/lab/front)
+
 Cette 7ème étape nécessite d'avoir pris connaissance de la page du cours React suivante:
 
 - [Render Props](../react/react-render-props)
-
-- [Sandbox](https://codesandbox.io/s/github/reactlab-dev/reactlab/tree/step-7/lab/front)
 
 ## Afficher la liste d'experiences en utilisant le Props Rendering ([instructions sommaires](./step-7-summary.md))
 

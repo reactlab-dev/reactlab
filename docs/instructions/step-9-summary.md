@@ -4,11 +4,11 @@ title: Etape 9 (sommaire)
 sidebar_label: Etape 9 (sommaire)
 ---
 
+## [Sandbox](https://codesandbox.io/s/github/reactlab-dev/reactlab/tree/step-9/lab/front)
+
 Cette 9ème étape nécessite d'avoir pris connaissance de la page du cours React suivante:
 
 - [Context API](https://reactjs.org/docs/context.html)
-
-- [Sandbox](https://codesandbox.io/s/github/reactlab-dev/reactlab/tree/step-9/lab/front)
 
 ## Faire communiquer des composants via la Context API ([instructions détaillées](./step-9-detailed.md))
 

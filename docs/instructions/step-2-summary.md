@@ -4,12 +4,12 @@ title: Etape 2 (sommaire)
 sidebar_label: Etape 2 (sommaire)
 ---
 
+## [Sandbox](https://codesandbox.io/s/github/reactlab-dev/reactlab/tree/step-2/lab/front)
+
 Cette 2ème étape nécessite d'avoir pris connaissance des pages du cours React suivantes:
 
 - [Class Component](../react-class-component),
 - [State & Lifecycle](../react/react-state-and-lifecycle)
-
-- [Sandbox](https://codesandbox.io/s/github/reactlab-dev/reactlab/tree/step-2/lab/front)
 
 ## Afficher la liste des expériences depuis un service REST ([instructions détaillées](./step-2-detailed.md))
 

@@ -4,11 +4,11 @@ title: Etape 3 (sommaire)
 sidebar_label: Etape 3 (sommaire)
 ---
 
+## [Sandbox](https://codesandbox.io/s/github/reactlab-dev/reactlab/tree/step-3/lab/front)
+
 Cette 3ème étape nécessite d'avoir pris connaissance de la page du cours React suivante:
 
 - [Handling Events](../react/react-handling-events)
-
-- [Sandbox](https://codesandbox.io/s/github/reactlab-dev/reactlab/tree/step-3/lab/front)
 
 ## Proposer une search box pour rechercher dans la liste d'expérience ([instructions détaillées](./step-3-detailed.md))
 

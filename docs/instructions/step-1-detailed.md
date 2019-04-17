@@ -4,6 +4,8 @@ title: Etape 1 (détaillée)
 sidebar_label: Etape 1 (détaillée)
 ---
 
+## [Sandbox](https://codesandbox.io/s/github/reactlab-dev/reactlab/tree/step-1/lab/front)
+
 Cette 1ère étape nécessite d'avoir pris connaissance des pages du cours React suivantes:
 
 - [A propos de ce cours](../react/react-intro)
@@ -11,8 +13,6 @@ Cette 1ère étape nécessite d'avoir pris connaissance des pages du cours React
 - [JSX & React Element](../react/react-jsx-element)
 - [Function Component](../react/react-function-component)
 - [List & keys](../react/react-list-and-keys)
-
-- [Sandbox](https://codesandbox.io/s/github/reactlab-dev/reactlab/tree/step-1/lab/front)
 
 ## Afficher la liste des expériences depuis un fichier JSON ([instructions sommaires](./step-1-summary.md))
 

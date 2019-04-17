@@ -4,11 +4,11 @@ title: Etape 6 (détaillée)
 sidebar_label: Etape 6 (détaillée)
 ---
 
+## [Sandbox](https://codesandbox.io/s/github/reactlab-dev/reactlab/tree/step-6/lab/front)
+
 Cette 6ème étape nécessite d'avoir pris connaissance de la page du cours React suivante:
 
 - [componentDidUpdate](../react/react-componentdidupdate)
-
-- [Sandbox](https://codesandbox.io/s/github/reactlab-dev/reactlab/tree/step-6/lab/front)
 
 ## ([instructions sommaires](./step-6-summary.md))
 

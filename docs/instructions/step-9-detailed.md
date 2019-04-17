@@ -8,6 +8,8 @@ Cette 9ème étape nécessite d'avoir pris connaissance de la page du cours Reac
 
 - [Context API](https://reactjs.org/docs/context.html)
 
+- [Sandbox](https://codesandbox.io/s/github/reactlab-dev/reactlab/tree/step-9/lab/front)
+
 ## Faire communiquer des composants via la Context API ([instructions sommaires](./step-8-summary.md))
 
 - React concepts utiles:
@@ -16,15 +18,18 @@ Cette 9ème étape nécessite d'avoir pris connaissance de la page du cours Reac
 
 - L'objectif est d'utiliser la [Context API](https://reactjs.org/docs/context.html) pour faire communiquer les 3 composants afin de:
   - transmettre le filter de la Search Box (input) au Data Provider qui l'utilise pour l'appel REST
-  - transmettre la liste d'expérience du Data Provider au FilteredExperienceList 
+  - transmettre la liste d'expérience du Data Provider au FilteredExperienceList
 - Le Data Provider sera le Context Provider. L'interface du contexte est la suivante:
+
 ```tsx
 interface DataProviderContext {
   experiences: Experience[];
   onFilterChange: (filter: string) => void;
 }
 ```
+
 - Le Data Provider peut ressemble à ceci:
+
 ```tsx
 class DataProvider extends React.Component<
   {},
@@ -38,7 +43,7 @@ class DataProvider extends React.Component<
         value={{
           experiences: this.state.experiences,
           onFilterChange: (filter: string) => {
-           // TODO
+            // TODO
           },
         }}
       >
@@ -48,22 +53,26 @@ class DataProvider extends React.Component<
   }
 }
 ```
+
 - La Search Box sera un Consumer. Voici la trame:
+
 ```tsx
 <Consumer>
-    {(context: DataProviderContext) => (
-        <div className={styles['filter-container']}>
-        <input
-            className={styles['filter-input']}
-            onChange={async ({ target: { value: filter } }) => {
-                // TODO
-            }}
-        />
-        </div>
-    )}
+  {(context: DataProviderContext) => (
+    <div className={styles['filter-container']}>
+      <input
+        className={styles['filter-input']}
+        onChange={async ({ target: { value: filter } }) => {
+          // TODO
+        }}
+      />
+    </div>
+  )}
 </Consumer>
 ```
+
 - Enfin voici le squelette du composant FilteredExperienceList:
+
 ```tsx
 interface State {
   detailsShowedExperienceId?: string;

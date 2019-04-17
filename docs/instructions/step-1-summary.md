@@ -12,6 +12,8 @@ Cette 1ère étape nécessite d'avoir pris connaissance des pages du cours React
 - [Function Component](../react/react-function-component)
 - [List & keys](../react/react-list-and-keys)
 
+- [Sandbox](https://codesandbox.io/s/github/reactlab-dev/reactlab/tree/step-1/lab/front)
+
 ## Afficher la liste des expériences depuis un fichier JSON ([instructions détaillées](./step-1-detailed.md))
 
 Cette étape consiste à afficher la liste des expériences depuis un fichier JSON.

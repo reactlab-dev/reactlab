@@ -8,6 +8,8 @@ Cette 6ème étape nécessite d'avoir pris connaissance de la page du cours Reac
 
 - [componentDidUpdate](../react/react-componentdidupdate)
 
+- [Sandbox](https://codesandbox.io/s/github/reactlab-dev/reactlab/tree/step-6/lab/front)
+
 ## ([instructions sommaires](./step-6-summary.md))
 
 - React concepts utiles:

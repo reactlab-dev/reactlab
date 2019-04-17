@@ -8,6 +8,8 @@ Cette 8ème étape nécessite d'avoir pris connaissance de la page du cours Reac
 
 - [High-Order Component](../react/react-hoc)
 
+- [Sandbox](https://codesandbox.io/s/github/reactlab-dev/reactlab/tree/step-8/lab/front)
+
 ## Encapsulez la liste des experiences dans un HOC ([instructions détaillées](./step-8-detailed.md))
 
 - React concepts utiles:

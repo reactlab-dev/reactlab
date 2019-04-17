@@ -8,6 +8,8 @@ Cette 5ème étape nécessite d'avoir pris connaissance de la page du cours Reac
 
 - [Hooks](../react/react-hooks)
 
+- [Sandbox](https://codesandbox.io/s/github/reactlab-dev/reactlab/tree/step-5/lab/front)
+
 ## Permettre l'ajout de personnes dans le formulaire de création d'experience ([instructions sommaires](./step-5-summary.md))
 
 - React concepts utiles:

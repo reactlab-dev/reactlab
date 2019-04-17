@@ -28,6 +28,7 @@
       "react/react-function-component",
       "react/react-list-and-keys",
       "react/react-class-component",
+      "react/react-state-and-lifecycle",
       "react/react-conditional-rendering"
     ]
   }

@@ -115,7 +115,7 @@ const element = (
 );
 ````
 
-La balide JSX suivante n'a pas d'enfant et vous pouvez ainsi la fermer immédiatement avec */>*, comme en XML
+La balise JSX suivante n'a pas d'enfant et vous pouvez ainsi la fermer immédiatement avec */>*, comme en XML
 
 ```jsx
 const element = <img src={user.avatarUrl} />;

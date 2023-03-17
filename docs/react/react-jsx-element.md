@@ -85,7 +85,7 @@ const element = <h1>Hello {formatName(person)}</h1>;
 ```
 
 ## Multiline JSX
-Le JSX peut s'écrire sur plusieurs lignes. Entouter le JSX de parenthèses n'est pas toujours nécessaire. Nous recommandons toutefois de le faire pour se prémunir de bug (cf [éviter les pièges](#eviter-les-pieges)) et par homogénéité avec les cas où les parenthèses sont nécessaires.
+Le JSX peut s'écrire sur plusieurs lignes. Entourer le JSX de parenthèses n'est pas toujours nécessaire. Nous recommandons toutefois de le faire pour se prémunir de bug (cf [éviter les pièges](#eviter-les-pieges)) et par homogénéité avec les cas où les parenthèses sont nécessaires.
 
 ```jsx
 const person = {
@@ -115,7 +115,7 @@ const element = (
 );
 ````
 
-La balide JSX suivante n'a pas d'enfant et vous pouvez ainsi la fermer immédiatement avec */>*, comme en XML
+La balise JSX suivante n'a pas d'enfant et vous pouvez ainsi la fermer immédiatement avec */>*, comme en XML
 
 ```jsx
 const element = <img src={user.avatarUrl} />;
